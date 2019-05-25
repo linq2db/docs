@@ -1,0 +1,10 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'vs2017-win2016'
+
+- task: PowerShell@2
+  inputs:
+    filePath: build/build.ps1
+    arguments: no-user no-token no-email 1
