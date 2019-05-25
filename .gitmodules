@@ -1,0 +1,16 @@
+[submodule "submodules/linq2db"]
+	path = submodules/linq2db
+	url = https://github.com/linq2db/linq2db.git
+	branch = release
+[submodule "submodules/linq2db.EntityFrameworkCore"]
+	path = submodules/linq2db.EntityFrameworkCore
+	url = https://github.com/linq2db/linq2db.EntityFrameworkCore.git
+	branch = release
+[submodule "submodules/LinqToDB.Identity"]
+	path = submodules/LinqToDB.Identity
+	url = https://github.com/linq2db/LinqToDB.Identity.git
+	branch = release
+[submodule "submodules/IdentityServer4.LinqToDB"]
+	path = submodules/IdentityServer4.LinqToDB
+	url = https://github.com/linq2db/IdentityServer4.LinqToDB.git
+	branch = release

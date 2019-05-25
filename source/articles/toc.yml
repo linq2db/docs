@@ -1,0 +1,14 @@
+- name: Release Notes
+  href: releasenotes/toc.yml
+- name: Get Started
+  href: get-started/toc.yml
+- name: General topics
+  href: general/toc.yml
+- name: SQL
+  href: sql/toc.yml
+- name: T4 Templates
+  href: T4.md
+- name: FAQ
+  href: FAQ.md
+- name: Project
+  href: project/toc.yml

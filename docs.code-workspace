@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "./source",
+			"name": "articles"
+		},
+		{
+			"path": "./build",
+			"name": "build"
+		}
+	],
+	"settings": {
+		"telemetry.enableTelemetry": false,
+		"files.exclude": {
+			"obj": true,
+			"api": true,
+			".vscode": true
+		},
+	}
+}
