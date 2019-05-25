@@ -14,24 +14,6 @@ if ([System.IO.Directory]::Exists('linq2db.github.io')) { Remove-Item linq2db.gi
 Write-Host Done
 
 Write-Host Prepare tooling...
-Get-Location | Write-Host
-if ([System.IO.File]::Exists('./tools/NuGet.exe')) 
-{
-     Write-Host nuget found
-}
-
-if ([System.IO.File]::Exists('d:\a\1\s\tools\NuGet.exe')) 
-{
-     Write-Host nuget2 found
-}
-
-if ([System.IO.File]::Exists('.\tools\NuGet.exe')) 
-{
-     Write-Host nuget3 found
-}
-
-Tree . /F | Select-Object -Skip 2 | Write-Host
-
 ./tools/NuGet.exe install msdn.4.5.2 -ExcludeVersion -OutputDirectory tools/packages -Prerelease
 ./tools/NuGet.exe install docfx.console -ExcludeVersion -OutputDirectory tools/packages
 Write-Host Done
