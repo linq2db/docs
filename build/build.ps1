@@ -19,6 +19,16 @@ if ([System.IO.File]::Exists('./tools/NuGet.exe'))
 {
      Write-Host nuget found
 }
+
+if ([System.IO.File]::Exists('d:\a\1\s\tools\NuGet.exe')) 
+{
+     Write-Host nuget2 found
+}
+
+if ([System.IO.File]::Exists('.\tools\NuGet.exe')) 
+{
+     Write-Host nuget3 found
+}
 ./tools/NuGet.exe install msdn.4.5.2 -ExcludeVersion -OutputDirectory tools/packages -Prerelease
 ./tools/NuGet.exe install docfx.console -ExcludeVersion -OutputDirectory tools/packages
 Write-Host Done
