@@ -14,8 +14,9 @@ if ([System.IO.Directory]::Exists('linq2db.github.io')) { Remove-Item linq2db.gi
 Write-Host Done
 
 Write-Host Prepare tooling...
-tools/NuGet.exe install msdn.4.5.2 -ExcludeVersion -OutputDirectory tools/packages -Prerelease
-tools/NuGet.exe install docfx.console -ExcludeVersion -OutputDirectory tools/packages
+Get-Location
+./tools/NuGet.exe install msdn.4.5.2 -ExcludeVersion -OutputDirectory tools/packages -Prerelease
+./tools/NuGet.exe install docfx.console -ExcludeVersion -OutputDirectory tools/packages
 Write-Host Done
 
 Write-Host Build DocFX documentation...
@@ -31,6 +32,7 @@ if ($gitDeploy)
     Write-Host Updating site...
     git clone https://github.com/linq2db/linq2db.github.io.git -b master linq2db.github.io -q
     Copy-Item linq2db.github.io/.git _site -Recurse
+    Remove-Item linq2db.github.io -Recurse -Force
     Set-Location _site
     #git config core.autocrlf true
     #git config user.name $githubUser
