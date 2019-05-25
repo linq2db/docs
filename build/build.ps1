@@ -15,6 +15,10 @@ Write-Host Done
 
 Write-Host Prepare tooling...
 Get-Location | Write-Host
+if ([System.IO.File]::Exists('./tools/NuGet.exe')) 
+{
+     Write-Host nuget found
+}
 ./tools/NuGet.exe install msdn.4.5.2 -ExcludeVersion -OutputDirectory tools/packages -Prerelease
 ./tools/NuGet.exe install docfx.console -ExcludeVersion -OutputDirectory tools/packages
 Write-Host Done
