@@ -32,7 +32,7 @@ if ($deploy)
     Set-Location _site
     git add -A
     #git config user.name docfx@linq2db.com
-    #git config user.email docfx@linq2db.com
+    git config user.email docfx@linq2db.com
     git commit -a -m "DocFX update by CI" -q
     git push
     #git push "https://$($gitHubUser):$($gitHubAccessToken)@github.com/linq2db/linq2db.github.io.git" master -q
