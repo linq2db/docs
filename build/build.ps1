@@ -1,8 +1,5 @@
 Param(
-	[Parameter(Mandatory=$true)][string]$githubUser,
-    [Parameter(Mandatory=$true)][string]$githubAccessToken,
-    [Parameter(Mandatory=$true)][string]$githubUserEmail,
-    [Parameter(Mandatory=$true)][bool]$gitDeploy
+    [Parameter(Mandatory=$true)][bool]$deploy
 )
 
 Write-Host Building documentation
@@ -18,28 +15,19 @@ tools/NuGet.exe install msdn.4.5.2 -ExcludeVersion -OutputDirectory tools/packag
 tools/NuGet.exe install docfx.console -ExcludeVersion -OutputDirectory tools/packages
 Write-Host Done
 
-Tree . /F | Select-Object -Skip 2 | Write-Host
-
 Write-Host Build DocFX documentation...
-tools/packages/docfx.console/tools/docfx.exe source/docfx.json
+tools/packages/docfx.console/tools/docfx.exe source/docfx.json -f
 if ($LASTEXITCODE -ne 0)
 {
     throw "DocFx build failed";
 }
 Write-Host Done
 
-if ($gitDeploy)
+if ($deploy)
 {
-    Write-Host Updating site...
+    Write-Host Prepare site for deploy...
     git clone https://github.com/linq2db/linq2db.github.io.git -b master linq2db.github.io -q
     Copy-Item linq2db.github.io/.git _site -Recurse
     Remove-Item linq2db.github.io -Recurse -Force
-    Set-Location _site
-    #git config core.autocrlf true
-    #git config user.name $githubUser
-    #git config user.email $githubUserEmail
-    #git add -A 2>&1
-    #git commit -m "CI docfx update" -q
-    #git push "https://$($gitHubUser):$($gitHubAccessToken)@github.com/linq2db/linq2db.github.io.git" master -q
     Write-Host Done
 }

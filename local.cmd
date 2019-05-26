@@ -1,2 +1,2 @@
 CLS
-powershell build/build.ps1 no-user no-token no-email 0
+powershell build/build.ps1 0
