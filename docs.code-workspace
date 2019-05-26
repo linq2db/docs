@@ -7,6 +7,9 @@
 		{
 			"path": "./build",
 			"name": "build"
+		},
+		{
+			"path": "README.md"
 		}
 	],
 	"settings": {

@@ -31,9 +31,11 @@ if ($deploy)
     Remove-Item linq2db.github.io -Recurse -Force
     Set-Location _site
     git add -A
+    git config core.autocrlf true
     git config user.name docfx@linq2db.com
     git config user.email docfx@linq2db.com
     git commit -a -m "DocFX update by CI" -q
-    git push
+    git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" push
+    #git push "https://$($gitHubUser):$($gitHubAccessToken)@github.com/linq2db/linq2db.github.io.git" master -q
     Write-Host Done
 }
