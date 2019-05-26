@@ -15,3 +15,5 @@ steps:
   inputs:
     filePath: 'build/build.ps1'
     arguments: '1'
+  env:
+    GITHUB_PAT: $(linq2db.github.pat)

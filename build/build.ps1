@@ -34,6 +34,6 @@ if ($deploy)
     git config user.name "Azure Pipelines"
     git config user.email docfx@linq2db.com
     git commit -a -m "DocFX update by CI" -q
-    git push "https://docfx:$(linq2db.github.pat)@github.com/linq2db/linq2db.github.io.git" master -q
+    git push "https://docfx:$env:GITHUB_PAT@github.com/linq2db/linq2db.github.io.git" master -q
     Write-Host Done
 }
