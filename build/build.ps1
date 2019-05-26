@@ -29,5 +29,11 @@ if ($deploy)
     git clone https://github.com/linq2db/linq2db.github.io.git -b master linq2db.github.io -q
     Copy-Item linq2db.github.io/.git _site -Recurse
     Remove-Item linq2db.github.io -Recurse -Force
+    Set-Location _site
+    git add -A
+    git config user.name docfx@linq2db.com
+    git config user.email docfx@linq2db.com
+    git commit -a -m "DocFX update by CI" -q
+    git push
     Write-Host Done
 }
