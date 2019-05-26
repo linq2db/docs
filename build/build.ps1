@@ -31,7 +31,7 @@ if ($deploy)
     Remove-Item linq2db.github.io -Recurse -Force
     Set-Location _site
     git add -A
-    #git config user.name docfx@linq2db.com
+    git config user.name "Azure Pipelines"
     git config user.email docfx@linq2db.com
     git commit -a -m "DocFX update by CI" -q
     git push
