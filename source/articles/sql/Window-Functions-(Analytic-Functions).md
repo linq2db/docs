@@ -134,6 +134,7 @@ REGR_SXY                                                                        
 #### Engines that support Window Functions
 - [Oracle](https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions004.htm)
 - [MSSQL](https://docs.microsoft.com/en-us/sql/t-sql/queries/select-over-clause-transact-sql)
+- [SQLite](http://www.sqlitetutorial.net/sqlite-window-functions/)
 - [Postresql](https://www.postgresql.org/docs/current/static/tutorial-window.html)
 - [MariaDB](https://mariadb.com/kb/en/mariadb/window-functions)
 - [MySQL 8](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)
