@@ -1,5 +1,4 @@
 # Toc
-- [Toc](#Toc)
 - [General](#General)
   - [Which async model Linq To DB use?](#Which-async-model-Linq-To-DB-use)
   - [I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)](#I-need-to-configure-connection-before-or-immediately-after-it-opened-eg-set-SQL-Server-AccessToken-or-SQLite-encryption-key)
