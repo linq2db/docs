@@ -1,3 +1,121 @@
+# Toc
+- [Toc](#Toc)
+- [General](#General)
+  - [Which async model Linq To DB use?](#Which-async-model-Linq-To-DB-use)
+  - [I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)](#I-need-to-configure-connection-before-or-immediately-after-it-opened-eg-set-SQL-Server-AccessToken-or-SQLite-encryption-key)
+- [Mapping](#Mapping)
+  - [Do I need to use Attribute and/or Code first Mapping?](#Do-I-need-to-use-Attribute-andor-Code-first-Mapping)
+  - [How can I use calculated fields?](#How-can-I-use-calculated-fields)
+  - [How can I use SQL Server spatial types](#How-can-I-use-SQL-Server-spatial-types)
+      - [How to fix it](#How-to-fix-it)
+  
+# General
+
+## Which async model Linq To DB use?
+By default it use `await awaitable.ConfigureAwait(true)` (same as `await awaitable`) mode for internal asyn calls.
+If you need it to use another mode you can change it by setting following configuration option:
+```cs
+// switch to await awaitable.ConfigureAwait(false)
+Configuration.ContinueOnCapturedContext = false;
+```
+
+## I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)
+If you are using `DataConnection` to access database, you can subscribe to those events (each came in pair of sync and async events) and configure your connection there.
+
+Configure connection before it opened (SQL Server AccessToken example):
+```cs
+// or do it in constructor of DataConnection-based class
+public class MyDb : DataConnection
+{
+  public MyDb() : base(...)
+  {
+    this.OnBeforeConnectionOpen += (db, cn)
+      => ((SqlConnection)cn).AccessToken = GetAccessToken();
+
+    // code for this event could be the same, but you still need both
+    // events to handle both sync and async connection open operations
+    this.OnBeforeConnectionOpenAsync += async (db, cn, token) 
+      => ((SqlConnection)cn).AccessToken = await GetAccessTokenAsync(token);
+  }
+}
+
+using (var db = new MyDb())
+{
+  // queries here will get pre-configured connection
+}
+```
+
+Configure connection immediately after it opened (SQLite encryption example):
+```cs
+// or do it in constructor of DataConnection-based class
+public class MyDb : DataConnection
+{
+  public MyDb() : base(...)
+  {
+    this.OnConnectionOpened += (db, cn)
+      => db.Execute($"PRAGMA key = {GetQuotedPassword()}");
+
+    // code for this event could be the same, but you still need both
+    // events to handle both sync and async connection open operations
+    this.OnConnectionOpenedAsync += async (db, cn, token) 
+      => await db.ExecuteAsync(
+          $"PRAGMA key = {await GetQuotedPasswordAsync(token)}", token);
+  }
+}
+
+using (var db = new MyDb())
+{
+  // queries here will get connection with encryption key set
+}
+```
+
+If you need to do it also for other use-cases, e.g. for `DataContext`, it is not so convenient, but still possible (it will also handle `DataConnection` case).
+
+One option is to derive from your provider and override `CreateConnectionInternal` method. If you need to perform connection configuration after connection opened, you allowed to open created connection in this method (but you will loose `OpenAsync()` benefits for providers that support it).
+```cs
+public class MySqliteProvider : SQLiteDataProvider
+{
+  public MySqliteProvider()
+	  : base(...)
+  {
+  }
+
+  protected override IDbConnection CreateConnectionInternal(
+            string connectionString)
+  {
+    var cn = new SqliteConnection(connectionString);
+    cn.Open();
+    using (var cmd = cn.CreateCommand())
+    {
+      cmd.CommandText = $"PRAGMA key = {GetQuotedPassword()}";
+      cmd.ExecuteNonQuery();
+    }
+
+    return cn;
+  }
+}
+```
+
+Another option if you just need to configure non-opened connection, you can do it by using `DataProviderBase.OnConnectionCreated` callback:
+```cs
+// note that:
+// - this is not event, so you cannot have multiple subscribers
+// - it is called for all connection creation operations
+// for all providers
+DataProviderBase.OnConnectionCreated = (p, cn) =>
+{
+  // this is global handler, so if you use multiple databases,
+  // you need to check here if you need to handle it
+  if (cn is SqlConnection connection)
+  {
+    connection.AccessToken = GetAccessToken();
+  }
+
+  return cn;
+};
+```
+
+
 # Mapping
 
 ## Do I need to use Attribute and/or Code first Mapping?
