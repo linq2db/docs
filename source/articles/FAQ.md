@@ -1,12 +1,11 @@
 # Toc
-- [General](#General)
-  - [Which async model Linq To DB use?](#Which-async-model-Linq-To-DB-use)
-  - [I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)](#I-need-to-configure-connection-before-or-immediately-after-it-opened-eg-set-SQL-Server-AccessToken-or-SQLite-encryption-key)
-- [Mapping](#Mapping)
-  - [Do I need to use Attribute and/or Code first Mapping?](#Do-I-need-to-use-Attribute-andor-Code-first-Mapping)
-  - [How can I use calculated fields?](#How-can-I-use-calculated-fields)
-  - [How can I use SQL Server spatial types](#How-can-I-use-SQL-Server-spatial-types)
-      - [How to fix it](#How-to-fix-it)
+- General
+  - [Which async model Linq To DB use?](#which-async-model-linq-to-db-use)
+  - [I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)](#i-need-to-configure-connection-before-or-immediately-after-it-opened-eg-set-sql-server-accesstoken-or-sqlite-encryption-key)
+- Mapping
+  - [Do I need to use Attribute and/or Code first Mapping?](#do-i-need-to-use-attribute-andor-code-first-mapping)
+  - [How can I use calculated fields?](#how-can-i-use-calculated-fields)
+  - [How can I use SQL Server spatial types](#how-can-i-use-sql-server-spatial-types)
   
 # General
 
