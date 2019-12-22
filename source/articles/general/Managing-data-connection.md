@@ -7,7 +7,7 @@ If you don't release database connections back to the pool then:
 * Your application would create more and more connections to the database. This is because from connection pool's point of view there are no _available_ connections to reuse.
 * When the pool size limit is reached then your application would fail to obtain a new connection.
 
-To avoid connection leaks you should pay attention to how you are creating and disposing connections. There are to ways to query a database with linq2db:
+To avoid connection leaks you should pay attention to how you are creating and disposing connections. There are two ways to query a database with linq2db:
 
 1. Using the `DataConnection` class you can make several queries using a single database connection. This way you do not have the overhead of opening and closing database connections for each query. You should follow these simple rules:
     * **Always** dispose the `DataConnection` instance. We recommend the C#'s `using` block. (Please see below for an example.)
@@ -20,7 +20,7 @@ To avoid connection leaks you should pay attention to how you are creating and d
 ```cs
 using (var db = new DataConnection())
 {
-// your code here
+    // your code here
 }
 
 public IEnumerable<Person> GetPersons()
