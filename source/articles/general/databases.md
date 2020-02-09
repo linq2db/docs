@@ -2,7 +2,7 @@
 
 [Current list](https://linq2db.github.io/api/LinqToDB.ProviderName.html).
 
-One database may have several providers beacuse of:
+One database may have several providers because of:
 
 * using different ADO .Net implementations (as for SQLite)
 * SQL compatibility level, that allows using new SQL features of the database engine (as for MS SQL Server)
