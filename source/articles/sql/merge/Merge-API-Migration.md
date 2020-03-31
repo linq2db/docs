@@ -64,7 +64,7 @@ int Merge<T>(this ITable<T> table, Expression<Func<T,bool>> predicate, IEnumerab
 db.GetTable<T>()
     .Merge()
     .Using(source)
-    .OnTatgetKey()
+    .OnTargetKey()
     .UpdateWhenMatched()
     .InsertWhenNotMatched()
     .DeleteWhenNotMatchedBySourceAnd(predicate)
