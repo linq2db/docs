@@ -2,3 +2,5 @@
   href: install/index.md
 - name: .NET Framework (Console, WinForms, WPF, etc.)
   href: full-dotnet/toc.yml
+- name: ASP.NET Core
+  href: asp-dotnet-core/index.md

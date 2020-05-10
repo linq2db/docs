@@ -5,4 +5,3 @@ This page contains changes and fixes that were not inluded in any release yet an
 # Will be included into next post-2.0 release
 
 none yet
-
