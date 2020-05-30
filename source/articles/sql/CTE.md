@@ -217,8 +217,9 @@ ORDER BY
 |[PostgreSQL](https://www.postgresql.org/docs/9.1/static/queries-with.html)|8.4|
 |[SQLite](https://www.sqlite.org/lang_with.html)|3.8.3|
 |[IBM DB2](https://www.ibm.com/support/knowledgecenter/en/SSEPEK_11.0.0/sqlref/src/tpc/db2z_sql_commontableexpression.html)| 8 |
+|[IBM Informix](https://www.ibm.com/support/knowledgecenter/SSGU8G_14.1.0/com.ibm.sqls.doc/ids_sqs_with.htm)| 14.10 |
 
 ## Known limitations
 
 * Oracle and Firebird DML operations that use CTE are not completely implemented.
-* _TBD_
+* Informix CTE are not yet [implemented](https://github.com/linq2db/linq2db/issues/1852)

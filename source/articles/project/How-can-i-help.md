@@ -12,4 +12,4 @@ If you are not ready to start as developer you can:
 ## Testing how to
 1. Open new issue "Invite me to testers team", we'll send you an invitation.
 1. Before each official release new PR would be created with notification to all team members.
-1. Next you need to update to the latest RC package from MyGet and run your tests. If something is wrong please report us and if everything is alright just approve PR.
+1. Next you need to update to the latest RC package from [Azure Artifacts feed](https://dev.azure.com/linq2db/linq2db/_packaging?_a=feed&feed=linq2db) and run your tests. If something is wrong please report us and if everything is alright just approve PR.

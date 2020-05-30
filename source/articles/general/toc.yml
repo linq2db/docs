@@ -1,7 +1,5 @@
 - name: Databases
   href: databases.md
-- name: Packages and frameworks
-  href: supportedfw.md
 - name: Managing Data Connection
   href: Managing-data-connection.md
 - name: Videos
