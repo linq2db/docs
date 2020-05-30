@@ -34,15 +34,15 @@ Provider             | RowByRow | MultipleRows | ProviderSpecific | Default     
 Microsoft Access     |   Yes    |      No      |        No        | MultipleRows | AccessTools.DefaultBulkCopyType
 IBM DB2 (LUW, zOS)   |   Yes    |     Yes      |       Yes (will fallback to `MultipleRows` if called in transaction)        | MultipleRows | DB2Tools.DefaultBulkCopyType
 Firebird             |   Yes    |     Yes      |        No        | MultipleRows | FirebirdTools.DefaultBulkCopyType
-IBM Informix         |   Yes    |      No      |        No        | MultipleRows | InformixTools.DefaultBulkCopyType
-MySql / MariaDB      |   Yes    |     Yes      |        No        | MultipleRows | MySqlTools.DefaultBulkCopyType
+IBM Informix         |   Yes    |      No      |        Yes (when using IDS provider for DB2 or Informix. Will fallback to `MultipleRows` if called in transaction)        | ProviderSpecific | InformixTools.DefaultBulkCopyType
+MySql / MariaDB      |   Yes    |     Yes      |        [In development](https://github.com/linq2db/linq2db/issues/2113) (using MySqlConnector provider)        | MultipleRows | MySqlTools.DefaultBulkCopyType
 Oracle               |   Yes    |     Yes      |       Yes (will fallback to `MultipleRows` if called in transaction)        | MultipleRows | OracleTools.DefaultBulkCopyType
 PostgreSQL           |   Yes    |     Yes      |       Yes (read important notes below)       | MultipleRows | PostgreSQLTools.DefaultBulkCopyType
 SAP HANA             |   Yes    |      No      |       Yes        | MultipleRows | SapHanaTools.DefaultBulkCopyType
 Microsoft SQL CE     |   Yes    |     Yes      |        No        | MultipleRows | SqlCeTools.DefaultBulkCopyType
 SQLite               |   Yes    |     Yes      |        No        | MultipleRows | SQLiteTools.DefaultBulkCopyType
 Microsoft SQL Server |   Yes    |     Yes      |       Yes        | ProviderSpecific | SqlServerTools.DefaultBulkCopyType
-Sybase ASE           |   Yes    |     Yes      |        No        | MultipleRows | SybaseTools.DefaultBulkCopyType
+Sybase ASE           |   Yes    |     Yes      |        Yes (using native provider. Also [see](https://stackoverflow.com/questions/57675379))        | MultipleRows | SybaseTools.DefaultBulkCopyType
 
 ### PostgreSQL provider-specific bulk copy
 
