@@ -3,7 +3,7 @@ uid: Bulk-Copy
 ---
 # Bulk Copy (Bulk Insert)
 
-Some database servers provide functionality to quickly insert large amounts of data into a table. The downside of this method is that each server has its own view on how this functionality should work; there is no standard interface to it.
+Some database servers provide functionality to quickly insert large amounts of data into a table. The downside of this method is that each server has its own view on how this functionality should work; there is no standard interface for it.
 
 ## Overview
 
