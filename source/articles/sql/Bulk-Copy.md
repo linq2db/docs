@@ -7,7 +7,7 @@ Some database servers provide functionality to quickly insert large amounts of d
 
 ## Overview
 
-To leverage the complexity of work with this operation, `LINQ To DB` provides a `BulkCopy` method. There are several overrides of it, but all they do the same thing - take data and operation options, then perform inserts and return operation status. How insert operations are performed internally depends on the provider support level and provided options.
+To leverage the complexity of work with this operation, `LINQ To DB` provides a `BulkCopy` method. There are several overrides, but all they do the same thing - take data and operation options, then perform inserts and return operation status. How insert operations are performed internally depends on the provider support level and provided options.
 
 ```cs
 // DataConnectionExtensions.cs
