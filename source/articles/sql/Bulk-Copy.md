@@ -33,7 +33,7 @@ Task<BulkCopyRowsCopied> BulkCopyAsync<T>(this ITable<T> table, IAsyncEnumerable
 
 `LINQ To DB` allows you to specify one of four insert methods (or three, as Default is not an actual method):
 
-- `Default`. `LINQ To DB` will choose the method automatically, based on provider used. Which method to use for a specific provider could be overriden using `<PROVIDER_NAME>Tools.DefaultBulkCopyType` property.
+- `Default`. `LINQ To DB` will choose the method automatically, based on the provider used. Which method to use for a specific provider could be overriden using `<PROVIDER_NAME>Tools.DefaultBulkCopyType` property.
 - `RowByRow`. This method just iterates over a provided collection and inserts each record using separate SQL `INSERT` commands. This is the least effective method, but some providers support only this one.
 - `MultipleRows`. Similar to `RowByRow`. Inserts multiple records at once using SQL `INSERT FROM SELECT` or similar batch insert commands. This one is faster than `RowByRow`, but is only available for providers that support such `INSERT` operations. If the method is not supported, LINQ To DB will silently fallback to the `RowByRow` implementation.
 - `ProviderSpecific`. Most effective method, available only for a few providers. Uses provider specific functionality, usually not based on `SQL` and could have provider-specific limitations, like transactions support. If the method is not supported, LINQ To DB will silently fall back to the `MultipleRows` implementation.
