@@ -20,7 +20,7 @@ BulkCopyRowsCopied BulkCopy<T>(this ITable<T> table, int maxBatchSize, IEnumerab
 BulkCopyRowsCopied BulkCopy<T>(this ITable<T> table, IEnumerable<T> source)
 ```
 
-In addition, asynchronous operations are supported to the extent if they are supported by the underlying provider, or fall back to synchronous operation if not. There are two  asynchronous methods for each of the methods listed above; one accepting an `IEnumerable<T>`, and for .Net Standard, one accepting an `IAsyncEnumerable<T>`. Each method accepts an optional `CancellationToken` parameter to cancel the bulk copy operation. A few of the asynchronous signatures are listed below:
+In addition, there are two asynchronous methods for each of the methods listed above; one accepting an `IEnumerable<T>`, and for .Net Standard, one accepting an `IAsyncEnumerable<T>`. Each method accepts an optional `CancellationToken` parameter to cancel the bulk copy operation. A few of the asynchronous signatures are listed below:
 
 ```cs
 Task<BulkCopyRowsCopied> BulkCopyAsync<T>(this DataConnection dataConnection, BulkCopyOptions options, IEnumerable<T> source, CancellationToken cancellationToken = default)
