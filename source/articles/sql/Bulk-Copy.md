@@ -61,7 +61,7 @@ For PostgreSQL, `BulkCopy` uses the `BINARY COPY` operation when the `ProviderSp
 
 Below is a list of types that could result in error without an explicit type specification:
 
-- `decimal`/`numeric` vs `money`. Those are two different types, mapped to `System.Decimal`. Default mappings will use `numeric` type, so if your column is the `money` type, you should type it in mappings using `DataType = DataType.Money` or `DbType = "money"` hints.
+- `decimal`/`numeric` vs `money`. Those are two different types, mapped to `System.Decimal`. Default mappings will use the `numeric` type, so if your column is the `money` type, you should type it in mappings using `DataType = DataType.Money` or `DbType = "money"` hints.
 - `time` vs `interval`. Those are two different types, mapped to `System.TimeSpan`. Default mappings will use the `time` type, so if your column is the `interval` type, you should type it in mappings using a `DbType = "interval"` hint. Or use the `NpgsqlTimeSpan` type for intervals.
 - any text types/`json` vs `jsonb`. All those types are mapped to `System.String` (except `character` which is mapped to `System.Char`). Default mappings will not work for `jsonb` column and you should type it in mappings using `DataType = DataType.BinaryJson` or `DbType = "jsonb"` hints.
 - `inet` vs `cidr`. If you use `NpgsqlInet` type for the mapping column, it could be mapped to both `inet` and 'cidr' types. There is no default mapping for this type, so you should explicitly specify it using `DbType = "inet"` or `DbType = "cidr"` hints. Also for `inet` you can use `IPAddress` which will be mapped to the `inet` type.
