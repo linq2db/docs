@@ -44,7 +44,7 @@ Microsoft Access     |   Yes    |      No      |        No        | MultipleRows
 IBM DB2 (LUW, zOS)   |   Yes    |     Yes      |       Yes (will fallback to `MultipleRows` if called in transaction)        | MultipleRows | DB2Tools.DefaultBulkCopyType
 Firebird             |   Yes    |     Yes      |        No        | MultipleRows | FirebirdTools.DefaultBulkCopyType
 IBM Informix         |   Yes    |      No      |        Yes (when using IDS provider for DB2 or Informix. Will fallback to `MultipleRows` if called in transaction)        | ProviderSpecific | InformixTools.DefaultBulkCopyType
-MySql / MariaDB      |   Yes    |     Yes      |        [In development](https://github.com/linq2db/linq2db/issues/2113) (using MySqlConnector provider)        | MultipleRows | MySqlTools.DefaultBulkCopyType
+MySql / MariaDB      |   Yes    |     Yes      |        Yes       | MultipleRows | MySqlTools.DefaultBulkCopyType
 Oracle               |   Yes    |     Yes      |       Yes (will fallback to `MultipleRows` if called in transaction)        | MultipleRows | OracleTools.DefaultBulkCopyType
 PostgreSQL           |   Yes    |     Yes      |       Yes (read important notes below)       | MultipleRows | PostgreSQLTools.DefaultBulkCopyType
 SAP HANA             |   Yes    |      No      |       Yes        | MultipleRows | SapHanaTools.DefaultBulkCopyType
