@@ -45,7 +45,7 @@ IBM DB2 (LUW, zOS)   |   Yes    |     Yes      |       Yes (will fallback to `Mu
 Firebird             |   Yes    |     Yes      |        No        | MultipleRows | FirebirdTools.DefaultBulkCopyType
 IBM Informix         |   Yes    |      No      |        Yes (when using IDS provider for DB2 or Informix. Will fallback to `MultipleRows` if called in transaction)        | ProviderSpecific | InformixTools.DefaultBulkCopyType
 MySql / MariaDB      |   Yes    |     Yes      |        Yes       | MultipleRows | MySqlTools.DefaultBulkCopyType
-Oracle               |   Yes    |     Yes      |       Yes (will fallback to `MultipleRows` if called in transaction)        | MultipleRows | OracleTools.DefaultBulkCopyType
+Oracle               |   Yes    |     Yes      |       Yes        | MultipleRows | OracleTools.DefaultBulkCopyType
 PostgreSQL           |   Yes    |     Yes      |       Yes (read important notes below)       | MultipleRows | PostgreSQLTools.DefaultBulkCopyType
 SAP HANA             |   Yes    |      No      |       Yes        | MultipleRows | SapHanaTools.DefaultBulkCopyType
 Microsoft SQL CE     |   Yes    |     Yes      |        No        | MultipleRows | SqlCeTools.DefaultBulkCopyType
