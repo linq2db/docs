@@ -99,7 +99,7 @@ public class Startup
 ```
 
 > [!TIP]  
-> There's plenty of other configuration options availble, if you are familier with LINQ To DB already, you can convert your existing application over to use the new `LinqToDbConnectionOptions` class as every configuration method is supported
+> There's plenty of other configuration options availble, if you are familiar with LINQ To DB already, you can convert your existing application over to use the new `LinqToDbConnectionOptions` class as every configuration method is supported
 
 > [!TIP]  
 > Note, only `DataConnection` supports `LinqToDbConnectionOptions`. `DataContext` is not yet supported.
@@ -215,7 +215,7 @@ public class PeopleController : Controller
 }
 ```
 
-# Quick start for people already familier with LINQ To DB
+# Quick start for people already familiar with LINQ To DB
 
 LINQ To DB now has support for ASP.NET Dependency injection. Here's a simple example of how to add it to dependancy injection
 ```C#
