@@ -2,5 +2,7 @@
   href: databases.md
 - name: Managing Data Connection
   href: Managing-data-connection.md
+- name: Interceptors
+  href: interceptors.md
 - name: Videos
   href: video.md
