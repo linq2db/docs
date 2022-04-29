@@ -193,6 +193,14 @@ Task<Option<DbDataReader>> ExecuteReaderAsync(CommandEventData     eventData,
                                               Option<DbDataReader> result,
                                               CancellationToken    cancellationToken);
 
+// triggered after `ExecuteReader/ExecuteReaderAsync` call but before reader enumeration
+// could be used to configure reader
+void AfterExecuteReader(
+    CommandEventData eventData,
+    DbCommand        command,
+    CommandBehavior  commandBehavior,
+    DbDataReader     dataReader);
+
 struct CommandEventData
 {
     public DataConnection DataConnection { get; }
