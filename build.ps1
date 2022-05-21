@@ -11,8 +11,8 @@ if ([System.IO.Directory]::Exists('linq2db.github.io')) { Remove-Item linq2db.gi
 Write-Host Done
 
 Write-Host Prepare tooling...
-&"$(Get-Location)/nuget.exe" install msdn.4.5.2 -ExcludeVersion -OutputDirectory packages -Prerelease
-&"$(Get-Location)/nuget.exe" install docfx.console -ExcludeVersion -OutputDirectory packages
+&"nuget.exe" install msdn.4.5.2 -ExcludeVersion -OutputDirectory packages -Prerelease
+&"nuget.exe" install docfx.console -ExcludeVersion -OutputDirectory packages
 Write-Host Done
 
 Write-Host Build DocFX documentation...
