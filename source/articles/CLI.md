@@ -1,21 +1,29 @@
+<!-- omit in toc -->
 # LINQ to DB CLI tools
 
-- [LINQ to DB CLI tools](#linq-to-db-cli-tools)
-  - [Installation](#installation)
-  - [Use](#use)
-    - [Usage Examples](#usage-examples)
-      - [Generate SQLite database model in current folder](#generate-sqlite-database-model-in-current-folder)
-      - [Generate SQLite database model using response file](#generate-sqlite-database-model-using-response-file)
-  - [Customize Scaffold with Code](#customize-scaffold-with-code)
-    - [Customization with assembly](#customization-with-assembly)
-    - [Customization with T4 template](#customization-with-t4-template)
-    - [Interceptors Overview](#interceptors-overview)
-      - [Schema Load Interceptors](#schema-load-interceptors)
-      - [Type mapping interceptor](#type-mapping-interceptor)
-      - [Data Model Interceptors](#data-model-interceptors)
+- [Installation](#installation)
+- [Use](#use)
+  - [Usage Examples](#usage-examples)
+    - [Generate SQLite database model in current folder](#generate-sqlite-database-model-in-current-folder)
+    - [Generate SQLite database model using response file](#generate-sqlite-database-model-using-response-file)
+- [Customize Scaffold with Code](#customize-scaffold-with-code)
+  - [Customization with assembly](#customization-with-assembly)
+  - [Customization with T4 template](#customization-with-t4-template)
+  - [Interceptors Overview](#interceptors-overview)
+    - [Schema Load Interceptors](#schema-load-interceptors)
+      - [Interceptor implementation example](#interceptor-implementation-example)
+      - [Database schema models](#database-schema-models)
+    - [Type mapping interceptor](#type-mapping-interceptor)
+      - [Example](#example)
+    - [Data Model Interceptors](#data-model-interceptors)
+      - [Interceptor implementation examples](#interceptor-implementation-examples)
+      - [Data model classes](#data-model-classes)
+      - [Code models](#code-models)
+      - [Metadata models](#metadata-models)
 
 ## Installation
 
+> [!NOTE]
 > Requres .NET Core 3.1 or higher.
 
 Install as global tool:
@@ -103,6 +111,7 @@ CLI tool will detect custmization approach using file extension:
 2. Add class, inherited from `LinqToDB.Scaffold.ScaffoldInterceptors` and override required customization methods
 3. Build assembly and use it with `--custmize` option
 
+> [!NOTE]
 > CLI tool tries to locate and load referenced 3rd-party assemblies, used by customization assembly automatically.
 >
 > If it fails to find referenced assembly, you can try to enable local copy behavior by adding following property to project file:
@@ -148,12 +157,13 @@ IEnumerable<ScalarFunction>    GetScalarFunctions   (IEnumerable<ScalarFunction>
 IEnumerable<AggregateFunction> GetAggregateFunctions(IEnumerable<AggregateFunction> functions)
 ```
 
+> [!NOTE]
 > Database object-specific interceptor will be called only if specific object type load was allowed in options (see `--objects` parameter).
 
-<details>
-  <summary>Interceptor implementation example (table)</summary>
+##### Interceptor implementation example
 
-```cs
+```c#
+
 public override IEnumerable<Table> GetTables(IEnumerable<Table> tables)
 {
     foreach (var table in tables)
@@ -189,14 +199,12 @@ public override IEnumerable<Table> GetTables(IEnumerable<Table> tables)
         new Identity("pk", null),
         new PrimaryKey("PK_my_table_name", new[] { "pk" }));
 }
+
 ```
 
-</details>
+##### Database schema models
 
-<details>
-  <summary>Database schema models</summary>
-
-```cs
+```csharp
 // generic descriptors
 public readonly record struct SqlObjectName(string Name, string? Server = null, string? Database = null, string? Schema = null, string? Package = null);
 
@@ -293,8 +301,6 @@ public sealed record VoidResult() : Result(ResultKind.Void);
 public sealed record ResultColumn(string? Name, DatabaseType Type, bool Nullable);
 ```
 
-</details>
-
 #### Type mapping interceptor
 
 This interceptor allows user to specify which .NET type should be used for specific database type and usefull in several cases:
@@ -303,6 +309,7 @@ This interceptor allows user to specify which .NET type should be used for speci
 - user wants to use different type for specific database type
 - default type mapping cannot map type and uses fallback type (`System.Object`)
 
+> [!NOTE]
 > Database type doesn't include nullability flag. Nullability applied to type automatically later.
 
 ```cs
@@ -332,8 +339,7 @@ public interface ITypeParser
 }
 ```
 
-<details>
-  <summary>Example</summary>
+##### Example
 
 ```cs
 // defaultMapping could be null if tool cannot map database type
@@ -351,8 +357,6 @@ public override TypeMapping? GetTypeMapping(DatabaseType databaseType, ITypePars
 }
 ```
 
-</details>
-
 #### Data Model Interceptors
 
 This group of interceptors allow user to modify generated data model objects before they converted to source code.
@@ -369,8 +373,7 @@ This group of interceptors allow user to modify generated data model objects bef
 void PreprocessEntity(ITypeParser typeParser, EntityModel entityModel);
 ```
 
-<details>
-  <summary>Interceptor implementation examples</summary>
+##### Interceptor implementation examples
 
 ```cs
 // several use-cases cases of entity customization
@@ -400,10 +403,7 @@ public override void PreprocessEntity(ITypeParser typeParser, EntityModel entity
 }
 ```
 
-</details>
-
-<details>
-  <summary>Data model classes</summary>
+##### Data model classes
 
 ```cs
 // data model descriptors
@@ -469,18 +469,18 @@ public enum FindTypes
     OnContext                  = 0x0200,
 
     // some ready-to-use flags combinations
-    FindByPkOnTable            = Sync | ByPrimaryKey | OnTable,
+    FindByPkOnTable            = Sync  | ByPrimaryKey | OnTable,
     FindAsyncByPkOnTable       = Async | ByPrimaryKey | OnTable,
     FindQueryByPkOnTable       = Query | ByPrimaryKey | OnTable,
-    FindByRecordOnTable        = Sync | ByEntity | OnTable,
-    FindAsyncByRecordOnTable   = Async | ByEntity | OnTable,
-    FindQueryByRecordOnTable   = Query | ByEntity | OnTable,
-    FindByPkOnContext          = Sync | ByPrimaryKey | OnContext,
+    FindByRecordOnTable        = Sync  | ByEntity     | OnTable,
+    FindAsyncByRecordOnTable   = Async | ByEntity     | OnTable,
+    FindQueryByRecordOnTable   = Query | ByEntity     | OnTable,
+    FindByPkOnContext          = Sync  | ByPrimaryKey | OnContext,
     FindAsyncByPkOnContext     = Async | ByPrimaryKey | OnContext,
     FindQueryByPkOnContext     = Query | ByPrimaryKey | OnContext,
-    FindByRecordOnContext      = Sync | ByEntity | OnContext,
-    FindAsyncByRecordOnContext = Async | ByEntity | OnContext,
-    FindQueryByRecordOnContext = Query | ByEntity | OnContext,
+    FindByRecordOnContext      = Sync  | ByEntity     | OnContext,
+    FindAsyncByRecordOnContext = Async | ByEntity     | OnContext,
+    FindQueryByRecordOnContext = Query | ByEntity     | OnContext,
 }
 
 public sealed class StoredProcedureModel : TableFunctionModelBase
@@ -583,10 +583,7 @@ public sealed class AssociationModel
 
 ```
 
-</details>
-
-<details>
-  <summary>Code models</summary>
+##### Code models
 
  ```cs
 
@@ -660,10 +657,7 @@ public enum CodeParameterDirection
 
  ```
 
-</details>
-
-<details>
-  <summary>Metadata models</summary>
+##### Metadata models
 
  ```cs
 public sealed class EntityMetadata
@@ -737,5 +731,3 @@ public sealed class AssociationMetadata
 }
 
 ```
-
-</details>
