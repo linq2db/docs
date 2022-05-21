@@ -6,7 +6,9 @@
   href: general/toc.yml
 - name: SQL
   href: sql/toc.yml
-- name: T4 Templates
+- name: CLI Scaffold Tool
+  href: CLI.md
+- name: T4 Templates (Obsoleted)
   href: T4.md
 - name: FAQ
   href: FAQ.md
