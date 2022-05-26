@@ -200,6 +200,23 @@ public override IEnumerable<Table> GetTables(IEnumerable<Table> tables)
         new PrimaryKey("PK_my_table_name", new[] { "pk" }));
 }
 
+public override IEnumerable<ForeignKey> GetForeignKeys(IEnumerable<ForeignKey> keys)
+{
+    // add additional relation (foreign key)
+    // from table Item (OrderId FK field) to table Order (Id PK field)
+
+    // source table name
+    var source   = new SqlObjectName("Item", Schema: "dbo");
+    // target table name
+    var target   = new SqlObjectName("Order", Schema: "dbo");
+    // list of foreign key columns (source column + target column pairs)
+    var relation = new[] { new ForeignKeyColumnMapping("OrderId", "Id") };
+    // foreign key relation definition
+    var fk       = new ForeignKey("FK_Item_Order", source, target, relation);
+
+    // return foreign keys from schema + new key
+    return keys.Concat(new[] { fk });
+}
 ```
 
 ##### Database schema models
