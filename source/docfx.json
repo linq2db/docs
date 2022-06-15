@@ -37,7 +37,8 @@
         "files": [
           "images/**",
           "**.png",
-          "**.jpg"
+          "**.jpg",
+          "articles/cli-help.txt"
         ]
       }
     ],
