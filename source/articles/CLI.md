@@ -43,7 +43,7 @@ To invoke tool use `dotnet-linq2db <PARAMETERS>` or `dotnet linq2db <PARAMETERS>
 Available commands:
 
 - `dotnet linq2db help`: prints general help
-- `dotnet linq2db help scaffold`: prints help for `scaffold` command
+- `dotnet linq2db help scaffold`: prints help for `scaffold` command (also you can see help [here](cli-help.txt))
 - `dotnet linq2db scaffold <options>`: performs database model scaffolding
 - `dotnet linq2db template [-o template_path]`: creates base T4 template file for scaffolding customization code
 
