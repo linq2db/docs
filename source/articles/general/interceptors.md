@@ -1,3 +1,7 @@
+---
+uid: Interceptors
+---
+
 # Interceptors<!-- omit in toc -->
 
 This API available since `Linq To DB` 4.0.0

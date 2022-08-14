@@ -14,9 +14,11 @@ To create and execute merge command you should first configure target, source an
 Note that all operation methods returns new merge builder, so code like that:
 
 ```cs
-// WRONG
-var db.Table.Merge().UsingTarget().OnTargetKey().DeleteWhenMatched();
+// Incorrect call example
+var merge = db.Table.Merge().UsingTarget().OnTargetKey().DeleteWhenMatched();
 // wrong, it will not modify merge object, but will create new one
+// correct line should be
+// merge = merge.InsertWhenNotMatched();
 merge.InsertWhenNotMatched();
 // execute merge with only one command - Delete
 merge.Merge();

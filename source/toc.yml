@@ -1,6 +1,6 @@
 - name: Articles
   href: articles/
-- name: API
+- name: API Documentation
   href: api/
-- name: GitHub
+- name: Linq To DB GitHub
   href: https://github.com/linq2db

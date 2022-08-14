@@ -1,8 +1,8 @@
 - name: Release Notes
-  href: releasenotes/toc.yml
+  href: https://github.com/linq2db/linq2db/wiki/Releases-and-Roadmap
 - name: Get Started
   href: get-started/toc.yml
-- name: General topics
+- name: General Topics
   href: general/toc.yml
 - name: SQL
   href: sql/toc.yml

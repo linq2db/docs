@@ -1,4 +1,5 @@
 # Toc
+
 - General
   - [Which async model Linq To DB use?](#which-async-model-linq-to-db-use)
   - [I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)](#i-need-to-configure-connection-before-or-immediately-after-it-opened-eg-set-sql-server-accesstoken-or-sqlite-encryption-key)
@@ -10,17 +11,26 @@
 # General
 
 ## Which async model Linq To DB use?
-By default it use `await awaitable.ConfigureAwait(true)` (same as `await awaitable`) mode for internal asyn calls.
+
+By default it use `await awaitable.ConfigureAwait(false)` (same as `await awaitable`) mode for internal asyn calls.
 If you need it to use another mode you can change it by setting following configuration option:
+
 ```cs
-// switch to await awaitable.ConfigureAwait(false)
-Configuration.ContinueOnCapturedContext = false;
+// switch to await awaitable.ConfigureAwait(true)
+Configuration.ContinueOnCapturedContext = true;
 ```
 
+Note that in versions before 4.0 this setting was set to `true` by default.
+
 ## I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)
+
+> [!WARNING]
+> Answer below is for older versions of LinqToDB. Starting with Linq To DB 4.0 you should use [interceptors](xref:Interceptors).
+
 If you are using `DataConnection` to access database, you can subscribe to those events (each came in pair of sync and async events) and configure your connection there.
 
 Configure connection before it opened (SQL Server AccessToken example):
+
 ```cs
 // or do it in constructor of DataConnection-based class
 public class MyDb : DataConnection
@@ -44,6 +54,7 @@ using (var db = new MyDb())
 ```
 
 Configure connection immediately after it opened (SQLite encryption example):
+
 ```cs
 // or do it in constructor of DataConnection-based class
 public class MyDb : DataConnection
@@ -70,6 +81,7 @@ using (var db = new MyDb())
 If you need to do it also for other use-cases, e.g. for `DataContext`, it is not so convenient, but still possible (it will also handle `DataConnection` case).
 
 One option is to derive from your provider and override `CreateConnectionInternal` method. If you need to perform connection configuration after connection opened, you allowed to open created connection in this method (but you will loose `OpenAsync()` benefits for providers that support it).
+
 ```cs
 public class MySqliteProvider : SQLiteDataProvider
 {
@@ -95,6 +107,7 @@ public class MySqliteProvider : SQLiteDataProvider
 ```
 
 Another option if you just need to configure non-opened connection, you can do it by using `DataProviderBase.OnConnectionCreated` callback:
+
 ```cs
 // note that:
 // - this is not event, so you cannot have multiple subscribers
@@ -113,12 +126,12 @@ DataProviderBase.OnConnectionCreated = (p, cn) =>
 };
 ```
 
-
 # Mapping
 
 ## Do I need to use Attribute and/or Code first Mapping?
 
-Not strictly. It is possible to use linq2db with simple, non-attributed POCOs, however there will be specific limitations. 
+Not strictly. It is possible to use linq2db with simple, non-attributed POCOs, however there will be specific limitations:
+
  - The biggest of these is that the `string` type is nullable by default in .NET, and unlike with `int` or `double` there is no way for linq2db to infer nullability. This can cause problems in certain cases, such as if you are ever required to join two `VARCHAR` fields together.
 
  - Table and column names will have to match the class and property names.
@@ -129,6 +142,7 @@ Not strictly. It is possible to use linq2db with simple, non-attributed POCOs, h
 ## How can I use calculated fields?
 
 You need to mark them to be ignored during insert or update operations, e.g. using `ColumnAttribute` attribute:
+
 ```cs
 public class MyEntity
 {
@@ -140,12 +154,12 @@ public class MyEntity
 ## How can I use SQL Server spatial types
 
 Spatial types for SQL Server provided by:
-- [`Microsoft.SqlServer.Types`](https://www.nuget.org/packages/Microsoft.SqlServer.Types/) assembly from Microsoft for .NET Framework
-- [`dotMorten.Microsoft.SqlServer.Types`](https://www.nuget.org/packages/dotMorten.Microsoft.SqlServer.Types/) assembly from [Morten Nielsen](https://github.com/dotMorten) for .NET Core
 
-For .net core we recommend to use at least linq2db 2.9.0 as it contains several important fixes in this area for .net core projects.
+- [`Microsoft.SqlServer.Types`](https://www.nuget.org/packages/Microsoft.SqlServer.Types/) assembly from Microsoft for .NET Framework
+- [`dotMorten.Microsoft.SqlServer.Types`](https://www.nuget.org/packages/dotMorten.Microsoft.SqlServer.Types/) assembly from [Morten Nielsen](https://github.com/dotMorten) for .NET Core. v1.x versions are for `System.Data.SqlClient` provider and v2.x versions are for `Microsoft.Data.SqlClient` provider
 
 First of all it is recommended to register types assembly in linq2db using following call:
+
 ```cs
 SqlServerTools.ResolveSqlTypes(typeof(SqlGeography).Assembly);
 ```
@@ -157,6 +171,7 @@ This happens due to different versions of `Microsoft.SqlServer.Types` assembly, 
 #### How to fix it
 
 For .NET Framework you just need to add assembly bindings redirect to your configuration file to redirect all assembly load requests to your version (make sure that `newVersion` contains proper version of assembly you have):
+
 ```xml
 <runtime>
   <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
@@ -169,10 +184,12 @@ For .NET Framework you just need to add assembly bindings redirect to your confi
 ```
 
 For .NET Core it is a bit tricky because:
+
 - .NET Core doesn't support binding redirects
 - You need to use 3rd-party assembly with non-Microsoft public key and binding redirects doesn't allow such redirects anyway
 
 To workaround it you need to add custom assembly resolver to your code:
+
 ```cs
 // subscribe to assembly load request event somewhere in your init code
 AssemblyLoadContext.Default.Resolving += OnAssemblyResolve;

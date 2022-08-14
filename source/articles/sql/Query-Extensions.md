@@ -4,27 +4,27 @@ LinqToDB contains different mechanisms to extend and customize generated SQL. Qu
 
 ## Common Hint Extensions
 
-The ```QueryExtensionScope``` enumeration defines a scope where this extension is applied to. 
+The `QueryExtensionScope` enumeration defines a scope where this extension is applied to. 
 
 | Value | Method | Applied to | Description |
 | --- | --- | --- | --- |
-| None | Path through methods | ```IQueryable``` | This type of extension should not generate SQL and can be used to implement path through methods such as ```AsSqlServer()``` that converts ```IQueryable``` sequence to ```ISqlServerSpecificQueryable```. |
-| TableHint | ```TableHint```, ```With``` | ```ITable``` | Generates table hints. |
-| TablesInScopeHint | ```TablesInScopeHint``` | ```IQueryable``` | This method applies provided hint to all the tables in scope of this method. It is supported by the same database providers as TableHint. |
-| IndexHint | ```IndexHint``` | ```ITable``` | MySql supports both hint styles: Oracle Optimizer Hints and SqlServer Table Hints. The TableHint extension generates Oracle hints, whereas this extension supports SqlServer hint style. |
-| JoinHint | ```JoinHint``` | ```IQueryable``` | Generates join hints. |
-| SubQueryHint | ```SubQueryHint``` | ```IQueryable``` | Generates subquery or statement hints. Supported by PostgreSQL. |
-| QueryHint | ```QueryHint``` | ```IQueryable``` | Generates statement hints. |
+| None | Path through methods | `IQueryable` | This type of extension should not generate SQL and can be used to implement path through methods such as `AsSqlServer()` that converts `IQueryable` sequence to `ISqlServerSpecificQueryable`. |
+| TableHint | `TableHint`, `With` | `ITable` | Generates table hints. |
+| TablesInScopeHint | `TablesInScopeHint` | `IQueryable` | This method applies provided hint to all the tables in scope of this method. It is supported by the same database providers as TableHint. |
+| IndexHint | `IndexHint` | `ITable` | MySql supports both hint styles: Oracle Optimizer Hints and SqlServer Table Hints. The TableHint extension generates Oracle hints, whereas this extension supports SqlServer hint style. |
+| JoinHint | `JoinHint` | `IQueryable` | Generates join hints. |
+| SubQueryHint | `SubQueryHint` | `IQueryable` | Generates subquery or statement hints. Supported by PostgreSQL. |
+| QueryHint | `QueryHint` | `IQueryable` | Generates statement hints. |
 
 ### TableID method and Sql.SqlID class
 
-Some hints require references to table specifications or aliases. LinqToDB automatically generates table and subquery aliases, so the idea to use generated names for hints is definitely not the best. The ```TableID``` method assigns provided identifier to a table and this ID can be used later to generate references to the table. The following methods can be used as hint parameters to generate table references:
+Some hints require references to table specifications or aliases. LinqToDB automatically generates table and subquery aliases, so the idea to use generated names for hints is definitely not the best. The `TableID` method assigns provided identifier to a table and this ID can be used later to generate references to the table. The following methods can be used as hint parameters to generate table references:
 
 | Method | Description |
 | --- | --- |
-| ```Sql.TableAlias("id")``` | Generates table alias. |
-| ```Sql.TableName("id")``` | Generates table name. |
-| ```Sql.TableSpec("id")```| Generates table specification. May include query block name. |
+| `Sql.TableAlias("id")` | Generates table alias. |
+| `Sql.TableName("id")` | Generates table name. |
+| `Sql.TableSpec("id")`| Generates table specification. May include query block name. |
 
 ### Naming Query Blocks
 

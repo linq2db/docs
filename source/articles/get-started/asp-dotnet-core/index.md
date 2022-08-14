@@ -9,6 +9,7 @@ Available since: 3.0.0-rc.0
 In this walkthrough, you will configure an ASP.NET Core application to access a local SQLite Database using LINQ To DB
 
 ## Prerequisites
+
 The following will be reuiqred to complete this walkthrough:
 
 * [Latest dotnet core SDK](https://dotnet.microsoft.com/download)
@@ -17,6 +18,7 @@ The following will be reuiqred to complete this walkthrough:
 ## Create a new project
 
 First thing we're going to do is create a new ASP.NET Core application using the dotnet CLI
+
 ```
 dotnet new webapp -o gettingStartedLinqToDbAspNet
 ```
@@ -24,6 +26,7 @@ dotnet new webapp -o gettingStartedLinqToDbAspNet
 ## Install LINQ To DB
 
 We can now use the CLI to install LINQ To DB
+
 ```
 dotnet add package linq2db.SQLite
 dotnet add package linq2db.AspNet
@@ -32,6 +35,7 @@ dotnet add package linq2db.AspNet
 ## Custom Data Connection
 
 We're going to create a custom data connection to use to access LINQ To DB, create a class like this:
+
 ```C#
 using LinqToDB.Configuration;
 using LinqToDB.Data;
@@ -45,6 +49,7 @@ public class AppDataConnection: DataConnection
     }
 }
 ```
+
 > [!TIP]  
 > Note here our `AppDataConnection` inherits from `LinqToDB.Data.DataConnection` which is the base class for the Linq2Db connection. 
 
@@ -56,6 +61,7 @@ public class AppDataConnection: DataConnection
 For this example we're going to use SQLite in memory mode, for production you'll want to use something else, but it's pretty easy to change.
 
 First you want to add the connection string to `appsettings.Development.json`, something like this: 
+
 ```json
 {
   "Logging": {
@@ -75,6 +81,7 @@ First you want to add the connection string to `appsettings.Development.json`, s
 ## Configure Dependency injection
 
 inside `Startup.cs` you want register the data connection like this:
+
 ```C#
 public class Startup
 {
@@ -243,11 +250,9 @@ public class Startup
 }
 ```
 
-In addition to these configuration options the following are also supported
-* `UseOracle(string connectionString)`
-* `UsePostgreSQL(string connectionString)`
-* `UseMySql(string connectionString)`
-* `UseSQLite(string connectionString)`
+In addition to these configuration options the following are also supported:
+
+* `Use<DB_NAME>(string connectionString)` (extensions for each supported database)
 * `UseConnectionString(string providerName, string connectionString)`
 * `UseConnectionString(IDataProvider dataProvider, string connectionString)`
 * `UseConfigurationString(string configurationString)`
@@ -270,8 +275,5 @@ public class AppDataConnection: DataConnection
     }
 }
 ```
-`DataConnection` will used the options passed into the base constructor to setup the connection. 
-> [!NOTE]  
-> `DataConnection` supports `LinqToDbConnectionOptions`. However `DataContext` is not yet supported.
 
-
+`DataConnection` will use the options passed into the base constructor to setup the connection.

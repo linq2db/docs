@@ -6,7 +6,8 @@ uid: newissue
 To help you with your problem we need to know:
 
 * linq2db version you are using
-* Database you are using
+* Database you are using (including version)
+* Database provider you are using (including version)
 * Code sample, demonstrating the problem & result SQL query (if any)
 * Explain what is wrong
 
