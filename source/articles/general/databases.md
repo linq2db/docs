@@ -19,7 +19,7 @@ One database may have several providers because of:
 |Microsoft SqlCe |SqlCe |
 |MySql |MySql<br/>MySqlConnector<br/>MySql.Official |
 |Oracle |Oracle<br/>Oracle.11.Managed</br>Oracle.11.Native<br/>Oracle.11.Devart<br/>Oracle.Managed</br>Oracle.Native<br/>Oracle.Devart |
-|PostgreSQL |PostgreSQL<br/>PostgreSQL.9.2<br/>PostgreSQL.9.3<br/>PostgreSQL.9.5 |
+|PostgreSQL |PostgreSQL<br/>PostgreSQL.9.2<br/>PostgreSQL.9.3<br/>PostgreSQL.9.5<br/>PostgreSQL.15 |
 |SQLite |SQLite, SQLite.Classic - using System.Data.Sqlite<br>SQLite.MS - using Microsoft.Data.Sqlite |
 |SAP HANA |SapHana<br/>SapHana.Native<br/>SapHana.Odbc |
 |Sybase ASE |Sybase - using Native SAP/Sybase ASE provider<br/>Sybase.Managed - using Managed Sybase/SAP ASE provider from [DataAction](https://github.com/DataAction/AdoNetCore.AseClient) |

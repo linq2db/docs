@@ -45,13 +45,22 @@ WHEN MATCHED [AND <extra condition>] THEN DELETE
 
 ## Supported Databases
 
-* [Microsoft SQL Server](#microsoft-sql-server-2008)
-* [IBM DB2](#ibm-db2)
-* [Firebird](#firebird)
-* [Oracle Database](#oracle-database)
-* [Sybase/SAP ASE](#sybasesap-ase)
-* [IBM Informix](#ibm-informix)
-* [SAP HANA 2](#sap-hana-2)
+- [Merge API Background Information](#merge-api-background-information)
+  - [Basic syntax (SQL:2003)](#basic-syntax-sql2003)
+  - [Advanced syntax (SQL:2008 extensions)](#advanced-syntax-sql2008-extensions)
+    - [Multiple `MATCH` cases](#multiple-match-cases)
+    - [`DELETE` operation](#delete-operation)
+  - [Links](#links)
+  - [Supported Databases](#supported-databases)
+  - [General considerations](#general-considerations)
+  - [Microsoft SQL Server 2008+](#microsoft-sql-server-2008)
+  - [IBM DB2](#ibm-db2)
+  - [Firebird](#firebird)
+  - [Oracle Database](#oracle-database)
+  - [Sybase/SAP ASE](#sybasesap-ase)
+  - [IBM Informix](#ibm-informix)
+  - [SAP HANA 2](#sap-hana-2)
+  - [PostgreSQL](#postgresql)
 
 ## General considerations
 
@@ -184,3 +193,15 @@ Limitations:
 Links:
 
 * [MERGE INTO](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.00/en-US/3226201f95764a57810dd256c9524d56.html)
+
+## PostgreSQL
+
+PostgreSQL supports all features from `SQL:2008` standard starting from version 15.
+
+Limitations:
+
+* nothing substantial
+
+Links:
+
+* [MERGE INTO](https://www.postgresql.org/docs/devel/sql-merge.html)

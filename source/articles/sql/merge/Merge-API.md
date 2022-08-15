@@ -14,6 +14,7 @@ This API available since linq2db 1.9.0. It superseeds previous version of API wi
 - [Sybase/SAP ASE](xref:Merge-API-Background#sybasesap-ase)
 - [IBM Informix](xref:Merge-API-Background#ibm-informix)
 - [SAP HANA 2](xref:Merge-API-Background#sap-hana-2)
+- [PostgreSQL 15](xref:Merge-API-Background#postgresql)
 
 ## Related Pages
 
