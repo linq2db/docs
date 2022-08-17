@@ -1,4 +1,3 @@
-# Toc
 
 - General
   - [Which async model Linq To DB use?](#which-async-model-linq-to-db-use)

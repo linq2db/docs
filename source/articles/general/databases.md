@@ -15,7 +15,7 @@ One database may have several providers because of:
 |Informix |Informix<br/>Informix.DB2 |
 |Microsoft Access |Access<br/>Access.ODBC |
 |Microsoft Sql Azure | |
-|Microsoft Sql Server |SqlServer - default compatibility level SQL Server 2008<br/>SqlServer.2000 (removed in v4)<br/>SqlServer.2005<br/>SqlServer.2008<br/>SqlServer.2012<br/>SqlServer.2014<br/>SqlServer.2016<br/>SqlServer.2017<br/>SqlServer.2019 |
+|Microsoft Sql Server |SqlServer - default compatibility level SQL Server 2008<br/>SqlServer.2000 (removed in v4)<br/>SqlServer.2005<br/>SqlServer.2008<br/>SqlServer.2012<br/>SqlServer.2014<br/>SqlServer.2016<br/>SqlServer.2017<br/>SqlServer.2019<br/>SqlServer.2022 |
 |Microsoft SqlCe |SqlCe |
 |MySql |MySql<br/>MySqlConnector<br/>MySql.Official |
 |Oracle |Oracle<br/>Oracle.11.Managed</br>Oracle.11.Native<br/>Oracle.11.Devart<br/>Oracle.Managed</br>Oracle.Native<br/>Oracle.Devart |
