@@ -205,6 +205,18 @@ void AfterExecuteReader(
     CommandBehavior  commandBehavior,
     DbDataReader     dataReader);
 
+// triggered before DbDataReader dispose using Dispose method in synchronous APIs
+void BeforeReaderDispose(
+    CommandEventData eventData,
+    DbCommand? command,
+    DbDataReader dataReader);    
+
+// triggered before DbDataReader dispose using DisposeAsync method in asynchronous APIs
+Task BeforeReaderDisposeAsync(
+    CommandEventData eventData,
+    DbCommand? command,
+    DbDataReader dataReader);    
+
 struct CommandEventData
 {
     public DataConnection DataConnection { get; }
