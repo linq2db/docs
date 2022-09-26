@@ -2,7 +2,7 @@
 title: Getting Started on .NET Framework - Existing Database - LINQ To DB
 author: sdanyliv
 ---
-# Getting started with LINQ To DB on .NET Framework with a Existing Database
+# Getting started with LINQ To DB with an Existing Database
 
 In this walkthrough, you will build a console application that performs basic data access against a Microsoft SQL Server database using LINQ To DB. You will use existing database to create your model.
 
@@ -13,19 +13,14 @@ In this walkthrough, you will build a console application that performs basic da
 
 The following prerequisites are needed to complete this walkthrough:
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+* [Visual Studio](https://www.visualstudio.com/downloads/)
 
-* [Latest version of NuGet Package Manager](https://dist.nuget.org/index.html)
-
-* [Latest version of Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
-
-* [Northwind Database](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases) 
+* [Northwind Database](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases)
 
 > [!TIP]  
-> Also there is [Northwind Database script file](https://github.com/linq2db/linq2db/blob/master/Data/northwind.sql.zip) which
-can be executed using Microsoft SQL Server Management Studio
+> [Northwind Database script file](https://github.com/linq2db/linq2db/blob/master/Data/northwind.sql.zip), which could be executed using Microsoft SQL Server Management Studio
 
-## Create a new project
+## Create new project
 
 * Open Visual Studio
 
@@ -61,7 +56,7 @@ Now it's time to generate your model from database.
 
 * Copy the content from the file Project > *LinqToDB.Templates\CopyMe.SqlServer.tt.txt*
 
-* Modify host, database name and credentials for your SQL Server in `LoadSqlServerMetadata` function call 
+* Modify host, database name and credentials for your SQL Server in `LoadSqlServerMetadata` function call
 
 * Save *Northwind.tt* - it should invoke model generation
 

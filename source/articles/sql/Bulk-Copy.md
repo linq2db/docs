@@ -3,11 +3,11 @@ uid: Bulk-Copy
 ---
 # Bulk Copy (Bulk Insert)
 
-Some database servers provide functionality to quickly insert large amounts of data into a table. The downside of this method is that each server has its own view on how this functionality should work; there is no standard interface for it.
+Some database servers provide functionality to insert large amounts of data into a table in more effective way compared to conventional inserts. The downside of this method is that each server has its own view on how this functionality should work; there is no standard interface for it.
 
 ## Overview
 
-To leverage the complexity of work with this operation, `LINQ To DB` provides a `BulkCopy` method. There are several overrides, but all they do the same thing - take data and operation options, then perform inserts and return operation status. How insert operations are performed internally depends on the level of provider support and the provided options.
+To leverage the complexity of work with this operation, `LINQ To DB` provides a `BulkCopy` method. There are several overrides, but all of them do the same thing - take data and operation options, then perform inserts and return operation status. How insert operations are performed internally depends on the level of provider support and the provided options.
 
 ```cs
 // DataConnectionExtensions.cs
@@ -52,8 +52,17 @@ Microsoft SQL CE     |   Yes    |     Yes      |        No        | MultipleRows
 SQLite               |   Yes    |     Yes      |        No        | MultipleRows | SQLiteTools.DefaultBulkCopyType
 Microsoft SQL Server |   Yes    |     Yes      |       Yes        | ProviderSpecific | SqlServerTools.DefaultBulkCopyType
 Sybase ASE           |   Yes    |     Yes      |        Yes (using native provider. Also [see](https://stackoverflow.com/questions/57675379))        | MultipleRows | SybaseTools.DefaultBulkCopyType
+ClickHouse     |   Yes    |      Yes      |        Yes (except MySqlConnector)        | ProviderSpecific | ClickHouseTools.DefaultBulkCopyType
 
-Note that when using the provider-specific insert method, only MySql, PostgreSQL, SAP HANA, and Microsoft SQL Server support asynchronous operation; other providers will silently fall back to a synchronous operation.
+Note that when using the provider-specific insert method, only some providers support asynchronous operation; other providers will silently fall back to a synchronous operation.
+
+Providers with async support:
+
+- MySqlConnector
+- Npgsql
+- SAP HANA native provider
+- System.Data.SqlClient and Microsoft.Data.SqlClient
+- ClickHouse.Client and Octonica.ClickHouseClient
 
 ### PostgreSQL provider-specific bulk copy
 
@@ -73,9 +82,9 @@ If you have issues with other types, feel free to create an issue.
 
 ## Options
 
-See [BulkCopyOptions](xref:LinqToDB.Data.BulkCopyOptions) properties and support per-provider
+See [BulkCopyOptions](xref:LinqToDB.Data.BulkCopyOptions) properties and support per-provider. Some options explained below.
 
-## `KeepIdentity` option (default : `false`)
+### `KeepIdentity` option (default : `false`)
 
 This option allows you to insert provided values into the identity column. It is supported by limited set of providers and is not compatible with `RowByRow` mode. Hence, if the provider doesn't support any other insert mode, the `KeepIdentity` option is not supported.
 
@@ -97,6 +106,18 @@ Microsoft SQL CE     |   Yes
 SQLite               |   Yes
 Microsoft SQL Server |   Yes
 Sybase ASE           |   Yes
+ClickHouse           |   No (ClickHouse doesn't have identity/sequence concept)
+
+### `MaxDegreeOfParallelism` Option (default: `null`)
+
+Supported only by `ClickHouse.Client` provider and defines number of parallel connections to use for insert. Note that behavior depends on provider implementation, which currently use 4 parallel connections by default and perform parallel insert only for batches larger than 100K records.
+
+### `WithoutSession` Option (default: `false`)
+
+Supported only by `ClickHouse.Client` provider. When enabled, provider will use session-less connection even if `linq2db` connection configured to use sessions. Note that:
+
+- session-less connection requied for parallel inserts (see `MaxDegreeOfParallelism` option)
+- session-less connections doesn't support temporary tables, so you cannot insert into temporary table with this option set to `true`
 
 ## See Also
 

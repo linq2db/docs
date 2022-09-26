@@ -1,10 +1,16 @@
 {
   "metadata": [
     {
+      // specify path to non-test c# projects
+      // XML documentation comments from those projects will be used
+      // for API documentation generation
       "src": [
         {
           "files": [
             "linq2db/Source/LinqToDB/LinqToDB.csproj",
+            "linq2db/Source/LinqToDB.AspNet/LinqToDB.AspNet.csproj",
+            "linq2db/Source/LinqToDB.Remote.Grpc/LinqToDB.Remote.Grpc.csproj",
+            "linq2db/Source/LinqToDB.Remote.Wcf/LinqToDB.Remote.Wcf.csproj",
             "linq2db/Source/LinqToDB.Tools/LinqToDB.Tools.csproj",
             "linq2db.EntityFrameworkCore/Source/LinqToDB.EntityFrameworkCore/linq2db.EntityFrameworkCore.csproj",
             "LinqToDB.Identity/src/LinqToDB.Identity/LinqToDB.Identity.csproj",

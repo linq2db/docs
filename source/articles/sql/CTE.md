@@ -3,8 +3,7 @@ uid: CTE
 ---
 # Common Table Expression (CTE)
 
-Common Table Expression (CTE) support introduced for supporting advanced SQL techniques in `LINQ To DB`.
-See documentation for Transact SQL: [WITH common_table_expression](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017)
+To get familiar with CTE, you can check documentation for Transact SQL: [WITH common_table_expression](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017)
 
 ## When CTEs are useful
 
@@ -13,7 +12,7 @@ See documentation for Transact SQL: [WITH common_table_expression](https://docs.
 
 ## Defining simple CTE
 
-CTE in `LINQ To DB` also implements `IQueryable`. Any `IQueryable` can be converted to CTE with the extension method `AsCte("optional_name")`.
+CTE in `LINQ To DB` implements `IQueryable` and any `IQueryable` can be converted to CTE with the extension method `AsCte("optional_name")`.
 
 ```cs
 var employeeSubordinatesReport  =
@@ -29,6 +28,8 @@ var employeeSubordinatesReport  =
       e.ReportsTo
    };
 
+// define  CTE named EmployeeSubordinatesReport
+// employeeSubordinatesReport sub-query used as CTE body 
 var employeeSubordinatesReportCte = employeeSubordinatesReport
                                      .AsCte("EmployeeSubordinatesReport");
 ```
@@ -51,7 +52,7 @@ var result =
    };
 ```
 
-You are not limited in the number of  CTEs defined in a query, and they may reference each other. `LINQ To DB` will put them in the correct order and generate SQL with one limitation - **there should be no circular references between CTEs**.
+You are not limited in the number of  CTEs, defined in a query, and they may reference each other. `LINQ To DB` will put them in the correct order and generate SQL with one limitation - **there should be no circular references between CTEs**.
 
 ```sql
 WITH [EmployeeSubordinatesReport]
@@ -81,7 +82,6 @@ AS
    FROM
       [Employees] [t2]
 )
-
 SELECT
    [t3].[LastName] as [LastName1],
    [t3].[FirstName] as [FirstName1],
@@ -97,11 +97,12 @@ FROM
 
 ## Defining recursive CTE
 
-> Recursive CTEs are special because they are allowed to reference themselves! Because of this special ability, you can use recursive CTEs to solve problems other queries cannot. As an example, recursive CTEs are really good at working with hierarchical data such as org charts for bill of materials. (Further reading: [Recursive CTEs Explained](https://www.essentialsql.com/recursive-ctes-explained/))
+> Recursive CTEs are special because they are allowed to reference themselves! Because of this special ability, you can use recursive CTEs to solve problems other queries cannot. As an example, recursive CTEs are really good at working with hierarchical data such as org charts for bill of materials. (Further reading: [Recursive CTEs Explained](https://www.essentialsql.com/recursive-ctes-explained/)).
 
 CTEs have limitations that are not handled by `LINQ To DB`, so you have to be aware of them before start of usage - [Guidelines for Defining and Using Recursive Common Table Expressions](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017#guidelines-for-defining-and-using-recursive-common-table-expressions)
 
-Since in the C# language we can not use a variable's reference in its own initialization expression, we have created a function that helps in defining such queries: `GetCte<TCteProjection>(cte => ...)`. `TCteProjection` is a required generic parameter that is needed for resolving the type of the lambda parameter.
+Since in C# language we can not use a variable's reference in its own initialization expression, we have created a function that helps in defining recursive queries: `GetCte<TCteProjection>(cte => ...)`. `TCteProjection` is a required generic parameter that is needed for resolving the type of the lambda parameter.
+
 The following example shows how to define a CTE to calculate the employee level in the hierarchy:
 
 ```cs
@@ -218,8 +219,9 @@ ORDER BY
 |[SQLite](https://www.sqlite.org/lang_with.html)|3.8.3|
 |[IBM DB2](https://www.ibm.com/support/knowledgecenter/en/SSEPEK_11.0.0/sqlref/src/tpc/db2z_sql_commontableexpression.html)| 8 |
 |[IBM Informix](https://www.ibm.com/support/knowledgecenter/SSGU8G_14.1.0/com.ibm.sqls.doc/ids_sqs_with.htm)| 14.10 |
+|[ClickHouse](https://clickhouse.com/docs/en/sql-reference/statements/select/with)| |
 
 ## Known limitations
 
 * Oracle and Firebird DML operations that use CTE are not completely implemented.
-* Informix CTE are not yet [implemented](https://github.com/linq2db/linq2db/issues/1852)
+* Informix CTE are not yet [implemented](https://github.com/linq2db/linq2db/issues/1852).

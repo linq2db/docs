@@ -1,3 +1,7 @@
+---
+uid: Interceptors
+---
+
 # Interceptors<!-- omit in toc -->
 
 This API available since `Linq To DB` 4.0.0
@@ -200,6 +204,18 @@ void AfterExecuteReader(
     DbCommand        command,
     CommandBehavior  commandBehavior,
     DbDataReader     dataReader);
+
+// triggered before DbDataReader dispose using Dispose method in synchronous APIs
+void BeforeReaderDispose(
+    CommandEventData eventData,
+    DbCommand? command,
+    DbDataReader dataReader);    
+
+// triggered before DbDataReader dispose using DisposeAsync method in asynchronous APIs
+Task BeforeReaderDisposeAsync(
+    CommandEventData eventData,
+    DbCommand? command,
+    DbDataReader dataReader);    
 
 struct CommandEventData
 {

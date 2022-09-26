@@ -1,8 +1,9 @@
-Support of Window Functions also known as Analytic Functions in `LINQ To DB` is based on [Oracle's Documentation](https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions004.htm) and all mentioned functions are supported. 
+# Window (Analytic) Functions
 
-Window functions are implemented as extension methods for static `Sql.Ext` property. For defining Partitioning and Ordering fluent syntax is used and it is closest as possible to original SQL syntax.
+Window functions are implemented as extension methods for static `Sql.Ext` property. For extensions generation (e.g. partitioning or ordering) fluent syntax is used.
 
-#### C# Syntax:
+#### Call Syntax
+
 ```cs
 Sql.Ext.[Function]([Parameters])
 	.Over()
@@ -12,9 +13,9 @@ Sql.Ext.[Function]([Parameters])
 	.ToValue();
 ```
 
-Last function in method chain **must** be function `ToValue()` - it is a mark that method chain is finished and provides correct DataType for resulting columns.
+Last function in method chain **must** be function `ToValue()` - it is a mark that method chain is finished.
 
-#### Example:
+##### Example
 
 ```c#
 var q = 
@@ -63,9 +64,12 @@ var q =
 			.Range.Between.UnboundedPreceding.And.CurrentRow
 			.ToValue(),
 	};
+
 var res = q.ToArray();
 ```
-#### Resulting SQL:
+
+##### Resulting SQL
+
 ```sql
 SELECT
 	RANK() OVER(PARTITION BY [p].[Value1], [c7].[ChildID] ORDER BY [p].[Value1], [c7].[ChildID], [c7].[ParentID]) as [c1],
@@ -79,12 +83,11 @@ FROM
 		INNER JOIN [Child] [c7] ON [p].[ParentID] = [c7].[ParentID]
 ```
 
->**Note** There is no limitation in window functions usage. `LINQ To DB` will create SQL and run query, if function is not supported or some part of function is limited in particular Database - error will be thrown on database side.
+#### Supported Functions (could be incomplete)
 
-#### Functions mapping
-The following table contains list of supported Window Functions and `LINQ To DB` representation of these functions. Some functions have overloads for supporting full Window Functions syntax.
+The following table contains list of supported Window Functions and `LINQ To DB` representation of these functions.
 
-SQL Function Name                                                                                              | Linq2db Function Name 
+Function                                                                                              | Linq To DB Extension
 ------------------------------------                                                                           |----------------------
 [AVG](https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions018.htm)                                 | `Sql.Ext.Average()`
 [CORR](https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions035.htm)                                | `Sql.Ext.Corr()`
@@ -129,13 +132,14 @@ REGR_SXY                                                                        
 [VAR_SAMP](https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions231.htm)                            | `Sql.Ext.VarSamp()`
 [VARIANCE](https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions232.htm)                            | `Sql.Ext.Variance()`
 
->If you have found that your database supports function that is not listed in table above, you can easily create your own extension. Code samples are located in [Sql.Analytic.cs](https://github.com/linq2db/linq2db/blob/master/Source/LinqToDB/Sql/Sql.Analytic.cs)
+>If you have found that your database supports function that is not listed in table above, you can easily create your own extension (but it will be better to create feature request or PR). Code samples are located in [Sql.Analytic.cs](https://github.com/linq2db/linq2db/blob/master/Source/LinqToDB/Sql/Sql.Analytic.cs)
 
-#### Engines that support Window Functions
+#### Window Functions Support
+
 - [Oracle](https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions004.htm)
 - [MSSQL](https://docs.microsoft.com/en-us/sql/t-sql/queries/select-over-clause-transact-sql)
 - [SQLite](http://www.sqlitetutorial.net/sqlite-window-functions/)
-- [Postresql](https://www.postgresql.org/docs/current/static/tutorial-window.html)
+- [PostreSQL](https://www.postgresql.org/docs/current/static/tutorial-window.html)
 - [MariaDB](https://mariadb.com/kb/en/mariadb/window-functions)
 - [MySQL 8](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)
 - [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/en/SSEPEK_12.0.0/sqlref/src/tpc/db2z_olapspecification.html)
@@ -143,5 +147,6 @@ REGR_SXY                                                                        
 - [DB2 iSeries](https://www.ibm.com/support/knowledgecenter/en/ssw_ibm_i_73/sqlp/rbafyolap.htm)
 - [Informix](https://www.ibm.com/support/knowledgecenter/en/SSGU8G_12.1.0/com.ibm.sqls.doc/ids_sqs_2584.htm)
 - [SAP HANA](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/20/a353327519101495dfd0a87060a0d3/content.htm)
-- [SAP ASE](http://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc38151.1602/doc/html/san1278452950084.html)
-- [Firebird 3](https://www.firebirdsql.org/file/documentation/release_notes/html/en/3_0/rnfb30-dml-windowfuncs.html)
+- [SAP/Sybase ASE](http://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc38151.1602/doc/html/san1278452950084.html)
+- [Firebird 3+](https://www.firebirdsql.org/file/documentation/release_notes/html/en/3_0/rnfb30-dml-windowfuncs.html)
+- [ClickHouse](https://clickhouse.com/docs/en/sql-reference/window-functions/)

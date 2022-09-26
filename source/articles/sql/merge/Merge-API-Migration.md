@@ -1,7 +1,7 @@
 ---
 uid: Merge-API-Migration
 ---
-# Migrating from old Merge API to new
+# Migrating from old Merge API
 
 This page contains information how to replace old Merge API calls with new API calls.  
 
