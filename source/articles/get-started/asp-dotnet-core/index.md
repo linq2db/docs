@@ -42,7 +42,7 @@ using LinqToDB.Data;
 
 public class AppDataConnection: DataConnection
 {
-    public AppDataConnection(LinqToDbConnectionOptions<AppDataConnection> options)
+    public AppDataConnection(LinqToDBConnectionOptions<AppDataConnection> options)
         :base(options)
     {
 
@@ -54,7 +54,7 @@ public class AppDataConnection: DataConnection
 > Note here our `AppDataConnection` inherits from `LinqToDB.Data.DataConnection` which is the base class for the Linq2Db connection. 
 
 > [!TIP]  
->a public constructor that accepts `LinqToDbConnectionOptions<AppDataConnection>` and passes the options on to the base constructor is required.
+>a public constructor that accepts `LinqToDBConnectionOptions<AppDataConnection>` and passes the options on to the base constructor is required.
 
 ## Add Connection String
 
@@ -105,11 +105,11 @@ public class Startup
 }
 ```
 
-> [!TIP]  
-> There's plenty of other configuration options availble, if you are familiar with LINQ To DB already, you can convert your existing application over to use the new `LinqToDbConnectionOptions` class as every configuration method is supported
+> [!TIP]
+> There's plenty of other configuration options availble, if you are familiar with LINQ To DB already, you can convert your existing application over to use the new `LinqToDBConnectionOptions` class as every configuration method is supported
 
 > [!TIP]  
-> Note, only `DataConnection` supports `LinqToDbConnectionOptions`. `DataContext` is not yet supported.
+> Note, only `DataConnection` supports `LinqToDBConnectionOptions`. `DataContext` is not yet supported.
 
 > [!TIP]  
 > Use `AddLinqToDbContext<TContext, TContextImplementation>` if you would like to resolve an interface or base class instead of the concrete class in your controllers
@@ -268,7 +268,7 @@ You'll need to update your data connection to accept the new options class too.
 ```C#
 public class AppDataConnection: DataConnection
 {
-    public AppDataConnection(LinqToDbConnectionOptions<AppDataConnection> options)
+    public AppDataConnection(LinqToDBConnectionOptions<AppDataConnection> options)
         :base(options)
     {
 
