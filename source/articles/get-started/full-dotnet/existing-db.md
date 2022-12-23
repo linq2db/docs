@@ -61,7 +61,7 @@ Now it's time to generate your model from database.
 * Save *Northwind.tt* - it should invoke model generation
 
 > [!TIP]  
-> There are many ways to customize generation process. Follow this [link](/articles/Source/LinqToDB.Templates/README.html) for details.
+> There are many ways to customize generation process. Follow this [link](xref:scaffold-t4) for details.
 
 ## Use your model
 
@@ -115,4 +115,4 @@ namespace GetStarted
 
 You will see list of Contact names.
 
-![image](_static/output-existing-db.png)
+![image](static/output-existing-db.png)
