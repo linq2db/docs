@@ -13,7 +13,7 @@ To avoid connection leaks you should pay attention to how you are creating and d
     * **Always** dispose the `DataConnection` instance. We recommend the C#'s `using` block. (Please see below for an example.)
     * Your query should be executed **before** the `DataConnection` object is disposed. Starting with version 1.8.0 we have added checks to catch improper usages; you will get `ObjectDisposedException` when trying to perform a query on a disposed `DataConnection` instance.
 2. Using the `DataContext` class opens and closes an actual connection for **each** query!
-    * Be careful with the `DataContext.KeepConnectionAlive` property. If you set it to `true` it would work the same way as `DataConnection`! So we do not recommend that you to set this property to `true`.
+    * Be careful with the `DataContext.KeepConnectionAlive` property. If you set it to `true` it would work the same way as `DataConnection`.
 
 ## Done Right
 

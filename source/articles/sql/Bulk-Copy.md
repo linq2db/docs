@@ -52,7 +52,7 @@ Microsoft SQL CE     |   Yes    |     Yes      |        No        | MultipleRows
 SQLite               |   Yes    |     Yes      |        No        | MultipleRows | SQLiteTools.DefaultBulkCopyType
 Microsoft SQL Server |   Yes    |     Yes      |       Yes        | ProviderSpecific | SqlServerTools.DefaultBulkCopyType
 Sybase ASE           |   Yes    |     Yes      |        Yes (using native provider. Also [see](https://stackoverflow.com/questions/57675379))        | MultipleRows | SybaseTools.DefaultBulkCopyType
-ClickHouse     |   Yes    |      Yes      |        Yes (except MySqlConnector)        | ProviderSpecific | ClickHouseTools.DefaultBulkCopyType
+ClickHouse           |   Yes    |      Yes      |        Yes (except MySqlConnector)        | ProviderSpecific | ClickHouseTools.DefaultBulkCopyType
 
 Note that when using the provider-specific insert method, only some providers support asynchronous operation; other providers will silently fall back to a synchronous operation.
 

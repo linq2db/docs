@@ -340,7 +340,9 @@ Task<int> MergeAsync<TTarget, TSource>(this IMergeable<TTarget, TSource> merge, 
 `Merge` method builds and executes merge command against database and returns number of affected records. `MergeAsync` does the same job asynchronously.
 
 ### `merge`
+
 Merge command builder.
 
 ### Notes
+
 `Merge` returns number of affected records. Consult your database documentation for more details, but in general except SAP/Sybase ASE it is the same for all databases.

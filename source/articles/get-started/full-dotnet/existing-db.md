@@ -2,6 +2,10 @@
 title: Getting Started on .NET Framework - Existing Database - LINQ To DB
 author: sdanyliv
 ---
+
+> [!WARNING]
+> T4 templates are obsoleted and replaced with new [`dotnet tool`](https://www.nuget.org/packages/linq2db.cli). Tool documentation could be found [here](xref:cli).
+
 # Getting started with LINQ To DB with an Existing Database
 
 In this walkthrough, you will build a console application that performs basic data access against a Microsoft SQL Server database using LINQ To DB. You will use existing database to create your model.
@@ -13,7 +17,7 @@ In this walkthrough, you will build a console application that performs basic da
 
 The following prerequisites are needed to complete this walkthrough:
 
-* [Visual Studio](https://www.visualstudio.com/downloads/)
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 * [Northwind Database](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases)
 
@@ -36,7 +40,7 @@ The following prerequisites are needed to complete this walkthrough:
 
 ## Install LINQ To DB
 
-To use LINQ To DB, install the package for the database provider(s) you want to target. This walkthrough uses SQL Server. For a list of available providers see [Database Providers](/articles/general/databases.html).
+To use LINQ To DB, install the package for the database provider(s) you want to target. This walkthrough uses SQL Server. For a list of available providers see [Database Providers](xref:databases).
 
 * Tools > NuGet Package Manager > Package Manager Console
 

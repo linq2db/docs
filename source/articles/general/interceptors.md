@@ -7,7 +7,7 @@ uid: Interceptors
 This API available since `Linq To DB` 4.0.0
 
 - [Introduction](#introduction)
-- [Interceptors](#interceptors)
+- [Interceptors](#interceptors-1)
   - [`IUnwrapDataObjectInterceptor`](#iunwrapdataobjectinterceptor)
   - [`IEntityServiceInterceptor`](#ientityserviceinterceptor)
   - [`IDataContextInterceptor`](#idatacontextinterceptor)
@@ -69,6 +69,7 @@ DbDataReader UnwrapDataReader(IDataContext dataContext, DbDataReader dataReader)
 ```
 
 Example of  `MiniProfiler`-based interceptor implementation:
+
 ```cs
 // MiniProfiler unwrap interceptor
 public class MiniProfilerInterceptor : UnwrapDataObjectInterceptor
