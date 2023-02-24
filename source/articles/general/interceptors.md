@@ -31,7 +31,7 @@ New mechanim provides following exensibility infrastructure:
 - set of interceptor interfaces which group extension points logically;
 - base interceptor implementation classes without added functionality. They could be used by user for own interceptor implementation. Just inherit from those classes and override required interceptor methods (also it is possible to implement interceptor interface directly);
 - single mechanism for interceptors registration in `IDataContext` implementations (`DataConnection`, `DataContext`, `RemoteContext`);
-- interceptors registration using `LinqToDbConnectionOptions` conntection configuration object (including required fluent configuration APIs);
+- interceptors registration using `DataOptions` conntection configuration object (including required fluent configuration APIs);
 - single source of documentation (this document).
 
 Note that interceptors replace old extensibility mechanims, which means you may need to migrate your existing code to interceptors if you used them. For migration notes check [migration notes](#migration) section below.
@@ -254,7 +254,7 @@ struct ConnectionEventData
 Interceptors could be registred using multiple ways:
 
 - add interceptor instance to existing connection/context object using `AddInterceptor` method
-- add interceptor to `LinqToDbConnectionOptions`
+- add interceptor to `DataOptions`
 - use single-time interceptor of `ICommandInterceptor.CommandInitialized` using `OnNextCommandInitialized` method of context
 
 ```cs
@@ -287,10 +287,10 @@ using (var ctx = new DataConnection(...))
 }
 
 // registration in DataConnection using fluent options configuration
-var builder = new LinqToDbConnectionOptionsBuilder()
+var options = new DataOptions()
     .UseSqlServer(connectionString)
     .WithInterceptor(interceptor);
-var dc = new DataConnection(builder.Build());
+var dc = new DataConnection(options);
 ```
 
 ### Interceptors support per context

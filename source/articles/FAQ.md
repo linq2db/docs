@@ -2,8 +2,6 @@
 - [General](#general)
   - [Which async model Linq To DB use?](#which-async-model-linq-to-db-use)
   - [I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)](#i-need-to-configure-connection-before-or-immediately-after-it-opened-eg-set-sql-server-accesstoken-or-sqlite-encryption-key)
-    - [Option 1: use custom connection factory](#option-1-use-custom-connection-factory)
-    - [Option 2: use connection interceptor](#option-2-use-connection-interceptor)
 - [Mapping](#mapping)
   - [Do I need to use Attribute and/or Code first Mapping?](#do-i-need-to-use-attribute-andor-code-first-mapping)
   - [How can I use calculated fields?](#how-can-i-use-calculated-fields)
@@ -22,81 +20,53 @@ If you need it to use another mode you can change it by setting following config
 Configuration.ContinueOnCapturedContext = true;
 ```
 
-Note that in versions before 4.0 this setting was set to `true` by default.
-
 ## I need to configure connection before or immediately after it opened (e.g. set SQL Server AccessToken or SQLite encryption key)
 
-### Option 1: use custom connection factory
+> [!NOTE]
+> You also could use connection factory method or connection interceptor to configure connection, but we recommend to use connection configuration action option as it used also for auto-detection of provider dialect (for providers with auto-detect logic and when auto-detect is enabled).
 
-Configure connection on creation (SQL Server example):
+Configure connection on creation/open (SQL Server and SQLite examples):
 
 ```cs
-public class MyDb : DataConnection // or DataContext
+public class MySqlServerDb : DataConnection // or DataContext
 {
-  public MyDb(connectionString) : base(
+  public MySqlServerDb(connectionString) : base(
     new DataOptions()
       .UseSqlServer(connectionString)
-      .UseConnectionFactory(opt =>
+      .UseBeforeConnectionOpened(connection =>
       {
-        var cn = new SqlConnection(opt.ConnectionOptions.ConnectionString);
-        cn.AccessToken = "..token here..";
-        return cn;
+        connection.AccessToken = "..token here..";
       }))
   {
   }
 }
 
-using (var db = new MyDb())
+public class MySQLiteDb : DataConnection // or DataContext
 {
-  // queries here will get pre-configured connection
-}
-```
-
-### Option 2: use connection interceptor
-
-Configure connection on creation (SQL Server and SQLite examples):
-
-```cs
-public class MyDb : DataConnection // or DataContext
-{
-  public MyDb(connectionString) : base(
+  public MySQLiteDb(connectionString) : base(
     new DataOptions()
-      .UseSqlServer(connectionString)
-      // or .UseSQLite(connectionString)
-      .UseUseInterceptor(new MyInterceptor()))
+      .UseSQLite(connectionString)
+      .UseAfterConnectionOpened(
+        connection =>
+        {
+          using var cmd = connection.CreateCommand();
+          cmd.CommandText = $"PRAGMA KEY '{key}'";
+          cmd.ExecuteNonQuery();
+        },
+        // optionally add async version to use non-blocking calls from async execution path
+        async (connection, cancellationToken) =>
+        {
+          using var cmd = connection.CreateCommand();
+          cmd.CommandText = $"PRAGMA KEY '{key}'";
+          await cmd.ExecuteNonQueryAsync(cancellationToken);
+        }))
   {
   }
 }
 
-using (var db = new MyDb())
+using (var db = new MySqlServerDb())
 {
   // queries here will get pre-configured connection
-}
-
-sealed class MyInterceptor : ConnectionInterceptor
-{
-    // SQLite example using interceptors, called after connection opened for sync and async code pathes
-  public override void ConnectionOpened(ConnectionEventData eventData, DbConnection connection)
-  {
-    eventData.DataConnection.Execute($"PRAGMA key = {GetQuotedPassword()}");
-  }
-
-  public override async Task ConnectionOpenedAsync(ConnectionEventData eventData, DbConnection connection, CancellationToken cancellationToken)
-  {
-    await eventData.DataConnection.ExecuteAsync($"PRAGMA key = {GetQuotedPassword()}");
-  }
-
-  // SQL Server example using interceptors, called before connection opened for sync and async code pathes
-  public override void ConnectionOpening(ConnectionEventData eventData, DbConnection connection)
-  {
-    ((SqlConnection)connection).AccessToken = GetAccessToken();
-  }
-
-  public override Task ConnectionOpeningAsync(ConnectionEventData eventData, DbConnection connection, CancellationToken cancellationToken)
-  {
-    ((SqlConnection)connection).AccessToken = GetAccessToken();
-    return Task.Complete;
-  }  
 }
 ```
 
