@@ -11,12 +11,11 @@ if ([System.IO.Directory]::Exists('linq2db.github.io')) { Remove-Item linq2db.gi
 Write-Host Done
 
 Write-Host Prepare tooling...
-&"nuget.exe" install msdn.4.5.2 -ExcludeVersion -OutputDirectory packages -Prerelease
-&"nuget.exe" install docfx.console -ExcludeVersion -OutputDirectory packages
+dotnet tool install docfx -g
 Write-Host Done
 
 Write-Host Build DocFX documentation...
-packages/docfx.console/tools/docfx.exe source/docfx.json -f
+docfx source/docfx.json
 if ($LASTEXITCODE -ne 0)
 {
     throw "DocFx build failed";
