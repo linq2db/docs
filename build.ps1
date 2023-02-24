@@ -11,7 +11,7 @@ if ([System.IO.Directory]::Exists('linq2db.github.io')) { Remove-Item linq2db.gi
 Write-Host Done
 
 Write-Host Prepare tooling...
-dotnet tool install docfx -g
+dotnet tool install docfx -g --framework net6.0
 Write-Host Done
 
 Write-Host Build DocFX documentation...
