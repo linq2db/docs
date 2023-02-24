@@ -11,13 +11,6 @@ if ([System.IO.Directory]::Exists('linq2db.github.io')) { Remove-Item linq2db.gi
 Write-Host Done
 
 Write-Host Prepare tooling...
-
-if (![System.IO.Directory]::Exists('c:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework'))
-{
-    Write-Host Install .NET Framework 4.5 reference assemblies
-    &nuget.exe install Microsoft.NETFramework.ReferenceAssemblies.net45 -ExcludeVersion -OutputDirectory packages
-    Move-Item 'packages\Microsoft.NETFramework.ReferenceAssemblies.net45\build\.NETFramework\v4.5' 'c:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework'
-}
 dotnet tool install docfx -g --framework net6.0
 Write-Host Done
 
