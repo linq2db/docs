@@ -1,6 +1,10 @@
+---
+uid: databases
+---
+
 # Supported Databases
 
-[Class with name constants](https://linq2db.github.io/api/LinqToDB.ProviderName.html).
+[Class with name constants](xref:LinqToDB.ProviderName).
 
 One database may have several providers because of:
 

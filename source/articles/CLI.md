@@ -1,3 +1,6 @@
+---
+uid: cli
+---
 <!-- omit in toc -->
 # LINQ to DB CLI tools
 
@@ -526,7 +529,6 @@ public sealed class AggregateFunctionModel : ScalarFunctionModelBase
 
 public abstract class TableFunctionModelBase : FunctionModelBase
 {
-    public SqlObjectName Name  { get; set; }
     public string?       Error { get; set; }
 }
 
@@ -539,6 +541,7 @@ public abstract class FunctionModelBase
 {
     public MethodModel                  Method     { get; set; }
     public List<FunctionParameterModel> Parameters { get;      } = new();
+    public SqlObjectName                Name       { get; set; }
 }
 
 public sealed class FunctionParameterModel
@@ -596,6 +599,7 @@ public sealed class AssociationModel
     public ColumnModel[]?      FromColumns            { get; set; }
     public ColumnModel[]?      ToColumns              { get; set; }
     public bool                ManyToOne              { get; set; }
+    public string?             ForeignKeyName         { get; set; }
 }
 
 ```

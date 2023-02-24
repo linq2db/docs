@@ -23,6 +23,7 @@ dataConnection.GetTable<TTable>()
 ```
 
 If you used `tableName`, `databaseName` or `schemaName` parameters, replace them with follwing calls on table:
+
 ```cs
 db.GetTable<T>()
     .TableName(tableName)

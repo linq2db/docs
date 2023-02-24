@@ -3,7 +3,7 @@ uid: CTE
 ---
 # Common Table Expression (CTE)
 
-To get familiar with CTE, you can check documentation for Transact SQL: [WITH common_table_expression](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017)
+To get familiar with CTE, you can check documentation for Transact SQL: [WITH common_table_expression](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql)
 
 ## When CTEs are useful
 
@@ -97,9 +97,9 @@ FROM
 
 ## Defining recursive CTE
 
-> Recursive CTEs are special because they are allowed to reference themselves! Because of this special ability, you can use recursive CTEs to solve problems other queries cannot. As an example, recursive CTEs are really good at working with hierarchical data such as org charts for bill of materials. (Further reading: [Recursive CTEs Explained](https://www.essentialsql.com/recursive-ctes-explained/)).
+> Recursive CTEs are special because they are allowed to reference themselves! Because of this special ability, you can use recursive CTEs to solve problems other queries cannot. As an example, recursive CTEs are really good at working with hierarchical data such as org charts for bill of materials. (Further reading: [Recursive CTEs Explained](https://www.essentialsql.com/recursive-cte/)).
 
-CTEs have limitations that are not handled by `LINQ To DB`, so you have to be aware of them before start of usage - [Guidelines for Defining and Using Recursive Common Table Expressions](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017#guidelines-for-defining-and-using-recursive-common-table-expressions)
+CTEs have limitations that are not handled by `LINQ To DB`, so you have to be aware of them before start of usage - [Guidelines for Defining and Using Recursive Common Table Expressions](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql#guidelines-for-defining-and-using-recursive-common-table-expressions)
 
 Since in C# language we can not use a variable's reference in its own initialization expression, we have created a function that helps in defining recursive queries: `GetCte<TCteProjection>(cte => ...)`. `TCteProjection` is a required generic parameter that is needed for resolving the type of the lambda parameter.
 
@@ -212,14 +212,14 @@ ORDER BY
 |Database Engine| Minimal version|
 |----------|----------|
 |[Firebird](https://firebirdsql.org/refdocs/langrefupd21-select.html#langrefupd21-select-cte)|2.1|
-|[MS SQL](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017)|2008|
+|[MS SQL](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql)|2008|
 |[MySQL](https://dev.mysql.com/doc/refman/8.0/en/with.html)|8.0.1|
 |[Oracle](https://docs.oracle.com/database/121/SQLRF/statements_10002.htm#BABCGAAJ)|11g Release 2|
-|[PostgreSQL](https://www.postgresql.org/docs/9.1/static/queries-with.html)|8.4|
+|[PostgreSQL](https://www.postgresql.org/docs/current/queries-with.html)|8.4|
 |[SQLite](https://www.sqlite.org/lang_with.html)|3.8.3|
-|[IBM DB2](https://www.ibm.com/support/knowledgecenter/en/SSEPEK_11.0.0/sqlref/src/tpc/db2z_sql_commontableexpression.html)| 8 |
-|[IBM Informix](https://www.ibm.com/support/knowledgecenter/SSGU8G_14.1.0/com.ibm.sqls.doc/ids_sqs_with.htm)| 14.10 |
-|[ClickHouse](https://clickhouse.com/docs/en/sql-reference/statements/select/with)| |
+|[IBM DB2](https://www.ibm.com/docs/en/db2-for-zos/11?topic=statement-common-table-expression)| 8 |
+|[IBM Informix](https://www.ibm.com/docs/en/informix-servers/14.10?topic=statements-statement-common-table-expressions)| 14.10 |
+|[ClickHouse](https://clickhouse.com/docs/en/sql-reference/statements/select/with/)| |
 
 ## Known limitations
 

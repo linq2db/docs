@@ -41,7 +41,7 @@ WHEN MATCHED [AND <extra condition>] THEN DELETE
 ## Links
 
 * [MERGE on wikibooks](https://en.wikibooks.org/wiki/Structured_Query_Language/MERGE)
-* [SQL grammar](http://jakewheat.github.io/sql-overview/) see SQL:2003 and SQL:2011 (sic! grammars)
+* [SQL grammar](https://jakewheat.github.io/sql-overview/) see SQL:2003 and SQL:2011 (sic! grammars)
 
 ## Supported Databases
 
@@ -87,7 +87,7 @@ Other notes:
 
 Links:
 
-* [MERGE INTO command](https://docs.microsoft.com/en-us/sql/t-sql/statements/merge-transact-sql)
+* [MERGE INTO command](https://learn.microsoft.com/en-us/sql/t-sql/statements/merge-transact-sql)
 
 ## IBM DB2
 
@@ -101,9 +101,9 @@ Limitations:
 
 Links:
 
-* [MERGE INTO DB2 z/OS 12](https://www.ibm.com/support/knowledgecenter/en/SSEPEK_12.0.0/sqlref/src/tpc/db2z_sql_merge.html)
-* [MERGE INTO DB2 iSeries 7.3](https://www.ibm.com/support/knowledgecenter/en/ssw_ibm_i_73/db2/rbafzmerge.htm)
-* [MERGE INTO DB2 LUW 11.1](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.sql.ref.doc/doc/r0010873.html)
+* [MERGE INTO DB2 z/OS 12](https://www.ibm.com/docs/en/db2-for-zos/12?topic=statements-merge)
+* [MERGE INTO DB2 iSeries 7.3](https://www.ibm.com/docs/en/i/7.3?topic=statements-merge)
+* [MERGE INTO DB2 LUW 11.1](https://www.ibm.com/docs/en/db2/11.1?topic=statements-merge)
 
 ## Firebird
 
@@ -118,8 +118,9 @@ Limitations:
 
 Links:
 
-* [Firebird 2.5 MERGE INTO](http://www.firebirdtest.com/file/documentation/reference_manuals/fblangref25-en/html/fblangref25-dml-merge.html)
-* [Firebird 3.0 MERGE INTO (PDF;Russian)](http://www.firebirdtest.com/file/documentation/reference_manuals/firebird-language-reference-30-rus.pdf)
+* [Firebird 2.5 MERGE INTO](https://www.firebirdsql.org/file/documentation/html/en/refdocs/fblangref25/firebird-25-language-reference.html#fblangref25-dml-merge)
+* [Firebird 3.0 MERGE INTO](https://firebirdsql.org/file/documentation/chunk/en/refdocs/fblangref30/fblangref30-dml-merge.html)
+* [Firebird 4.0 MERGE INTO](https://firebirdsql.org/file/documentation/chunk/en/refdocs/fblangref40/fblangref40-dml-merge.html)
 
 ## Oracle Database
 
@@ -139,7 +140,7 @@ Limitations:
 
 Links:
 
-* [MERGE INTO](https://docs.oracle.com/database/122/SQLRF/MERGE.htm)
+* [MERGE INTO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/sqlrf/MERGE.html)
 
 ## Sybase/SAP ASE
 
@@ -160,7 +161,7 @@ Other notes:
 
 Links:
 
-* [MERGE INTO ASE 15.7](http://infocenter.sybase.com/help/topic/com.sybase.infocenter.dc36272.1570/html/commands/commands84.htm)
+* [MERGE INTO ASE 15.7](https://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc36272.1570/html/commands/commands84.htm)
 * [MERGE INTO ASE 16](https://help.sap.com/viewer/4c45f8d627434bb19e10dd0abbb757b0/16.0.0.0/en-US/ab389f37bc2b10149bb5c3bafec694a1.html)
 
 ## IBM Informix
@@ -178,7 +179,7 @@ Other notes:
 
 Links:
 
-* [MERGE INTO](https://www.ibm.com/support/knowledgecenter/en/SSGU8G_12.1.0/com.ibm.sqls.doc/ids_sqs_2030.htm)
+* [MERGE INTO](https://www.ibm.com/docs/en/informix-servers/12.10?topic=statements-merge-statement)
 
 ## SAP HANA 2
 
@@ -192,7 +193,7 @@ Limitations:
 
 Links:
 
-* [MERGE INTO](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.00/en-US/3226201f95764a57810dd256c9524d56.html)
+* [MERGE INTO](https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/3226201f95764a57810dd256c9524d56.html?version=2.0.00)
 
 ## PostgreSQL
 
@@ -204,4 +205,4 @@ Limitations:
 
 Links:
 
-* [MERGE INTO](https://www.postgresql.org/docs/devel/sql-merge.html)
+* [MERGE INTO](https://www.postgresql.org/docs/current/sql-merge.html)
