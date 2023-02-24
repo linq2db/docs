@@ -9,4 +9,4 @@
 [submodule "submodules/LinqToDB.Identity"]
 	path = submodules/LinqToDB.Identity
 	url = https://github.com/linq2db/LinqToDB.Identity.git
-	branch = release
+	branch = master
