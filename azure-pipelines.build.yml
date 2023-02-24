@@ -1,8 +1,7 @@
-trigger:
-- master
+trigger: none
 pr:
   branches:
-    exclude:
+    include:
     - '*'
 
 pool:
@@ -20,10 +19,8 @@ steps:
     packageType: sdk
     version: 7.0.102
 
-# build and deploy documentation
+# build documentation
 - task: PowerShell@2
   inputs:
     filePath: 'build.ps1'
-    arguments: '1'
-  env:
-    GITHUB_PAT: $(linq2db.github.pat)
+    arguments: '0'
