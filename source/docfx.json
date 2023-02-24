@@ -13,8 +13,7 @@
             "linq2db/Source/LinqToDB.Remote.Wcf/LinqToDB.Remote.Wcf.csproj",
             "linq2db/Source/LinqToDB.Tools/LinqToDB.Tools.csproj",
             "linq2db.EntityFrameworkCore/Source/LinqToDB.EntityFrameworkCore/linq2db.EntityFrameworkCore.csproj",
-            "LinqToDB.Identity/src/LinqToDB.Identity/LinqToDB.Identity.csproj",
-            "IdentityServer4.LinqToDB/src/IdentityServer4.LinqToDB/IdentityServer4.Contrib.Linq2db.csproj"
+            "LinqToDB.Identity/src/LinqToDB.Identity/LinqToDB.Identity.csproj"
           ],
           "src": "../submodules"
         }
