@@ -44,7 +44,7 @@ using LinqToDB.Data;
 public class AppDataConnection: DataConnection
 {
     public AppDataConnection(DataOptions<AppDataConnection> options)
-        :base(options)
+        :base(options.Options)
     {
 
     }
@@ -256,7 +256,7 @@ You'll need to update your data connection to accept the new options class too.
 public class AppDataConnection: DataConnection
 {
     public AppDataConnection(DataOptions<AppDataConnection> options)
-        :base(options)
+        :base(options.Options)
     {
 
     }
