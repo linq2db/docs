@@ -10,7 +10,7 @@ if ([System.IO.Directory]::Exists('source/api')) { Remove-Item source/api -Recur
 if ([System.IO.Directory]::Exists('linq2db.github.io')) { Remove-Item linq2db.github.io -Recurse -Force }
 
 Write-Host Prepare tooling...
-dotnet tool install docfx -g --framework net6.0
+dotnet tool install docfx -g
 
 Write-Host Restore...
 dotnet restore 'submodules/linq2db/Source/LinqToDB/LinqToDB.csproj'
