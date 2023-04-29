@@ -55,9 +55,10 @@
     },
     "fileMetadataFiles": [],
     "template": [
-      "default"
+      "default",
+      "modern"
     ],
-    "postProcessors": [],
+    "postProcessors": [ "ExtractSearchIndex" ],
     "noLangKeyword": false,
     "keepFileLink": false
   }
