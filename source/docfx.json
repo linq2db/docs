@@ -14,6 +14,7 @@
         }
       ],
       "dest": "api/linq2db",
+      "globalNamespaceId": "linq2db",
       "filter": "filterConfig.yml"
     },
     {
@@ -26,6 +27,7 @@
         }
       ],
       "dest": "api/linq2db.aspnet",
+      "globalNamespaceId": "linq2db.aspnet",
       "filter": "filterConfig.yml"
     },
     {
@@ -38,6 +40,7 @@
         }
       ],
       "dest": "api/linq2db.remote.grpc",
+      "globalNamespaceId": "linq2db.grpc",
       "filter": "filterConfig.yml"
     },
     {
@@ -50,6 +53,7 @@
         }
       ],
       "dest": "api/linq2db.remote.wcf",
+      "globalNamespaceId": "linq2db.wcf",
       "filter": "filterConfig.yml"
     },
     {
@@ -62,6 +66,7 @@
         }
       ],
       "dest": "api/linq2db.tools",
+      "globalNamespaceId": "linq2db.tools",
       "filter": "filterConfig.yml"
     },
     {
@@ -74,6 +79,7 @@
         }
       ],
       "dest": "api/linq2db.efcore",
+      "globalNamespaceId": "linq2db.efcore",
       "filter": "filterConfig.yml"
     },
     {
@@ -86,6 +92,7 @@
         }
       ],
       "dest": "api/linq2db.identity",
+      "globalNamespaceId": "linq2db.identity",
       "filter": "filterConfig.yml"
     }
   ],
