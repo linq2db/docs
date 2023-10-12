@@ -6,19 +6,13 @@ pr:
     - '*'
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'windows-2022'
 
 steps:
 # checkout submodules
 - checkout: self
   persistCredentials: true
   submodules: true
-
-- task: UseDotNet@2
-  displayName: 'Install .NET 7'
-  inputs:
-    packageType: sdk
-    version: 7.0.102
 
 # build and deploy documentation
 - task: PowerShell@2
