@@ -4,5 +4,7 @@
   href: Managing-data-connection.md
 - name: Interceptors
   href: interceptors.md
+- name: Metrics
+  href: metrics.md
 - name: Videos
   href: video.md

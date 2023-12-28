@@ -78,25 +78,25 @@ public class MiniProfilerInterceptor : UnwrapDataObjectInterceptor
     // and use single instance
     public static readonly IInterceptor Instance = new MiniProfilerInterceptor();
 
-	public override DbConnection UnwrapConnection(IDataContext dataContext, DbConnection connection)
-	{
-		return connection is ProfiledDbConnection c ? c.WrappedConnection : connection;
-	}
+    public override DbConnection UnwrapConnection(IDataContext dataContext, DbConnection connection)
+    {
+        return connection is ProfiledDbConnection c ? c.WrappedConnection : connection;
+    }
 
-	public override DbTransaction UnwrapTransaction(IDataContext dataContext, DbTransaction transaction)
-	{
-		return transaction is ProfiledDbTransaction t ? t.WrappedTransaction : transaction;
-	}
+    public override DbTransaction UnwrapTransaction(IDataContext dataContext, DbTransaction transaction)
+    {
+        return transaction is ProfiledDbTransaction t ? t.WrappedTransaction : transaction;
+    }
 
-	public override DbCommand UnwrapCommand(IDataContext dataContext, DbCommand command)
-	{
-		return command is ProfiledDbCommand c ? c.WrappedCommand : command;
-	}
+    public override DbCommand UnwrapCommand(IDataContext dataContext, DbCommand command)
+    {
+        return command is ProfiledDbCommand c ? c.WrappedCommand : command;
+    }
 
-	public override DbDataReader UnwrapDataReader(IDataContext dataContext, DbDataReader dataReader)
-	{
-		return dataReader is ProfiledDbDataReader dr ? dr.WrappedReader : dataReader;
-	}
+    public override DbDataReader UnwrapDataReader(IDataContext dataContext, DbDataReader dataReader)
+    {
+        return dataReader is ProfiledDbDataReader dr ? dr.WrappedReader : dataReader;
+    }
 }
 ```
 
@@ -123,12 +123,12 @@ object EntityCreated(EntityCreatedEventData eventData, object entity);
 // event arguments
 struct EntityCreatedEventData
 {
-	public IDataContext Context      { get; }
-	public TableOptions TableOptions { get; }
-	public string?      TableName    { get; }
-	public string?      SchemaName   { get; }
-	public string?      DatabaseName { get; }
-	public string?      ServerName   { get; }
+    public IDataContext Context      { get; }
+    public TableOptions TableOptions { get; }
+    public string?      TableName    { get; }
+    public string?      SchemaName   { get; }
+    public string?      DatabaseName { get; }
+    public string?      ServerName   { get; }
 }
 ```
 
@@ -269,7 +269,7 @@ using (var ctx = new DataContext(...))
     {
         // save next command parameters to external variable
         parameters = cmd.Parameters.Cast<DbParameter>().ToArray();
-	    return cmd;
+        return cmd;
     });
 }
 
