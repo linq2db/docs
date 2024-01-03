@@ -31,6 +31,11 @@ The `ActivityID` is a unique identifier of the LinqToDB activity. It is used to 
 `Linq To DB` contains a large set of telemetry collection points that can be used to collect data. 
 Each collection point has a unique `ActivityID` identifier.
 
+## Configuration.TraceMaterializationActivity
+
+The `Configuration.TraceMaterializationActivity` property can be used to enable or disable tracing of object materialization activity. 
+It can significantly break performance if tracing consumer performs slow, so it is disabled by default.
+
 ## Example
 
 The following example shows how to use the `ActivityService` and `OpenTelemetry` to collect `Linq To DB` telemetry data.
