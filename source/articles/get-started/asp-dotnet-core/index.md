@@ -5,8 +5,6 @@ author: khahn
 
 # Configuring LINQ To DB for ASP.NET Core
 
-Available since: 3.0.0-rc.0
-
 In this walkthrough, you will configure an ASP.NET Core application to access a local SQLite Database using LINQ To DB
 
 ## Prerequisites
@@ -29,7 +27,7 @@ dotnet new webapp -o gettingStartedLinqToDBAspNet
 We can now use the CLI to install LINQ To DB and database provider (SQLite in this walkthrough)
 
 ```txt
-dotnet add package linq2db.AspNet
+dotnet add package linq2db.Extensions
 dotnet add package System.Data.SQLite.Core
 ```
 
@@ -38,7 +36,8 @@ dotnet add package System.Data.SQLite.Core
 We're going to create a custom data connection to use to access LINQ To DB, create a class like this:
 
 ```C#
-using LinqToDB.Configuration;
+using LinqToDB.Extensions.DependencyInjection;
+using LinqToDB.Extensions.Logging;
 using LinqToDB.Data;
 
 public class AppDataConnection: DataConnection
@@ -91,7 +90,8 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         //...
-        //using LinqToDB.AspNet
+        //using LinqToDB.Extensions.DependencyInjection
+        //using LinqToDB.Extensions.Logging
         services.AddLinqToDBContext<AppDataConnection>((provider, options)
             => options
                 //will configure the AppDataConnection to use
@@ -232,7 +232,8 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         //...
-        //using LinqToDB.AspNet
+        //using LinqToDB.DependencyInjection.DependencyInjection
+        //using LinqToDB.DependencyInjection.Logging
         services.AddLinqToDBContext<AppDataConnection>((provider, options)
             => options
                 //will configure the AppDataConnection to use
