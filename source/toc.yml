@@ -5,8 +5,8 @@
   items:
   - name: Linq To DB
     href: api/linq2db/
-  - name: Linq To DB for ASP.NET Core
-    href: api/linq2db.aspnet/
+  - name: Linq To DB Extensions
+    href: api/linq2db.extensions/
   - name: Linq To DB over GRPC
     href: api/linq2db.remote.grpc/
   - name: Linq To DB over WCF

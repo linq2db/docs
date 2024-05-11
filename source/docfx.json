@@ -21,13 +21,13 @@
       "src": [
         {
           "files": [
-            "linq2db/Source/LinqToDB.AspNet/LinqToDB.AspNet.csproj"
+            "linq2db/Source/LinqToDB.Extensions/LinqToDB.Extensions.csproj"
           ],
           "src": "../submodules"
         }
       ],
-      "dest": "api/linq2db.aspnet",
-      "globalNamespaceId": "linq2db.aspnet",
+      "dest": "api/linq2db.extensions",
+      "globalNamespaceId": "linq2db.extensions",
       "filter": "filterConfig.yml"
     },
     {
@@ -102,7 +102,7 @@
         "files": [
           "api/linq2db/*.yml",
           "api/linq2db.tools/*.yml",
-          "api/linq2db.aspnet/*.yml",
+          "api/linq2db.extensions/*.yml",
           "api/linq2db.efcore/*.yml",
           "api/linq2db.identity/*.yml",
           "api/linq2db.remote.grpc/*.yml",
