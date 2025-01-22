@@ -73,7 +73,20 @@
       "src": [
         {
           "files": [
-            "linq2db.EntityFrameworkCore/Source/LinqToDB.EntityFrameworkCore/linq2db.EntityFrameworkCore.csproj"
+            "linq2db/Source/LinqToDB.Scaffold/LinqToDB.Scaffold.csproj"
+          ],
+          "src": "../submodules"
+        }
+      ],
+      "dest": "api/linq2db.scaffold",
+      "globalNamespaceId": "linq2db.scaffold",
+      "filter": "filterConfig.yml"
+    },
+    {
+      "src": [
+        {
+          "files": [
+            "linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.csproj"
           ],
           "src": "../submodules"
         }
@@ -102,6 +115,7 @@
         "files": [
           "api/linq2db/*.yml",
           "api/linq2db.tools/*.yml",
+          "api/linq2db.scaffold/*.yml",
           "api/linq2db.extensions/*.yml",
           "api/linq2db.efcore/*.yml",
           "api/linq2db.identity/*.yml",
