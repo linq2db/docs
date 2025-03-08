@@ -13,6 +13,7 @@ This API available since `Linq To DB` 4.0.0
   - [`IDataContextInterceptor`](#idatacontextinterceptor)
   - [`ICommandInterceptor`](#icommandinterceptor)
   - [`IConnectionInterceptor`](#iconnectioninterceptor)
+  - [`IExceptionInterceptor`](#iexceptioninterceptor)
 - [Interceptors Registration](#interceptors-registration)
   - [Interceptors support per context](#interceptors-support-per-context)
 - [Migration](#migration)
@@ -249,6 +250,24 @@ struct ConnectionEventData
 }
 ```
 
+### `IExceptionInterceptor`
+
+Base abstract class: `ExceptionInterceptor`.
+
+This interceptor provides access to query execution exception inspection/interception.
+
+```cs
+public interface IExceptionInterceptor : IInterceptor
+{
+    void ProcessException(ExceptionEventData eventData, Exception exception);
+}
+
+public readonly struct ExceptionEventData
+{
+    public IDataContext DataContext { get; }
+}
+```
+
 ## Interceptors Registration
 
 Interceptors could be registred using multiple ways:
@@ -299,12 +318,14 @@ var dc = new DataConnection(options);
   - `IDataContextInterceptor`
   - `IEntityServiceInterceptor`
   - `IUnwrapDataObjectInterceptor`
+  - `IExceptionInterceptor`
 - `DataContext` and `DataConnection`:
   - `ICommandInterceptor`
   - `IConnectionInterceptor`
   - `IDataContextInterceptor`
   - `IEntityServiceInterceptor`
   - `IUnwrapDataObjectInterceptor`
+  - `IExceptionInterceptor`
 
 ## Migration
 

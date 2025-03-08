@@ -27,7 +27,7 @@ uid: cli
 ## Installation
 
 > [!NOTE]
-> Requres .NET Core 3.1 or higher.
+> Requres .NET 6 or higher.
 
 Install as global tool:
 
@@ -628,6 +628,7 @@ public sealed class PropertyModel
     public Modifiers            Modifiers        { get; set; }
     public bool                 IsDefault        { get; set; }
     public bool                 HasSetter        { get; set; }
+    public Modifiers            SetterModifiers  { get; set; }
     public string?              TrailingComment  { get; set; }
     public List<CodeAttribute>? CustomAttributes { get; set; }
 }

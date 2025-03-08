@@ -211,17 +211,17 @@ ORDER BY
 
 |Database Engine| Minimal version|
 |----------|----------|
+|[ClickHouse](https://clickhouse.com/docs/en/sql-reference/statements/select/with/)| |
+|[IBM DB2](https://www.ibm.com/docs/en/db2-for-zos/11?topic=statement-common-table-expression)| 8 |
 |[Firebird](https://firebirdsql.org/refdocs/langrefupd21-select.html#langrefupd21-select-cte)|2.1|
-|[MS SQL](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql)|2008|
+|[IBM Informix](https://www.ibm.com/docs/en/informix-servers/14.10?topic=statements-statement-common-table-expressions)| 14.10 |
 |[MySQL](https://dev.mysql.com/doc/refman/8.0/en/with.html)|8.0.1|
 |[Oracle](https://docs.oracle.com/database/121/SQLRF/statements_10002.htm#BABCGAAJ)|11g Release 2|
 |[PostgreSQL](https://www.postgresql.org/docs/current/queries-with.html)|8.4|
+|[SAP HANA](https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/20fcf24075191014a89e9dc7b8408b26.html#loio20fcf24075191014a89e9dc7b8408b26__with_clause)| |
 |[SQLite](https://www.sqlite.org/lang_with.html)|3.8.3|
-|[IBM DB2](https://www.ibm.com/docs/en/db2-for-zos/11?topic=statement-common-table-expression)| 8 |
-|[IBM Informix](https://www.ibm.com/docs/en/informix-servers/14.10?topic=statements-statement-common-table-expressions)| 14.10 |
-|[ClickHouse](https://clickhouse.com/docs/en/sql-reference/statements/select/with/)| |
+|[MS SQL](https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql)|2008|
 
 ## Known limitations
 
 * Oracle and Firebird DML operations that use CTE are not completely implemented.
-* Informix CTE are not yet [implemented](https://github.com/linq2db/linq2db/issues/1852).

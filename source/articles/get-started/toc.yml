@@ -2,5 +2,5 @@
   href: install/index.md
 - name: Use with Existing Database
   href: full-dotnet/existing-db.md
-- name: ASP.NET Core
+- name: ASP.NET Application Example
   href: asp-dotnet-core/index.md

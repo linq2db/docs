@@ -2,10 +2,6 @@
 	path = submodules/linq2db
 	url = https://github.com/linq2db/linq2db.git
 	branch = release
-[submodule "submodules/linq2db.EntityFrameworkCore"]
-	path = submodules/linq2db.EntityFrameworkCore
-	url = https://github.com/linq2db/linq2db.EntityFrameworkCore.git
-	branch = release
 [submodule "submodules/LinqToDB.Identity"]
 	path = submodules/LinqToDB.Identity
 	url = https://github.com/linq2db/LinqToDB.Identity.git

@@ -1,0 +1,11 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)submodules\linq2db\.build</ArtifactsPath>
+    <ArtifactsPivots>$(Configuration)\$(TargetFramework)</ArtifactsPivots>
+  </PropertyGroup>
+  <ItemGroup Label="Ignore Useless NugetAudit Errors">
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-hxrm-9w7p-39cc" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-vh55-786g-wjwj" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-ghhp-997w-qr28" />
+  </ItemGroup>
+</Project>
