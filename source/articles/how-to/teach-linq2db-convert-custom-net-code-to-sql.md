@@ -1,5 +1,5 @@
-# How to teach LINQ to DB convert custom .NET methods and objects to SQL
-You may run into a situation when LINQ to DB does not know how to convert some .NET method, property or object to SQL. But that is not a problem because LINQ to DB likes to learn. Just teach it :). In one of our previous blog posts we wrote about [Using MapValueAttribute to control mapping with linq2db](xref:using-mapvalue-attribute-to-control-mapping.md). In this article we will go a little bit deeper.
+# How to teach LINQ to DB to convert custom .NET methods and objects to SQL
+You may run into a situation where LINQ to DB does not know how to convert some .NET method, property or object to SQL. But that is not a problem because LINQ to DB likes to learn. Just teach it :). In one of our previous blog posts we wrote about [Using this MapValueAttribute to control mapping with linq2db](xref:using-mapvalue-attribute-to-control-mapping.md). In this article we will go a little bit deeper.
 
 There are multiple ways to teach LINQ to DB how to convert custom properties and methods into SQL, but the primary ones are:
 
@@ -23,13 +23,13 @@ There are multiple ways to teach LINQ to DB how to convert custom properties and
 Let's see how to use each of these methods.
 
 ### Sql.Expression
-Let's say you love SQL's BETWEEN operator and you find out that LINQ to DB does not have Between() method out of the box, so that you have to write something like this:
+Let's say you love SQL's BETWEEN operator and you find out that LINQ to DB does not have `Between()` method out of the box, so you have to write something like this:
 
 ```cs
 var query = db.Customers.Where(c => c.ID >= 1000 && c.ID <= 2000);
 ```
 
-Here is how Sql.Expression attribute can help us bring Between to .NET:
+Here is how the `Sql.Expression` attribute can help us bring Between to .NET:
 
 ```cs
 [Sql.Expression("{0} BETWEEN {1} AND {2}", PreferServerSide = true)]
@@ -69,11 +69,11 @@ WHERE
  [t1].[DateOfBirth] BETWEEN '2000-01-01' AND '2000-12-31'
  ```
 
-Notice the use of the `Sql.ExpressionAttribute.PreferServerSide` property set to true. `PreferServerSide = true` tells LINQ to DB to convert the method to SQL if possible, and if it's not possible for some reason - then execute the method locally.
+Notice the use of the `Sql.ExpressionAttribute.PreferServerSide` property set to true. `PreferServerSide = true` tells LINQ to DB to convert the method to SQL if possible, and if it's not possible for some reason - then to execute the method locally.
 
 There is another similar property – `ServerSideOnly`. If it's set to True, LINQ to DB will throw an exception if it can't convert a method to SQL. It can be set to true when you can't, don't need or don't want to write a client-side implementation.
 
-You may have a valid question: When can't LINQ to DB generate a SQL? How is that possible if we show LINQ to DB what we want to generate? Here is a simple example:
+You may have a valid question: When can't LINQ to DB generate SQL? How is that possible if we show LINQ to DB what we want to generate? Here is a simple example:
 
 ```cs
 var q =
@@ -82,12 +82,12 @@ var q =
     SomeServerSideOnlyMethod(SomeLocalApplicationMethod(c.ID));
 ```
 
-Let's say `SomeServerSideOnlyMethod()` is a method with `Sql.Expression` attribute and `ServerSideOnly = true`, and `SomeLocalApplicationMethod()` is an ordinary .NET method that can only be executed locally.
+Let's say `SomeServerSideOnlyMethod()` is a method with the `Sql.Expression` attribute and `ServerSideOnly = true`, and `SomeLocalApplicationMethod()` is an ordinary .NET method that can only be executed locally.
 
-Since `SomeLocalApplicationMethod()` must be executed locally, LINQ to DB has to first read `Customer.ID` field values from the table to pass them to `SomeLocalApplicationMethod()` on the client side. From this moment the query, including the call to `SomeServerSideOnlyMethod()`, will have to be executed locally. But considering that `SomeServerSideOnlyMethod()` is marked as `ServerSideOnly = true`, LINQ to DB will throw an exception.
+Since `SomeLocalApplicationMethod()` must be executed locally, LINQ to DB has to first read the `Customer.ID` field values from the table to pass them to `SomeLocalApplicationMethod()` on the client side. From this moment the query, including the call to `SomeServerSideOnlyMethod()`, will have to be executed locally. But considering that `SomeServerSideOnlyMethod()` is marked as `ServerSideOnly = true`, LINQ to DB will throw an exception.
 
 ### Sql.Function attribute
-Presume that we are using SqlServer and we want to check if a string contains a representation of a numeric value. SqlServer has `IsNumeric()` function, but LINQ to DB does not support it out of the box. It's easy to fix:
+Presume that we are using SQL Server and we want to check if a string contains a representation of a numeric value. SQL Server has the `IsNumeric()` function, but LINQ to DB does not support it out of the box. It's easy to fix:
 
 ```cs
 [Sql.Function("IsNumeric", ServerSideOnly = true)]
@@ -122,12 +122,12 @@ WHERE
  IsNumeric([t1].[LastName]) = 1
  ```
 
-Please note, that you may omit specifying function name in the attribute explicitly - in this case the method name (that the attribute is applied to) will be used as a function name.
+Please note, that you may omit specifying the function name in the attribute explicitly - in this case the method name (that the attribute is applied to) will be used as a function name.
 
 ### ExpressionMethod
-Let us now examine the next attribute - `LinqToDB.ExpressionMethodAttribute`, a very powerful one. `ExpressionMethodAttribute` allows specifying an expression that LINQ to DB will translate into SQL.
+Let us now examine the next attribute - `LinqToDB.ExpressionMethodAttribute`, a very powerful one. The `ExpressionMethodAttribute` allows specifying an expression that LINQ to DB will translate into SQL.
 
-For those of us who are a fan of the SQL's `IN` operator, let's show how we can make LINQ to DB support it:
+For those of us who are fans of the SQL's `IN` operator, let's show how we can make LINQ to DB support it:
 
 ```cs
 [ExpressionMethod("InImpl")]
@@ -144,7 +144,7 @@ public static Expression<Func<T, IEnumerable<T>, bool>> InImpl<T>()
 }
 ```
 
-Here we are using the `ExpressionMethod` attribute to specify a method that will return `Expression`, and LINQ to DB will convert that `Expression` into SQL (basically, LINQ to DB uses the expression tree returned by the method specified with the `ExpressionMethod` attribute to replace a part of a bigger expression tree that will later be converted to SQL). The generic type parameter of the `Expression` should be a `Func<T>` delegate, representing a function that takes the same parameters and returns the same type as a local method. For example, if a local method has this declaration:
+Here we are using the `ExpressionMethod` attribute to specify a method that will return an `Expression`, and LINQ to DB will convert that `Expression` into SQL (basically, LINQ to DB uses the expression tree returned by the method specified with the `ExpressionMethod` attribute to replace a part of a bigger expression tree that will later be converted to SQL). The generic type parameter of the `Expression` should be a `Func<T>` delegate, representing a function that takes the same parameters and returns the same type as a local method. For example, if a local method has this declaration:
 
 ```cs
 T1 MyMethod(T2, T3)
@@ -235,7 +235,7 @@ You can find more examples of ExpressionMethod usage (including a possible `Left
 ### MapMember()
 The next method we will discuss is the `LinqToDB.Linq.Expressions.MapMember()` method (having numerous overloads). It allows you to specify how to convert existing methods and properties. Basically, you provide the original method or property and the corresponding `Expression` that will be used by LINQ to DB instead of the original method. Internally LINQ to DB uses `MapMember()` to map hundreds of standard .NET framework methods and properties.
 
-For example, we would like to make LINQ to DB support `String.IsNullOrWhitespace()` method and we can't add the `ExpressionMethod` attribute to `IsNullOrWhitespace()` because it's a framework's method and we can't change it.
+For example, we would like to make LINQ to DB support the `String.IsNullOrWhitespace()` method and we can't add the `ExpressionMethod` attribute to `IsNullOrWhitespace()` because it's a framework's method and we can't change it.
 
 The `MapMember()` method comes to the rescue!
 
@@ -271,7 +271,6 @@ FROM
  [dbo].[Customer] [t1]
 WHERE
  [t1].[Email] IS NULL OR RTrim([t1].[Email]) = N''
-SetValueToSqlConverter()
 ```
 
 ### SetValueToSqlConverter()
@@ -281,7 +280,7 @@ The last method we will examine is `LinqToDB.Mapping.MappingSchema.SetValueToSql
 <ol>
 <li>
 
-When adding support for a new database provider. For example, when working with `Boolean` data type in Informix RDBMS, `t` represents the logical value TRUE and `f` represents FALSE. Here is how this is implemented in LINQ to DB as a part of its Informix support:
+When adding support for a new database provider. For example, when working with the `Boolean` data type in Informix RDBMS, `t` represents the logical value TRUE and `f` represents FALSE. Here is how this is implemented in LinqToDB as a part of its Informix support:
 
 ```cs
 public class InformixMappingSchema : MappingSchema
@@ -296,7 +295,7 @@ public class InformixMappingSchema : MappingSchema
 
 <li>
 
-When adding support for a new data type. For example here is how to teach LinqToDB consider `SqlDecimal.IsNull` property and correctly convert `SqlDecimal` objects to SQL:
+When adding support for a new data type. For example, here is how to teach LINQ to DB to consider the `SqlDecimal.IsNull` property and correctly convert `SqlDecimal` objects to SQL:
 
 ```cs
 MappingSchema.Default.SetValueToSqlConverter(

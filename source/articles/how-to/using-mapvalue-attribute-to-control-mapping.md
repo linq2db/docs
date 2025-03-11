@@ -1,7 +1,7 @@
 # Using MapValueAttribute to control mapping with linq2db
-One of the primary functions of [linq2db](https://github.com/linq2db) is mapping between a database and classes/properties in your data model. Linq2db does a great job here straight out of the box, but often it is desirable to tune this process.  The most frequent example of where you may need this is enumerations.
+One of the primary functions of [linq2db](https://github.com/linq2db) is mapping between a database and classes/properties in your data model. Linq2db does a great job here straight out of the box, but often it is desirable to tune this process.  The most frequent example of where you may need this is with enumerations.
 
-Let's say you have a table called Issue. Each issue has a status, which can be one of the predefined values: Open, InProgress, Resolved, Closed. Let's assume we use a CHAR(1) field to keep a status value ('O' = Open, 'R' = Resolved, etc).
+Let's say you have a table called Issue. Each issue has a status, which can be one of the predefined values: Open, InProgress, Resolved, Closed. Let's assume we use a CHAR(1) field to keep a status value ('O' = Open, 'R' = Resolved, etc.).
 
 If we [generate our data model](https://github.com/linq2db/t4models) without any tuning, we may get something like this:
 
@@ -16,7 +16,7 @@ public partial class Issue
 }
 ```
 
-As you understand, it's not convenient to use char values when working with Status in source code. Would be nice to have the IssueStatus enumeration:
+As you understand, it's not convenient to use char values when working with Status in source code. It would be nice to have the IssueStatus enumeration:
 
 ```cs
 public enum IssueStatus
@@ -28,12 +28,12 @@ public enum IssueStatus
 }
 ```
 
-In order to replace the Status type with enumeration and teach linq2db how to do the mapping we need to complete two simple steps:
+In order to replace the Status type with an enumeration and teach linq2db how to do the mapping, we need to complete two simple steps:
 
 <ol>
 <li>
 
-Use the `MapValue` attribute to explain linq2db how to map between the enumeration and char values in the database table</li>
+Use the `MapValue` attribute to explain to linq2db how to map between the enumeration and char values in the database table</li>
 <li>
 
 Change the `Status` property type from char to `IssueStatus`.</li>
@@ -93,7 +93,7 @@ WHERE
   [t1].[Status] = N'O'
 ```
 
-Note that if you used int datatype for the `Status` column instead of char, then you could declare your enumeration like this:
+Note that if you used the `int` datatype for the `Status` column instead of char, then you could declare your enumeration like this:
 
 ```cs
 public enum IssueStatus
@@ -152,7 +152,7 @@ VALUES
 )
 ```
 
-As you can see `Gender.Male` has been mapped to ‘M' (because it is marked with the IsDefault property set to true).
+As you can see, `Gender.Male` has been mapped to ‘M' (because it is marked with the IsDefault property set to true).
 
 There may be a situation when you need to get values specified by the `MapValue` attribute. There are different ways to accomplish this. You can write an extension method and use reflection inside, you can use a very powerful `ConvertTo<T>` class from linq2db, or you can use `MappingSchema.Default.EnumToValue()` method (also from linq2db), etc. `ConvertTo<T>` can be used like this:
 
@@ -160,7 +160,7 @@ There may be a situation when you need to get values specified by the `MapValue`
 string gender = ConvertTo<string>.From(Gender.Male); // will return "M"
 ```
 
-Often developers create a separate table to store possible values and use a foreign key to provide database integrity. If you need to be able to update the range of values without redeployment of source code, or if you see that table as a separate entity (with its own attributes), or you want to be able to understand the values without looking at the source code (e.g. that `Status = 1` means `Open`, in case you used integer as underlying datatype), which may be useful for DBAs and BAs, creating a separate table may be the right approach. But if you don't need these features, then just setting CHECK constraints may be a simple and good solution. In our example, if we use SQL Server, we can set the following constraint:
+Often developers create a separate table to store possible values and use a foreign key to provide database integrity. If you need to be able to update the range of values without redeployment of source code, or if you see that table as a separate entity (with its own attributes), or you want to be able to understand the values without looking at the source code (e.g., that `Status = 1` means `Open`, in case you used an integer as underlying datatype), which may be useful for DBAs and BAs, creating a separate table may be the right approach. But if you don't need these features, then just setting CHECK constraints may be a simple and good solution. In our example, if we use SQL Server, we can set the following constraint:
 
 ```sql
 ALTER TABLE 
