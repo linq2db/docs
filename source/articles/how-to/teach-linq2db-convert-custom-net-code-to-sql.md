@@ -6,7 +6,7 @@ There are multiple ways to teach LINQ to DB how to convert custom properties and
 <ul>
 <li>
 
-[LinqToDB.Sql.ExpressionAttribute](#markdown-header-Sql.Expression) and [LinqToDB.Sql.FunctionAttribute](#markdown-header-Sql.Function-attribute)</li>
+[LinqToDB.Sql.ExpressionAttribute](#sqlexpression) and [LinqToDB.Sql.FunctionAttribute](#markdown-header-Sql.Function-attribute)</li>
 LinqToDB.ExpressionMethodAttribute
 LinqToDB.Linq.Expressions.MapMember() method
 LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter() method
