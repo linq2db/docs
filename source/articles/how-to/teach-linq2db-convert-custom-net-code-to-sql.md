@@ -6,10 +6,18 @@ There are multiple ways to teach LINQ to DB how to convert custom properties and
 <ul>
 <li>
 
-[LinqToDB.Sql.ExpressionAttribute](#sqlexpression) and [LinqToDB.Sql.FunctionAttribute](#markdown-header-Sql.Function-attribute)</li>
-LinqToDB.ExpressionMethodAttribute
-LinqToDB.Linq.Expressions.MapMember() method
-LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter() method
+[LinqToDB.Sql.ExpressionAttribute](#sqlexpression) and [LinqToDB.Sql.FunctionAttribute](#sqlfunction-attribute)</li>
+
+<li>
+
+[LinqToDB.ExpressionMethodAttribute](#expressionmethod)
+</li>
+<li>
+
+[LinqToDB.Linq.Expressions.MapMember()](#mapmember) method
+<li>
+
+[LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter()](SetValueToSqlConverter) method
 </ol>
 
 Let's see how to use each of these methods.
@@ -265,6 +273,8 @@ WHERE
  [t1].[Email] IS NULL OR RTrim([t1].[Email]) = N''
 SetValueToSqlConverter()
 ```
+
+### SetValueToSqlConverter()
 
 The last method we will examine is `LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter()`. It is used to control exactly how a value will be converted to SQL. The two primary use cases for this method are:
 
