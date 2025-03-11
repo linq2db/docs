@@ -17,7 +17,7 @@ There are multiple ways to teach LINQ to DB how to convert custom properties and
 [LinqToDB.Linq.Expressions.MapMember()](#mapmember) method
 <li>
 
-[LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter()](SetValueToSqlConverter) method
+[LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter()](#setvaluetosqlconverter) method
 </ol>
 
 Let's see how to use each of these methods.
