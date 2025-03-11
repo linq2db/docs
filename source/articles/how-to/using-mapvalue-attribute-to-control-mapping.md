@@ -31,7 +31,7 @@ public enum IssueStatus
 In order to replace the Status type with enumeration and teach linq2db how to do the mapping we need to complete two simple steps:
 
 <ol>
-<li>Use the *MapValue* attribute to explain linq2db how to map between the enumeration and char values in the database table</li>
+<li>Use the MapValue attribute to explain linq2db how to map between the enumeration and char values in the database table</li>
 <li>Change the Status property type from char to IssueStatus.</li>
 </ol>
 The first step is accomplished like this:
@@ -48,9 +48,9 @@ public enum IssueStatus
 }
 ```
 
-If you write your data model classes manually, change the Status property type from char to IssueStatus.
+If you write your data model classes manually, change the `Status` property type from char to `IssueStatus`.
 
-If you generate your data model with the help of a T4 template, add the following between loading server metadata and a call to GenerateModel():
+If you generate your data model with the help of a T4 template, add the following between loading server metadata and a call to `GenerateModel()`:
 
 ```cs
 Tables["Issue"].Columns["Status"].Type = "IssueStatus";
@@ -88,7 +88,7 @@ WHERE
   [t1].[Status] = N'O'
 ```
 
-Note that if you used int datatype for the Status column instead of char, then you could declare your enumeration like this:
+Note that if you used int datatype for the `Status` column instead of char, then you could declare your enumeration like this:
 
 ```cs
 public enum IssueStatus
@@ -100,9 +100,9 @@ public enum IssueStatus
 }
 ```
 
-and linq2db would do the mapping for you without the need for using the MapValue attribute (although integer values are less obvious than character codes when browsing data).
+and linq2db would do the mapping for you without the need for using the `MapValue` attribute (although integer values are less obvious than character codes when browsing data).
 
-Sometimes we may need to map multiple values in a database table to the same value in the datamodel class. Just add multiple MapValue attributes (we’ll use another enum for this example):
+Sometimes we may need to map multiple values in a database table to the same value in the datamodel class. Just add multiple `MapValue` attributes (we’ll use another enum for this example):
 
 ```cs
 public enum Gender
@@ -147,15 +147,15 @@ VALUES
 )
 ```
 
-As you can see Gender.Male has been mapped to ‘M’ (because it is marked with the IsDefault property set to true).
+As you can see `Gender.Male` has been mapped to ‘M’ (because it is marked with the IsDefault property set to true).
 
-There may be a situation when you need to get values specified by the MapValue attribute. There are different ways to accomplish this. You can write an extension method and use reflection inside, you can use a very powerful ConvertTo<T> class from linq2db, or you can use MappingSchema.Default.EnumToValue() method (also from linq2db), etc. ConvertTo<T> can be used like this:
+There may be a situation when you need to get values specified by the `MapValue` attribute. There are different ways to accomplish this. You can write an extension method and use reflection inside, you can use a very powerful `ConvertTo<T>` class from linq2db, or you can use `MappingSchema.Default.EnumToValue()` method (also from linq2db), etc. `ConvertTo<T>` can be used like this:
 
 ```cs
 string gender = ConvertTo<string>.From(Gender.Male); // will return "M"
 ```
 
-Often developers create a separate table to store possible values and use a foreign key to provide database integrity. If you need to be able to update the range of values without redeployment of source code, or if you see that table as a separate entity (with its own attributes), or you want to be able to understand the values without looking at the source code (e.g. that Status = 1 means “Open”, in case you used integer as underlying datatype), which may be useful for DBAs and BAs, creating a separate table may be the right approach. But if you don’t need these features, then just setting CHECK constraints may be a simple and good solution. In our example, if we use SQL Server, we can set the following constraint:
+Often developers create a separate table to store possible values and use a foreign key to provide database integrity. If you need to be able to update the range of values without redeployment of source code, or if you see that table as a separate entity (with its own attributes), or you want to be able to understand the values without looking at the source code (e.g. that `Status = 1` means `Open`, in case you used integer as underlying datatype), which may be useful for DBAs and BAs, creating a separate table may be the right approach. But if you don’t need these features, then just setting CHECK constraints may be a simple and good solution. In our example, if we use SQL Server, we can set the following constraint:
 
 ```sql
 ALTER TABLE 
