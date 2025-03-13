@@ -9,10 +9,10 @@ If we [generate our data model](https://github.com/linq2db/t4models) without any
 [Table(Schema="dbo", Name="Issue")]
 public partial class Issue
 {
-  [PrimaryKey, Identity   ] public int    ID          { get; set; } // int
-  [Column,     NotNull    ] public string Subject     { get; set; } // varchar(8000)
-  [Column,        Nullable] public string Description { get; set; } // varchar(max)
-  [Column,     NotNull    ] public char   Status      { get; set; } // char(1)
+    [PrimaryKey, Identity   ] public int    ID          { get; set; } // int
+    [Column,     NotNull    ] public string Subject     { get; set; } // varchar(8000)
+    [Column,        Nullable] public string Description { get; set; } // varchar(max)
+    [Column,     NotNull    ] public char   Status      { get; set; } // char(1)
 }
 ```
 
@@ -21,10 +21,10 @@ As you understand, it's not convenient to use char values when working with Stat
 ```cs
 public enum IssueStatus
 {
-  Open,
-  InProgress,
-  Resolved,
-  Closed
+    Open,
+    InProgress,
+    Resolved,
+    Closed
 }
 ```
 
@@ -46,10 +46,10 @@ using LinqToDB.Mapping;
  
 public enum IssueStatus
 {
-  [MapValue('O')] Open,
-  [MapValue('I')] InProgress,
-  [MapValue('R')] Resolved,
-  [MapValue('C')] Closed
+    [MapValue('O')] Open,
+    [MapValue('I')] InProgress,
+    [MapValue('R')] Resolved,
+    [MapValue('C')] Closed
 }
 ```
 
@@ -63,10 +63,10 @@ Our data model class will look like this now:
 [Table(Schema="dbo", Name="Issue")]
 public partial class Issue
 {
-  [PrimaryKey, Identity   ] public int         ID          { get; set; } // int
-  [Column,     NotNull    ] public string      Subject     { get; set; } // varchar(8000)
-  [Column,        Nullable] public string      Description { get; set; } // varchar(max)
-  [Column,     NotNull    ] public IssueStatus Status      { get; set; } // char(1)
+    [PrimaryKey, Identity   ] public int         ID          { get; set; } // int
+    [Column,     NotNull    ] public string      Subject     { get; set; } // varchar(8000)
+    [Column,        Nullable] public string      Description { get; set; } // varchar(max)
+    [Column,     NotNull    ] public IssueStatus Status      { get; set; } // char(1)
 }
 ```
 
@@ -83,14 +83,14 @@ This will generate the following query (for SQL Server):
 
 ```sql
 SELECT
-  [t1].[ID],
-  [t1].[Subject],
-  [t1].[Description],
-  [t1].[Status]
+    [t1].[ID],
+    [t1].[Subject],
+    [t1].[Description],
+    [t1].[Status]
 FROM
-  [dbo].[Issue] [t1]
+    [dbo].[Issue] [t1]
 WHERE
-  [t1].[Status] = N'O'
+    [t1].[Status] = N'O'
 ```
 
 Note that if you used the `int` datatype for the `Status` column instead of char, then you could declare your enumeration like this:
@@ -98,10 +98,10 @@ Note that if you used the `int` datatype for the `Status` column instead of char
 ```cs
 public enum IssueStatus
 {
-  Open       = 1,
-  InProgress = 2,
-  Resolved   = 3,
-  Closed     = 4
+    Open       = 1,
+    InProgress = 2,
+    Resolved   = 3,
+    Closed     = 4
 }
 ```
 
@@ -112,26 +112,26 @@ Sometimes we may need to map multiple values in a database table to the same val
 ```cs
 public enum Gender
 {
-  [MapValue(null)]
-  Undefined,
+    [MapValue(null)]
+    Undefined,
 
-  [MapValue("M", IsDefault = true)]
-  [MapValue("Male")]
-  Male,
+    [MapValue("M", IsDefault = true)]
+    [MapValue("Male")]
+    Male,
 
-  [MapValue("F", IsDefault = true)]
-  [MapValue("Female")]
-  Female
+    [MapValue("F", IsDefault = true)]
+    [MapValue("Female")]
+    Female
 }
 
 using (var db = new DataModel())
 {
-  db.People.Insert(() => new Person 
-  {
-    FirstName = "Herbert",
-    LastName  = "Wells",
-    Gender    = Gender.Male
-  });
+    db.People.Insert(() => new Person 
+    {
+        FirstName = "Herbert",
+        LastName  = "Wells",
+        Gender    = Gender.Male
+    });
 }
 ```
 
@@ -140,19 +140,19 @@ Generated SQL (for SQL Server):
 ```sql
 INSERT INTO [dbo].[Person]
 (
-  [FirstName],
-  [LastName],
-  [Gender]
+    [FirstName],
+    [LastName],
+    [Gender]
 )
 VALUES
 (
-  N'Herbert',
-  N'Wells',
-  N'M'
+    N'Herbert',
+    N'Wells',
+    N'M'
 )
 ```
 
-As you can see, `Gender.Male` has been mapped to ‘M' (because it is marked with the IsDefault property set to true).
+As you can see, `Gender.Male` has been mapped to ï¿½M' (because it is marked with the IsDefault property set to true).
 
 There may be a situation when you need to get values specified by the `MapValue` attribute. There are different ways to accomplish this. You can write an extension method and use reflection inside, you can use a very powerful `ConvertTo<T>` class from linq2db, or you can use `MappingSchema.Default.EnumToValue()` method (also from linq2db), etc. `ConvertTo<T>` can be used like this:
 
@@ -164,7 +164,7 @@ Often developers create a separate table to store possible values and use a fore
 
 ```sql
 ALTER TABLE 
-  dbo.Issue
+    dbo.Issue
 ADD CONSTRAINT 
-  CK_IssueStatus CHECK (Status IN ('O', 'I', 'R', 'C'))
+    CK_IssueStatus CHECK (Status IN ('O', 'I', 'R', 'C'))
 ```
