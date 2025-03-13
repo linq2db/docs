@@ -47,19 +47,19 @@ public class MySQLiteDb : DataConnection // or DataContext
         new DataOptions()
             .UseSQLite(connectionString)
             .UseAfterConnectionOpened(
-              connection =>
-              {
-                using var cmd = connection.CreateCommand();
-                cmd.CommandText = $"PRAGMA KEY '{key}'";
-                cmd.ExecuteNonQuery();
-              },
-              // optionally add async version to use non-blocking calls from async execution path
-              async (connection, cancellationToken) =>
-              {
-                using var cmd = connection.CreateCommand();
-                cmd.CommandText = $"PRAGMA KEY '{key}'";
-                await cmd.ExecuteNonQueryAsync(cancellationToken);
-              }))
+                connection =>
+                {
+                    using var cmd = connection.CreateCommand();
+                    cmd.CommandText = $"PRAGMA KEY '{key}'";
+                    cmd.ExecuteNonQuery();
+                },
+                // optionally add async version to use non-blocking calls from async execution path
+                async (connection, cancellationToken) =>
+                {
+                    using var cmd = connection.CreateCommand();
+                    cmd.CommandText = $"PRAGMA KEY '{key}'";
+                    await cmd.ExecuteNonQueryAsync(cancellationToken);
+                }))
     {
     }
 }
@@ -119,12 +119,12 @@ For .NET Framework you just need to add assembly bindings redirect to your confi
 
 ```xml
 <runtime>
-  <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
     <dependentAssembly>
-      <assemblyIdentity name="Microsoft.SqlServer.Types" publicKeyToken="89845dcd8080cc91" culture="neutral"/>
-      <bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0" />
+        <assemblyIdentity name="Microsoft.SqlServer.Types" publicKeyToken="89845dcd8080cc91" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0" />
     </dependentAssembly>
-  </assemblyBinding>
+    </assemblyBinding>
 </runtime>
 ```
 
