@@ -253,7 +253,7 @@ public void MapMemberTest()
 {
     using (var db = new DataModel())
     {
-        ar customers = db.Customers.Where(c => string.IsNullOrWhiteSpace(c.Email)).ToList();
+        var customers = db.Customers.Where(c => string.IsNullOrWhiteSpace(c.Email)).ToList();
     }
 }
 ```
