@@ -71,7 +71,7 @@ WHERE
 
 Notice the use of the `Sql.ExpressionAttribute.PreferServerSide` property set to true. `PreferServerSide = true` tells LINQ to DB to convert the method to SQL if possible, and if it's not possible for some reason - then to execute the method locally.
 
-There is another similar property � `ServerSideOnly`. If it's set to True, LINQ to DB will throw an exception if it can't convert a method to SQL. It can be set to true when you can't, don't need or don't want to write a client-side implementation.
+There is another similar property - `ServerSideOnly`. If it's set to True, LINQ to DB will throw an exception if it can't convert a method to SQL. It can be set to true when you can't, don't need or don't want to write a client-side implementation.
 
 You may have a valid question: When can't LINQ to DB generate SQL? How is that possible if we show LINQ to DB what we want to generate? Here is a simple example:
 
