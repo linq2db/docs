@@ -152,7 +152,7 @@ VALUES
 )
 ```
 
-As you can see, `Gender.Male` has been mapped to �M' (because it is marked with the IsDefault property set to true).
+As you can see, `Gender.Male` has been mapped to 'M' (because it is marked with the IsDefault property set to true).
 
 There may be a situation when you need to get values specified by the `MapValue` attribute. There are different ways to accomplish this. You can write an extension method and use reflection inside, you can use a very powerful `ConvertTo<T>` class from linq2db, or you can use `MappingSchema.Default.EnumToValue()` method (also from linq2db), etc. `ConvertTo<T>` can be used like this:
 
