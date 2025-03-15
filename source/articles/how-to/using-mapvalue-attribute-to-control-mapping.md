@@ -1,9 +1,10 @@
-# Using MapValueAttribute to control mapping with linq2db
-One of the primary functions of [linq2db](https://github.com/linq2db) is mapping between a database and classes/properties in your data model. Linq2db does a great job here straight out of the box, but often it is desirable to tune this process.  The most frequent example of where you may need this is with enumerations.
+# Using MapValueAttribute to control mapping with Linq To DB
+
+One of the primary functions of [Linq To DB](https://github.com/linq2db) is mapping between a database and classes/properties in your data model. Linq2db does a great job here straight out of the box, but often it is desirable to tune this process.  The most frequent example of where you may need this is with enumerations.
 
 Let's say you have a table called Issue. Each issue has a status, which can be one of the predefined values: Open, InProgress, Resolved, Closed. Let's assume we use a CHAR(1) field to keep a status value ('O' = Open, 'R' = Resolved, etc.).
 
-If we [generate our data model](https://github.com/linq2db/t4models) without any tuning, we may get something like this:
+If we [scaf](https://www.nuget.org/packages/linq2db.cli)[fold](https://www.nuget.org/packages/linq2db.t4models) our data model without any tuning, we may get something like this:
 
 ```cs
 [Table(Schema="dbo", Name="Issue")]
@@ -30,14 +31,8 @@ public enum IssueStatus
 
 In order to replace the Status type with an enumeration and teach linq2db how to do the mapping, we need to complete two simple steps:
 
-<ol>
-<li>
-
-Use the `MapValue` attribute to explain to linq2db how to map between the enumeration and char values in the database table</li>
-<li>
-
-Change the `Status` property type from char to `IssueStatus`.</li>
-</ol>
+1. Use the `MapValue` attribute to explain to linq2db how to map between the enumeration and char values in the database table<
+1. Change the `Status` property type from char to `IssueStatus`.
 
 The first step is accomplished like this:
 
@@ -59,7 +54,11 @@ If you generate your data model with the help of a T4 template, add the followin
 
 ```cs
 Tables["Issue"].Columns["Status"].Type = "IssueStatus";
+```
+
 Our data model class will look like this now:
+
+```cs
 [Table(Schema="dbo", Name="Issue")]
 public partial class Issue
 {

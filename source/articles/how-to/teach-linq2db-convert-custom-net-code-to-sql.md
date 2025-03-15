@@ -1,29 +1,19 @@
 # How to teach LINQ to DB to convert custom .NET methods and objects to SQL
-You may run into a situation where LINQ to DB does not know how to convert some .NET method, property or object to SQL. But that is not a problem because LINQ to DB likes to learn. Just teach it :). In one of our previous blog posts we wrote about [Using this MapValueAttribute to control mapping with linq2db](xref:using-mapvalue-attribute-to-control-mapping.md). In this article we will go a little bit deeper.
+
+You may run into a situation where LINQ to DB does not know how to convert some .NET method, property or object to SQL. But that is not a problem because LINQ to DB likes to learn. Just teach it :). In another article we wrote about [Using this MapValueAttribute to control mapping with Linq To DB](xref:using-mapvalue-attribute-to-control-mapping.md). In this article we will go a little bit deeper.
 
 There are multiple ways to teach LINQ to DB how to convert custom properties and methods into SQL, but the primary ones are:
 
-<ul>
-<li>
-
-[LinqToDB.Sql.ExpressionAttribute](#sqlexpression) and [LinqToDB.Sql.FunctionAttribute](#sqlfunction-attribute)</li>
-
-<li>
-
-[LinqToDB.ExpressionMethodAttribute](#expressionmethod)
-</li>
-<li>
-
-[LinqToDB.Linq.Expressions.MapMember()](#mapmember) method
-<li>
-
-[LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter()](#setvaluetosqlconverter) method
-</ol>
+- [LinqToDB.Sql.ExpressionAttribute](#sqlexpression) and [LinqToDB.Sql.FunctionAttribute](#sqlfunction-attribute)
+- [LinqToDB.ExpressionMethodAttribute](#expressionmethod)
+- [LinqToDB.Linq.Expressions.MapMember()](#mapmember) method
+- [LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter()](#setvaluetosqlconverter) method
 
 Let's see how to use each of these methods.
 
-### Sql.Expression
-Let's say you love SQL's BETWEEN operator and you find out that LINQ to DB does not have `Between()` method out of the box, so you have to write something like this:
+## Sql.Expression
+
+Let's say you love SQL's BETWEEN operator and you find out that LINQ to DB does not have `Between()` method (only as example, as we have it, check `Sql.Between` API) out of the box, so you have to write something like this:
 
 ```cs
 var query = db.Customers.Where(c => c.ID >= 1000 && c.ID <= 2000);
@@ -86,7 +76,8 @@ Let's say `SomeServerSideOnlyMethod()` is a method with the `Sql.Expression` att
 
 Since `SomeLocalApplicationMethod()` must be executed locally, LINQ to DB has to first read the `Customer.ID` field values from the table to pass them to `SomeLocalApplicationMethod()` on the client side. From this moment the query, including the call to `SomeServerSideOnlyMethod()`, will have to be executed locally. But considering that `SomeServerSideOnlyMethod()` is marked as `ServerSideOnly = true`, LINQ to DB will throw an exception.
 
-### Sql.Function attribute
+## Sql.Function attribute
+
 Presume that we are using SQL Server and we want to check if a string contains a representation of a numeric value. SQL Server has the `IsNumeric()` function, but LINQ to DB does not support it out of the box. It's easy to fix:
 
 ```cs
@@ -124,7 +115,8 @@ WHERE
 
 Please note, that you may omit specifying the function name in the attribute explicitly - in this case the method name (that the attribute is applied to) will be used as a function name.
 
-### ExpressionMethod
+## ExpressionMethod
+
 Let us now examine the next attribute - `LinqToDB.ExpressionMethodAttribute`, a very powerful one. The `ExpressionMethodAttribute` allows specifying an expression that LINQ to DB will translate into SQL.
 
 For those of us who are fans of the SQL's `IN` operator, let's show how we can make LINQ to DB support it:
@@ -232,7 +224,8 @@ WHERE
 
 You can find more examples of ExpressionMethod usage (including a possible `LeftJoin()` implementation that may be of interest to you) here: [ExpressionTests.cs](https://github.com/linq2db/linq2db/blob/master/Tests/Linq/Linq/ExpressionsTests.cs)
 
-### MapMember()
+## MapMember()
+
 The next method we will discuss is the `LinqToDB.Linq.Expressions.MapMember()` method (having numerous overloads). It allows you to specify how to convert existing methods and properties. Basically, you provide the original method or property and the corresponding `Expression` that will be used by LINQ to DB instead of the original method. Internally LINQ to DB uses `MapMember()` to map hundreds of standard .NET framework methods and properties.
 
 For example, we would like to make LINQ to DB support the `String.IsNullOrWhitespace()` method and we can't add the `ExpressionMethod` attribute to `IsNullOrWhitespace()` because it's a framework's method and we can't change it.
@@ -273,14 +266,11 @@ WHERE
     [t1].[Email] IS NULL OR RTrim([t1].[Email]) = N''
 ```
 
-### SetValueToSqlConverter()
+## SetValueToSqlConverter()
 
 The last method we will examine is `LinqToDB.Mapping.MappingSchema.SetValueToSqlConverter()`. It is used to control exactly how a value will be converted to SQL. The two primary use cases for this method are:
 
-<ol>
-<li>
-
-When adding support for a new database provider. For example, when working with the `Boolean` data type in Informix RDBMS, `t` represents the logical value TRUE and `f` represents FALSE. Here is how this is implemented in LinqToDB as a part of its Informix support:
+1. When adding support for a new database provider. For example, when working with the `Boolean` data type in Informix RDBMS, `t` represents the logical value TRUE and `f` represents FALSE. Here is how this is implemented in LinqToDB as a part of its Informix support:
 
 ```cs
 public class InformixMappingSchema : MappingSchema
@@ -291,11 +281,8 @@ public class InformixMappingSchema : MappingSchema
     }
 } 
 ```
-</li>
 
-<li>
-
-When adding support for a new data type. For example, here is how to teach LINQ to DB to consider the `SqlDecimal.IsNull` property and correctly convert `SqlDecimal` objects to SQL:
+2. When adding support for a new data type. For example, here is how to teach LINQ to DB to consider the `SqlDecimal.IsNull` property and correctly convert `SqlDecimal` objects to SQL:
 
 ```cs
 MappingSchema.Default.SetValueToSqlConverter(
@@ -310,4 +297,3 @@ MappingSchema.Default.SetValueToSqlConverter(
             sb.Append(v);
     });
 ```
-</li>
