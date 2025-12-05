@@ -113,6 +113,54 @@
 			],
 			"output": "api/linq2db.identity",
 			"globalNamespaceId": "linq2db.identity"
+		},
+		{
+			"src": [
+				{
+					"files": [
+						"linq2db/Source/LinqToDB.Remote.HttpClient.Client/LinqToDB.Remote.HttpClient.Client.csproj"
+					],
+					"src": "../submodules"
+				}
+			],
+			"output": "api/linq2db.remote.httpclient.client",
+			"globalNamespaceId": "linq2db.httpclient.client"
+		},
+		{
+			"src": [
+				{
+					"files": [
+						"linq2db/Source/LinqToDB.Remote.HttpClient.Server/LinqToDB.Remote.HttpClient.Server.csproj"
+					],
+					"src": "../submodules"
+				}
+			],
+			"output": "api/linq2db.remote.httpclient.server",
+			"globalNamespaceId": "linq2db.httpclient.server"
+		},
+		{
+			"src": [
+				{
+					"files": [
+						"linq2db/Source/LinqToDB.Remote.SignalR.Client/LinqToDB.Remote.SignalR.Client.csproj"
+					],
+					"src": "../submodules"
+				}
+			],
+			"output": "api/linq2db.remote.signalr.client",
+			"globalNamespaceId": "linq2db.signalr.client"
+		},
+		{
+			"src": [
+				{
+					"files": [
+						"linq2db/Source/LinqToDB.Remote.SignalR.Server/LinqToDB.Remote.SignalR.Server.csproj"
+					],
+					"src": "../submodules"
+				}
+			],
+			"output": "api/linq2db.remote.signalr.server",
+			"globalNamespaceId": "linq2db.signalr.server"
 		}
 	],
 	"build": {
@@ -128,6 +176,10 @@
 					"api/linq2db.identity/*.yml",
 					"api/linq2db.remote.grpc/*.yml",
 					"api/linq2db.remote.wcf/*.yml",
+					"api/linq2db.remote.signalr.client/*.yml",
+					"api/linq2db.remote.signalr.server/*.yml",
+					"api/linq2db.remote.httpclient.client/*.yml",
+					"api/linq2db.remote.httpclient.server/*.yml",
 					"articles/**/*.md",
 					"articles/**/toc.yml",
 					"toc.yml",
