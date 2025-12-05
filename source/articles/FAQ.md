@@ -30,43 +30,43 @@ Configure connection on creation/open (SQL Server and SQLite examples):
 ```cs
 public class MySqlServerDb : DataConnection // or DataContext
 {
-  public MySqlServerDb(connectionString) : base(
-    new DataOptions()
-      .UseSqlServer(connectionString)
-      .UseBeforeConnectionOpened(connection =>
-      {
-        connection.AccessToken = "..token here..";
-      }))
-  {
-  }
+    public MySqlServerDb(connectionString) : base(
+        new DataOptions()
+            .UseSqlServer(connectionString)
+            .UseBeforeConnectionOpened(connection =>
+            {
+                connection.AccessToken = "..token here..";
+            }))
+    {
+    }
 }
 
 public class MySQLiteDb : DataConnection // or DataContext
 {
-  public MySQLiteDb(connectionString) : base(
-    new DataOptions()
-      .UseSQLite(connectionString)
-      .UseAfterConnectionOpened(
-        connection =>
-        {
-          using var cmd = connection.CreateCommand();
-          cmd.CommandText = $"PRAGMA KEY '{key}'";
-          cmd.ExecuteNonQuery();
-        },
-        // optionally add async version to use non-blocking calls from async execution path
-        async (connection, cancellationToken) =>
-        {
-          using var cmd = connection.CreateCommand();
-          cmd.CommandText = $"PRAGMA KEY '{key}'";
-          await cmd.ExecuteNonQueryAsync(cancellationToken);
-        }))
-  {
-  }
+    public MySQLiteDb(connectionString) : base(
+        new DataOptions()
+            .UseSQLite(connectionString)
+            .UseAfterConnectionOpened(
+                connection =>
+                {
+                    using var cmd = connection.CreateCommand();
+                    cmd.CommandText = $"PRAGMA KEY '{key}'";
+                    cmd.ExecuteNonQuery();
+                },
+                // optionally add async version to use non-blocking calls from async execution path
+                async (connection, cancellationToken) =>
+                {
+                    using var cmd = connection.CreateCommand();
+                    cmd.CommandText = $"PRAGMA KEY '{key}'";
+                    await cmd.ExecuteNonQueryAsync(cancellationToken);
+                }))
+    {
+    }
 }
 
 using (var db = new MySqlServerDb())
 {
-  // queries here will get pre-configured connection
+    // queries here will get pre-configured connection
 }
 ```
 
@@ -119,12 +119,12 @@ For .NET Framework you just need to add assembly bindings redirect to your confi
 
 ```xml
 <runtime>
-  <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
     <dependentAssembly>
-      <assemblyIdentity name="Microsoft.SqlServer.Types" publicKeyToken="89845dcd8080cc91" culture="neutral"/>
-      <bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0" />
+        <assemblyIdentity name="Microsoft.SqlServer.Types" publicKeyToken="89845dcd8080cc91" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-14.0.0.0" newVersion="14.0.0.0" />
     </dependentAssembly>
-  </assemblyBinding>
+    </assemblyBinding>
 </runtime>
 ```
 
@@ -141,27 +141,27 @@ AssemblyLoadContext.Default.Resolving += OnAssemblyResolve;
 
 Assembly OnAssemblyResolve(AssemblyLoadContext assemblyLoadContext, AssemblyName assemblyName)
 {
-  try
-  {
-    // you need to unsubscribe here to avoid StackOverflowException,
-    // as LoadFromAssemblyName will go in recursion here otherwise
-    AssemblyLoadContext.Default.Resolving -= OnAssemblyResolve;
-    // return resolved assembly for cases when it can be resolved
-    return assemblyLoadContext.LoadFromAssemblyName(assemblyName);
-  }
-  catch
-  {
-    // on failue - check if it failed to load our types assembly
-    // and explicitly return it
-    if (assemblyName.Name == "Microsoft.SqlServer.Types")
-      return typeof(SqlGeography).Assembly;
-    // if it failed to load some other assembly - just pass exception as-is
-    throw;
-  }
-  finally
-  {
-    // don't forget to restore our load handler
-    AssemblyLoadContext.Default.Resolving += OnAssemblyResolve;
-  }
+    try
+    {
+        // you need to unsubscribe here to avoid StackOverflowException,
+        // as LoadFromAssemblyName will go in recursion here otherwise
+        AssemblyLoadContext.Default.Resolving -= OnAssemblyResolve;
+        // return resolved assembly for cases when it can be resolved
+        return assemblyLoadContext.LoadFromAssemblyName(assemblyName);
+    }
+    catch
+    {
+        // on failue - check if it failed to load our types assembly
+        // and explicitly return it
+        if (assemblyName.Name == "Microsoft.SqlServer.Types")
+          return typeof(SqlGeography).Assembly;
+        // if it failed to load some other assembly - just pass exception as-is
+        throw;
+    }
+    finally
+    {
+        // don't forget to restore our load handler
+        AssemblyLoadContext.Default.Resolving += OnAssemblyResolve;
+    }
 }
 ```
