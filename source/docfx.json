@@ -8,7 +8,12 @@
 			"src": [
 				{
 					"files": [
-						"linq2db/Source/LinqToDB/LinqToDB.csproj"
+						//"linq2db/Source/LinqToDB/LinqToDB.csproj"
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/linq2db.dll",
+						"linq2db/.build/bin/LinqToDB/Release/netstandard2.0/linq2db.dll",
+						"linq2db/.build/bin/LinqToDB/Release/net8.0/linq2db.dll",
+						"linq2db/.build/bin/LinqToDB/Release/net9.0/linq2db.dll",
+						"linq2db/.build/bin/LinqToDB/Release/net10.0/linq2db.dll"
 					],
 					"src": "../submodules"
 				}
@@ -34,7 +39,11 @@
 					"files": [
 						// crashes with assert
 						//"linq2db/.build/bin/LinqToDB.FSharp/Release/**/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net9.0/linq2db.FSharp.dll"
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/linq2db.FSharp.dll",
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/netstandard2.0/linq2db.FSharp.dll",
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/net8.0/linq2db.FSharp.dll",
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/net9.0/linq2db.FSharp.dll",
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/net10.0/linq2db.FSharp.dll"
 					],
 					"src": "../submodules"
 				}
