@@ -33,7 +33,8 @@
     href: api/linq2db.efcore.9/
   - name: Linq To DB for Entity Framework Core 10
     href: api/linq2db.efcore.10/
-  - name: Linq To DB Compat
-    href: api/linq2db.compat/
+# don't produce anything    
+#  - name: Linq To DB Compat
+#    href: api/linq2db.compat/
   - name: Linq To DB ASP.NET Identity Provider
     href: api/linq2db.identity/

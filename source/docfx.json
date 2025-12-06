@@ -115,7 +115,7 @@
 			"src": [
 				{
 					"files": [
-						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF3.csproj.csproj"
+						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF3.csproj"
 					],
 					"src": "../submodules"
 				}
@@ -127,7 +127,7 @@
 			"src": [
 				{
 					"files": [
-						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF8.csproj.csproj"
+						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF8.csproj"
 					],
 					"src": "../submodules"
 				}
@@ -139,7 +139,7 @@
 			"src": [
 				{
 					"files": [
-						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF9.csproj.csproj"
+						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF9.csproj"
 					],
 					"src": "../submodules"
 				}
@@ -151,7 +151,7 @@
 			"src": [
 				{
 					"files": [
-						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF10.csproj.csproj"
+						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF10.csproj"
 					],
 					"src": "../submodules"
 				}
