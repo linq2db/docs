@@ -49,8 +49,6 @@
 			"src": [
 				{
 					"files": [
-						// crashes with assert
-						//"linq2db/.build/bin/LinqToDB.FSharp/Release/**/linq2db.FSharp.dll",
 						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/linq2db.FSharp.dll",
 						"linq2db/.build/bin/LinqToDB.FSharp/Release/netstandard2.0/linq2db.FSharp.dll",
 						"linq2db/.build/bin/LinqToDB.FSharp/Release/net8.0/linq2db.FSharp.dll",
@@ -225,10 +223,11 @@
 			{
 				"files": [
 					"api/linq2db/*.yml",
+					"api/linq2db.compat/*.yml",
 					"api/linq2db.tools/*.yml",
 					"api/linq2db.scaffold/*.yml",
 					"api/linq2db.extensions/*.yml",
-					"api/linq2db.efcore/*.yml",
+					"api/linq2db.efcore.*/*.yml",
 					"api/linq2db.fsharp/*.yml",
 					"api/linq2db.identity/*.yml",
 					"api/linq2db.compat/*.yml",
