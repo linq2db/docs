@@ -37,6 +37,18 @@
 			"src": [
 				{
 					"files": [
+						"linq2db/Source/LinqToDB.Compat/LinqToDB.Compat.csproj"
+					],
+					"src": "../submodules"
+				}
+			],
+			"output": "api/linq2db.compat",
+			"globalNamespaceId": "linq2db.compat"
+		},
+		{
+			"src": [
+				{
+					"files": [
 						// crashes with assert
 						//"linq2db/.build/bin/LinqToDB.FSharp/Release/**/linq2db.FSharp.dll",
 						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/linq2db.FSharp.dll",
@@ -103,13 +115,49 @@
 			"src": [
 				{
 					"files": [
-						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.csproj"
+						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF3.csproj.csproj"
 					],
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore",
-			"globalNamespaceId": "linq2db.efcore"
+			"output": "api/linq2db.efcore.3",
+			"globalNamespaceId": "linq2db.efcore.3"
+		},
+		{
+			"src": [
+				{
+					"files": [
+						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF8.csproj.csproj"
+					],
+					"src": "../submodules"
+				}
+			],
+			"output": "api/linq2db.efcore.8",
+			"globalNamespaceId": "linq2db.efcore.8"
+		},
+		{
+			"src": [
+				{
+					"files": [
+						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF9.csproj.csproj"
+					],
+					"src": "../submodules"
+				}
+			],
+			"output": "api/linq2db.efcore.9",
+			"globalNamespaceId": "linq2db.efcore.9"
+		},
+		{
+			"src": [
+				{
+					"files": [
+						"linq2db/Source/LinqToDB.EntityFrameworkCore/LinqToDB.EntityFrameworkCore.EF10.csproj.csproj"
+					],
+					"src": "../submodules"
+				}
+			],
+			"output": "api/linq2db.efcore.10",
+			"globalNamespaceId": "linq2db.efcore.10"
 		},
 		{
 			"src": [
@@ -183,6 +231,7 @@
 					"api/linq2db.efcore/*.yml",
 					"api/linq2db.fsharp/*.yml",
 					"api/linq2db.identity/*.yml",
+					"api/linq2db.compat/*.yml",
 					"api/linq2db.remote.grpc/*.yml",
 					"api/linq2db.remote.wcf/*.yml",
 					"api/linq2db.remote.signalr.client/*.yml",
@@ -202,7 +251,8 @@
 					"images/**",
 					"**.png",
 					"**.jpg",
-					"articles/cli-help.txt"
+					"articles/cli-help.txt",
+					".nojekyll"
 				]
 			}
 		],
