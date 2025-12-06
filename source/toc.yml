@@ -25,8 +25,14 @@
     href: api/linq2db.tools/
   - name: Linq To DB Scaffold Framework
     href: api/linq2db.scaffold/
-  - name: Linq To DB for Entity Framework Core
-    href: api/linq2db.efcore/
+  - name: Linq To DB for Entity Framework Core 3
+    href: api/linq2db.efcore.3/
+  - name: Linq To DB for Entity Framework Core 8
+    href: api/linq2db.efcore.8/
+  - name: Linq To DB for Entity Framework Core 9
+    href: api/linq2db.efcore.9/
+  - name: Linq To DB for Entity Framework Core 10
+    href: api/linq2db.efcore.10/
   - name: Linq To DB Compat
     href: api/linq2db.compat/
   - name: Linq To DB ASP.NET Identity Provider
