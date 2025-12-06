@@ -14,6 +14,12 @@ steps:
   persistCredentials: true
   submodules: true
 
+- task: UseDotNet@2
+  displayName: 'Use latest .NET SDK'
+  inputs:
+    packageType: sdk
+    version: 10.x
+
 # build and deploy documentation
 - task: PowerShell@2
   inputs:
