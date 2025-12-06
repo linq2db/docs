@@ -251,7 +251,8 @@
 					"images/**",
 					"**.png",
 					"**.jpg",
-					"articles/cli-help.txt"
+					"articles/cli-help.txt",
+					".nojekyll"
 				]
 			}
 		],
