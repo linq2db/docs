@@ -18,8 +18,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db",
-			"globalNamespaceId": "linq2db"
+			"output": "api/linq2db"
 		},
 		{
 			"src": [
@@ -30,8 +29,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.extensions",
-			"globalNamespaceId": "linq2db.extensions"
+			"output": "api/linq2db.extensions"
 		},
 		{
 			"src": [
@@ -42,8 +40,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.compat",
-			"globalNamespaceId": "linq2db.compat"
+			"output": "api/linq2db.compat"
 		},
 		{
 			"src": [
@@ -60,8 +57,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.fsharp",
-			"globalNamespaceId": "linq2db.fsharp"
+			"output": "api/linq2db.fsharp"
 		},
 		{
 			"src": [
@@ -72,8 +68,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.grpc",
-			"globalNamespaceId": "linq2db.grpc"
+			"output": "api/linq2db.remote.grpc"
 		},
 		{
 			"src": [
@@ -84,8 +79,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.wcf",
-			"globalNamespaceId": "linq2db.wcf"
+			"output": "api/linq2db.remote.wcf"
 		},
 		{
 			"src": [
@@ -96,8 +90,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.tools",
-			"globalNamespaceId": "linq2db.tools"
+			"output": "api/linq2db.tools"
 		},
 		{
 			"src": [
@@ -108,8 +101,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.scaffold",
-			"globalNamespaceId": "linq2db.scaffold"
+			"output": "api/linq2db.scaffold"
 		},
 		{
 			"src": [
@@ -120,8 +112,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore.3",
-			"globalNamespaceId": "linq2db.efcore.3"
+			"output": "api/linq2db.efcore.3"
 		},
 		{
 			"src": [
@@ -132,8 +123,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore.8",
-			"globalNamespaceId": "linq2db.efcore.8"
+			"output": "api/linq2db.efcore.8"
 		},
 		{
 			"src": [
@@ -144,8 +134,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore.9",
-			"globalNamespaceId": "linq2db.efcore.9"
+			"output": "api/linq2db.efcore.9"
 		},
 		{
 			"src": [
@@ -156,8 +145,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore.10",
-			"globalNamespaceId": "linq2db.efcore.10"
+			"output": "api/linq2db.efcore.10"
 		},
 		{
 			"src": [
@@ -168,8 +156,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.identity",
-			"globalNamespaceId": "linq2db.identity"
+			"output": "api/linq2db.identity"
 		},
 		{
 			"src": [
@@ -180,8 +167,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.httpclient.client",
-			"globalNamespaceId": "linq2db.httpclient.client"
+			"output": "api/linq2db.remote.httpclient.client"
 		},
 		{
 			"src": [
@@ -192,8 +178,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.httpclient.server",
-			"globalNamespaceId": "linq2db.httpclient.server"
+			"output": "api/linq2db.remote.httpclient.server"
 		},
 		{
 			"src": [
@@ -204,8 +189,7 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.signalr.client",
-			"globalNamespaceId": "linq2db.signalr.client"
+			"output": "api/linq2db.remote.signalr.client"
 		},
 		{
 			"src": [
@@ -216,30 +200,15 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.signalr.server",
-			"globalNamespaceId": "linq2db.signalr.server"
+			"output": "api/linq2db.remote.signalr.server"
 		}
 	],
 	"build": {
 		"content": [
 			{
 				"files": [
-					"api/linq2db/*.yml",
-					"api/linq2db.tools/*.yml",
-					"api/linq2db.scaffold/*.yml",
-					"api/linq2db.extensions/*.yml",
-					"api/linq2db.efcore/*.yml",
-					"api/linq2db.fsharp/*.yml",
-					"api/linq2db.identity/*.yml",
-					"api/linq2db.compat/*.yml",
-					"api/linq2db.remote.grpc/*.yml",
-					"api/linq2db.remote.wcf/*.yml",
-					"api/linq2db.remote.signalr.client/*.yml",
-					"api/linq2db.remote.signalr.server/*.yml",
-					"api/linq2db.remote.httpclient.client/*.yml",
-					"api/linq2db.remote.httpclient.server/*.yml",
-					"articles/**/*.md",
-					"articles/**/toc.yml",
+					"api/**/*.{md,yml}",
+					"articles/**/*.{md,yml}",
 					"toc.yml",
 					"*.md"
 				]
