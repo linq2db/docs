@@ -1,25 +1,21 @@
 {
 	//https://github.com/dotnet/docfx/tree/main/docs/docs
 	"metadata": [
-		// specify path to non-test c# projects
-		// XML documentation comments from those projects will be used
-		// for API documentation generation
+		// IMPORTANT:
+		// we use custom docfx build to handle namespace conflicts:
+		// https://github.com/dotnet/docfx/issues/8966
+		// globalPrefix property doesn't exists in vanilla docfx
 		{
 			"src": [
 				{
 					"files": [
-						//"linq2db/Source/LinqToDB/LinqToDB.csproj"
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/linq2db.dll",
-						"linq2db/.build/bin/LinqToDB/Release/netstandard2.0/linq2db.dll",
-						"linq2db/.build/bin/LinqToDB/Release/net8.0/linq2db.dll",
-						"linq2db/.build/bin/LinqToDB/Release/net9.0/linq2db.dll",
-						"linq2db/.build/bin/LinqToDB/Release/net10.0/linq2db.dll"
+						"linq2db/Source/LinqToDB/LinqToDB.csproj"
 					],
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db",
-			"globalNamespaceId": "Root.LinqToDB"
+			"filter": "filter.yml",
+			"output": "api/linq2db"
 		},
 		{
 			"src": [
@@ -30,8 +26,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.extensions",
-			"globalNamespaceId": "Root.Extensions"
+			"filter": "filter.yml",
+			"output": "api/linq2db.extensions"
 		},
 		{
 			"src": [
@@ -42,26 +38,20 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.compat",
-			"globalNamespaceId": "Root.Compat"
+			"filter": "filter.yml",
+			"output": "api/linq2db.compat"
 		},
 		{
 			"src": [
 				{
 					"files": [
-						// crashes with assert
-						//"linq2db/.build/bin/LinqToDB.FSharp/Release/**/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/netstandard2.0/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net8.0/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net9.0/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net10.0/linq2db.FSharp.dll"
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/**/linq2db.FSharp.dll"
 					],
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.fsharp",
-			"globalNamespaceId": "Root.FSharp"
+			"filter": "filter.yml",
+			"output": "api/linq2db.fsharp"
 		},
 		{
 			"src": [
@@ -72,8 +62,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.grpc",
-			"globalNamespaceId": "Root.gRPC"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.grpc"
 		},
 		{
 			"src": [
@@ -84,8 +74,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.wcf",
-			"globalNamespaceId": "Root.WCF"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.wcf"
 		},
 		{
 			"src": [
@@ -96,8 +86,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.tools",
-			"globalNamespaceId": "Root.Tools"
+			"filter": "filter.yml",
+			"output": "api/linq2db.tools"
 		},
 		{
 			"src": [
@@ -108,8 +98,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.scaffold",
-			"globalNamespaceId": "Root.Scaffold"
+			"filter": "filter.yml",
+			"output": "api/linq2db.scaffold"
 		},
 		{
 			"src": [
@@ -120,8 +110,9 @@
 					"src": "../submodules"
 				}
 			],
+			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.3",
-			"globalNamespaceId": "Root.EF3"
+			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF3"
 		},
 		{
 			"src": [
@@ -132,8 +123,9 @@
 					"src": "../submodules"
 				}
 			],
+			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.8",
-			"globalNamespaceId": "Root.EF8"
+			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF8"
 		},
 		{
 			"src": [
@@ -144,8 +136,9 @@
 					"src": "../submodules"
 				}
 			],
+			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.9",
-			"globalNamespaceId": "Root.EF9"
+			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF9"
 		},
 		{
 			"src": [
@@ -156,8 +149,9 @@
 					"src": "../submodules"
 				}
 			],
+			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.10",
-			"globalNamespaceId": "Root.EF10"
+			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF10"
 		},
 		{
 			"src": [
@@ -168,8 +162,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.identity",
-			"globalNamespaceId": "Root.Identity"
+			"filter": "filter.yml",
+			"output": "api/linq2db.identity"
 		},
 		{
 			"src": [
@@ -180,8 +174,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.httpclient.client",
-			"globalNamespaceId": "Root.Http.Client"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.httpclient.client"
 		},
 		{
 			"src": [
@@ -192,8 +186,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.httpclient.server",
-			"globalNamespaceId": "Root.Http.Server"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.httpclient.server"
 		},
 		{
 			"src": [
@@ -204,8 +198,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.signalr.client",
-			"globalNamespaceId": "Root.SignalR.Client"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.signalr.client"
 		},
 		{
 			"src": [
@@ -216,8 +210,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.signalr.server",
-			"globalNamespaceId": "Root.SignalR.Server"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.signalr.server"
 		}
 	],
 	"build": {
