@@ -18,7 +18,9 @@ Write-Host Restore...
 dotnet build -c Release 'submodules/linq2db/Source/LinqToDB.FSharp/LinqToDB.FSharp.fsproj'
 
 Write-Host Build DocFX documentation...
-docfx source/docfx.json
+# docfx source/docfx.json
+# use custom build
+./docfx/docfx source/docfx.json
 
 if ($LASTEXITCODE -ne 0)
 {
