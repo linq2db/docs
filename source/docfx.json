@@ -18,7 +18,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db"
+			"output": "api/linq2db",
+			"globalNamespaceId": "Root.LinqToDB"
 		},
 		{
 			"src": [
@@ -29,7 +30,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.extensions"
+			"output": "api/linq2db.extensions",
+			"globalNamespaceId": "Root.Extensions"
 		},
 		{
 			"src": [
@@ -40,7 +42,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.compat"
+			"output": "api/linq2db.compat",
+			"globalNamespaceId": "Root.Compat"
 		},
 		{
 			"src": [
@@ -57,7 +60,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.fsharp"
+			"output": "api/linq2db.fsharp",
+			"globalNamespaceId": "Root.FSharp"
 		},
 		{
 			"src": [
@@ -68,7 +72,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.grpc"
+			"output": "api/linq2db.remote.grpc",
+			"globalNamespaceId": "Root.gRPC"
 		},
 		{
 			"src": [
@@ -79,7 +84,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.wcf"
+			"output": "api/linq2db.remote.wcf",
+			"globalNamespaceId": "Root.WCF"
 		},
 		{
 			"src": [
@@ -90,7 +96,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.tools"
+			"output": "api/linq2db.tools",
+			"globalNamespaceId": "Root.Tools"
 		},
 		{
 			"src": [
@@ -101,7 +108,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.scaffold"
+			"output": "api/linq2db.scaffold",
+			"globalNamespaceId": "Root.Scaffold"
 		},
 		{
 			"src": [
@@ -112,7 +120,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore.3"
+			"output": "api/linq2db.efcore.3",
+			"globalNamespaceId": "Root.EF3"
 		},
 		{
 			"src": [
@@ -123,7 +132,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore.8"
+			"output": "api/linq2db.efcore.8",
+			"globalNamespaceId": "Root.EF8"
 		},
 		{
 			"src": [
@@ -134,7 +144,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore.9"
+			"output": "api/linq2db.efcore.9",
+			"globalNamespaceId": "Root.EF9"
 		},
 		{
 			"src": [
@@ -145,7 +156,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.efcore.10"
+			"output": "api/linq2db.efcore.10",
+			"globalNamespaceId": "Root.EF10"
 		},
 		{
 			"src": [
@@ -156,7 +168,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.identity"
+			"output": "api/linq2db.identity",
+			"globalNamespaceId": "Root.Identity"
 		},
 		{
 			"src": [
@@ -167,7 +180,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.httpclient.client"
+			"output": "api/linq2db.remote.httpclient.client",
+			"globalNamespaceId": "Root.Http.Client"
 		},
 		{
 			"src": [
@@ -178,7 +192,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.httpclient.server"
+			"output": "api/linq2db.remote.httpclient.server",
+			"globalNamespaceId": "Root.Http.Server"
 		},
 		{
 			"src": [
@@ -189,7 +204,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.signalr.client"
+			"output": "api/linq2db.remote.signalr.client",
+			"globalNamespaceId": "Root.SignalR.Client"
 		},
 		{
 			"src": [
@@ -200,7 +216,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.signalr.server"
+			"output": "api/linq2db.remote.signalr.server",
+			"globalNamespaceId": "Root.SignalR.Server"
 		}
 	],
 	"build": {
