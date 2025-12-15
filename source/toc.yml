@@ -15,7 +15,7 @@
     href: api/linq2db.remote.signalr.client/
   - name: Linq To DB over SignalR Server
     href: api/linq2db.remote.signalr.server/
-  - name: Linq To DB over HTPP Client
+  - name: Linq To DB over HTTP Client
     href: api/linq2db.remote.httpclient.client/
   - name: Linq To DB over HTTP Server
     href: api/linq2db.remote.httpclient.server/
@@ -33,7 +33,7 @@
     href: api/linq2db.efcore.9/
   - name: Linq To DB for Entity Framework Core 10
     href: api/linq2db.efcore.10/
-# don't produce anything    
+# don't produce anything
 #  - name: Linq To DB Compat
 #    href: api/linq2db.compat/
   - name: Linq To DB ASP.NET Identity Provider

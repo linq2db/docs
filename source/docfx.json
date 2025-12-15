@@ -1,25 +1,21 @@
 {
 	//https://github.com/dotnet/docfx/tree/main/docs/docs
 	"metadata": [
-		// specify path to non-test c# projects
-		// XML documentation comments from those projects will be used
-		// for API documentation generation
+		// IMPORTANT:
+		// we use custom docfx build to handle namespace conflicts:
+		// https://github.com/dotnet/docfx/issues/8966
+		// globalPrefix property doesn't exists in vanilla docfx
 		{
 			"src": [
 				{
 					"files": [
-						//"linq2db/Source/LinqToDB/LinqToDB.csproj"
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/linq2db.dll",
-						"linq2db/.build/bin/LinqToDB/Release/netstandard2.0/linq2db.dll",
-						"linq2db/.build/bin/LinqToDB/Release/net8.0/linq2db.dll",
-						"linq2db/.build/bin/LinqToDB/Release/net9.0/linq2db.dll",
-						"linq2db/.build/bin/LinqToDB/Release/net10.0/linq2db.dll"
+						"linq2db/Source/LinqToDB/LinqToDB.csproj"
 					],
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db",
-			"globalNamespaceId": "linq2db"
+			"filter": "filter.yml",
+			"output": "api/linq2db"
 		},
 		{
 			"src": [
@@ -30,8 +26,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.extensions",
-			"globalNamespaceId": "linq2db.extensions"
+			"filter": "filter.yml",
+			"output": "api/linq2db.extensions"
 		},
 		{
 			"src": [
@@ -42,24 +38,20 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.compat",
-			"globalNamespaceId": "linq2db.compat"
+			"filter": "filter.yml",
+			"output": "api/linq2db.compat"
 		},
 		{
 			"src": [
 				{
 					"files": [
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/netstandard2.0/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net8.0/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net9.0/linq2db.FSharp.dll",
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/net10.0/linq2db.FSharp.dll"
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/**/linq2db.FSharp.dll"
 					],
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.fsharp",
-			"globalNamespaceId": "linq2db.fsharp"
+			"filter": "filter.yml",
+			"output": "api/linq2db.fsharp"
 		},
 		{
 			"src": [
@@ -70,8 +62,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.grpc",
-			"globalNamespaceId": "linq2db.grpc"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.grpc"
 		},
 		{
 			"src": [
@@ -82,8 +74,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.wcf",
-			"globalNamespaceId": "linq2db.wcf"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.wcf"
 		},
 		{
 			"src": [
@@ -94,8 +86,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.tools",
-			"globalNamespaceId": "linq2db.tools"
+			"filter": "filter.yml",
+			"output": "api/linq2db.tools"
 		},
 		{
 			"src": [
@@ -106,8 +98,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.scaffold",
-			"globalNamespaceId": "linq2db.scaffold"
+			"filter": "filter.yml",
+			"output": "api/linq2db.scaffold"
 		},
 		{
 			"src": [
@@ -118,8 +110,9 @@
 					"src": "../submodules"
 				}
 			],
+			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.3",
-			"globalNamespaceId": "linq2db.efcore.3"
+			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF3"
 		},
 		{
 			"src": [
@@ -130,8 +123,9 @@
 					"src": "../submodules"
 				}
 			],
+			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.8",
-			"globalNamespaceId": "linq2db.efcore.8"
+			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF8"
 		},
 		{
 			"src": [
@@ -142,8 +136,9 @@
 					"src": "../submodules"
 				}
 			],
+			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.9",
-			"globalNamespaceId": "linq2db.efcore.9"
+			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF9"
 		},
 		{
 			"src": [
@@ -154,8 +149,9 @@
 					"src": "../submodules"
 				}
 			],
+			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.10",
-			"globalNamespaceId": "linq2db.efcore.10"
+			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF10"
 		},
 		{
 			"src": [
@@ -166,8 +162,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.identity",
-			"globalNamespaceId": "linq2db.identity"
+			"filter": "filter.yml",
+			"output": "api/linq2db.identity"
 		},
 		{
 			"src": [
@@ -178,8 +174,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.httpclient.client",
-			"globalNamespaceId": "linq2db.httpclient.client"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.httpclient.client"
 		},
 		{
 			"src": [
@@ -190,8 +186,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.httpclient.server",
-			"globalNamespaceId": "linq2db.httpclient.server"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.httpclient.server"
 		},
 		{
 			"src": [
@@ -202,8 +198,8 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.signalr.client",
-			"globalNamespaceId": "linq2db.signalr.client"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.signalr.client"
 		},
 		{
 			"src": [
@@ -214,31 +210,16 @@
 					"src": "../submodules"
 				}
 			],
-			"output": "api/linq2db.remote.signalr.server",
-			"globalNamespaceId": "linq2db.signalr.server"
+			"filter": "filter.yml",
+			"output": "api/linq2db.remote.signalr.server"
 		}
 	],
 	"build": {
 		"content": [
 			{
 				"files": [
-					"api/linq2db/*.yml",
-					"api/linq2db.compat/*.yml",
-					"api/linq2db.tools/*.yml",
-					"api/linq2db.scaffold/*.yml",
-					"api/linq2db.extensions/*.yml",
-					"api/linq2db.efcore.*/*.yml",
-					"api/linq2db.fsharp/*.yml",
-					"api/linq2db.identity/*.yml",
-					"api/linq2db.compat/*.yml",
-					"api/linq2db.remote.grpc/*.yml",
-					"api/linq2db.remote.wcf/*.yml",
-					"api/linq2db.remote.signalr.client/*.yml",
-					"api/linq2db.remote.signalr.server/*.yml",
-					"api/linq2db.remote.httpclient.client/*.yml",
-					"api/linq2db.remote.httpclient.server/*.yml",
-					"articles/**/*.md",
-					"articles/**/toc.yml",
+					"api/**/*.{md,yml}",
+					"articles/**/*.{md,yml}",
 					"toc.yml",
 					"*.md"
 				]

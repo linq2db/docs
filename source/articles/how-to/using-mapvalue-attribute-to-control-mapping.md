@@ -1,3 +1,7 @@
+---
+uid: mapvalue
+---
+
 # Using MapValueAttribute to control mapping with Linq To DB
 
 One of the primary functions of [Linq To DB](https://github.com/linq2db) is mapping between a database and classes/properties in your data model. Linq2db does a great job here straight out of the box, but often it is desirable to tune this process.  The most frequent example of where you may need this is with enumerations.
