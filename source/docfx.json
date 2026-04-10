@@ -220,6 +220,7 @@
 				"files": [
 					"api/**/*.{md,yml}",
 					"articles/**/*.{md,yml}",
+					"documentation/**/*.{md,yml}",
 					"toc.yml",
 					"*.md"
 				]
@@ -231,7 +232,7 @@
 					"images/**",
 					"**.png",
 					"**.jpg",
-					"articles/cli-help.txt",
+					"documentation/cli-help.txt",
 					".nojekyll"
 				]
 			}
