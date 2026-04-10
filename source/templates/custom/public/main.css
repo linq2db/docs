@@ -120,8 +120,16 @@
 	padding: 0;
 }
 
-/* Code block in hero */
-.landing-code {
+/* Syntax colors */
+.code-keyword { color: #c792ea; }
+.code-type    { color: #82aaff; }
+.code-string  { color: #c3e88d; }
+.code-number  { color: #f78c6c; }
+
+/* ============================================================
+   Interactive demo (pure CSS tabs)
+   ============================================================ */
+.demo-container {
 	background: rgba(0,0,0,0.35);
 	border: 1px solid rgba(255,255,255,0.08);
 	border-radius: 0.75rem;
@@ -130,49 +138,115 @@
 	box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
-.landing-code-header {
+.demo-radio { display: none; }
+
+.demo-tabs {
 	display: flex;
-	align-items: center;
-	gap: 6px;
-	padding: 0.75rem 1rem;
+	gap: 0;
 	background: rgba(255,255,255,0.05);
 	border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.landing-code-dot {
-	width: 10px;
-	height: 10px;
-	border-radius: 50%;
-	background: rgba(255,255,255,0.15);
-}
-
-.landing-code-dot:nth-child(1) { background: #ff5f57; }
-.landing-code-dot:nth-child(2) { background: #ffbd2e; }
-.landing-code-dot:nth-child(3) { background: #28ca41; }
-
-.landing-code-file {
-	margin-left: 0.5rem;
-	font-size: 0.8rem;
-	color: rgba(255,255,255,0.4);
-	font-family: var(--bs-font-monospace);
-}
-
-.landing-code-body {
-	margin: 0;
-	padding: 1.25rem;
-	font-size: 0.82rem;
-	line-height: 1.65;
-	color: #c8cee0;
 	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.demo-tabs::-webkit-scrollbar { display: none; }
+
+.demo-tab {
+	padding: 0.6rem 1rem;
+	font-size: 0.78rem;
+	font-weight: 500;
+	color: rgba(255,255,255,0.4);
+	cursor: pointer;
+	white-space: nowrap;
+	border-bottom: 2px solid transparent;
+	transition: color 0.2s, border-color 0.2s;
+	user-select: none;
+}
+
+.demo-tab:hover {
+	color: rgba(255,255,255,0.7);
+}
+
+/* Active tab highlighting via :checked */
+#demo-tab-1:checked ~ .demo-tabs label[for="demo-tab-1"],
+#demo-tab-2:checked ~ .demo-tabs label[for="demo-tab-2"],
+#demo-tab-3:checked ~ .demo-tabs label[for="demo-tab-3"],
+#demo-tab-4:checked ~ .demo-tabs label[for="demo-tab-4"],
+#demo-tab-5:checked ~ .demo-tabs label[for="demo-tab-5"],
+#demo-tab-6:checked ~ .demo-tabs label[for="demo-tab-6"],
+#demo-tab-7:checked ~ .demo-tabs label[for="demo-tab-7"] {
+	color: #a8b4ff;
+	border-bottom-color: #667eea;
+}
+
+/* Panel visibility via :checked */
+.demo-panel { display: none; }
+
+#demo-tab-1:checked ~ .demo-panels .demo-panel-1,
+#demo-tab-2:checked ~ .demo-panels .demo-panel-2,
+#demo-tab-3:checked ~ .demo-panels .demo-panel-3,
+#demo-tab-4:checked ~ .demo-panels .demo-panel-4,
+#demo-tab-5:checked ~ .demo-panels .demo-panel-5,
+#demo-tab-6:checked ~ .demo-panels .demo-panel-6,
+#demo-tab-7:checked ~ .demo-panels .demo-panel-7 {
+	display: block;
+}
+
+.demo-split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	min-height: 280px;
+}
+
+@media (max-width: 767.98px) {
+	.demo-split {
+		grid-template-columns: 1fr;
+	}
+}
+
+.demo-pane {
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.demo-pane + .demo-pane {
+	border-left: 1px solid rgba(255,255,255,0.06);
+}
+
+@media (max-width: 767.98px) {
+	.demo-pane + .demo-pane {
+		border-left: none;
+		border-top: 1px solid rgba(255,255,255,0.06);
+	}
+}
+
+.demo-pane-label {
+	font-size: 0.65rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: rgba(255,255,255,0.3);
+	padding: 0.5rem 1rem 0;
+}
+
+.demo-code {
+	margin: 0;
+	padding: 0.5rem 1rem 1rem;
+	font-size: 0.75rem;
+	line-height: 1.6;
+	color: #c8cee0;
 	background: transparent !important;
 	border: none !important;
+	overflow-x: auto;
+	white-space: pre;
 }
 
-/* Syntax colors */
-.code-keyword { color: #c792ea; }
-.code-type    { color: #82aaff; }
-.code-string  { color: #c3e88d; }
-.code-number  { color: #f78c6c; }
+.demo-sql {
+	color: #e0dcc8;
+}
+
+.code-comment { color: #676e95; font-style: italic; }
 
 /* ============================================================
    Landing cards section

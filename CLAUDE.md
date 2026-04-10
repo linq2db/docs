@@ -24,22 +24,32 @@ Requires **.NET SDK 10.0** (see `global.json`). The build pre-compiles `LinqToDB
 
 ## Documentation Structure
 
-- **`source/articles/`** — Hand-written documentation (Markdown + `toc.yml` per section)
-  - `general/` — Core concepts (connections, interceptors, metrics, database support)
+- **`source/index.md`** — Landing page with hero, interactive SQL demo, navigation cards
+- **`source/documentation/`** — Structured guides (Markdown + `toc.yml` per section)
   - `get-started/` — Installation and setup guides
+  - `general/` — Core concepts (connections, interceptors, metrics, database support)
   - `sql/` — SQL features (bulk copy, CTEs, MERGE, joins, window functions)
   - `how-to/` — Task-oriented guides
   - `project/` — Contributing, issue reporting
+- **`source/articles/`** — Blog/news content (release notes)
 - **`source/api/`** — Auto-generated API docs (output of DocFX metadata extraction, not hand-edited)
 - **`source/templates/custom/`** — CSS/JS overrides for DocFX modern template
 - **`_site/`** — Generated static HTML output (gitignored)
 
+## Landing Page SQL Demo
+
+The landing page has a tabbed demo showing C# LINQ → generated SQL. See **`tools/sql-demo/README.md`** for full maintenance guide. Key points:
+
+- SQL is pre-generated using `ToSqlQuery()` from the linq2db library
+- Test file: `tools/sql-demo/SqlDemoGenerator.cs` — copy to `linq2db/Tests/Tests.Playground/` to run
+- Tabs are pure CSS (radio inputs + `:checked` selectors), no JavaScript
+- Use `&#10;` instead of blank lines inside `<pre>` blocks (DocFX wraps blank lines in `<p>` tags)
+
 ## Key Configuration Files
 
 - **`source/docfx.json`** — Main DocFX config: 17 metadata sources (API namespaces) + build settings
-- **`source/toc.yml`** — Top-level navigation structure
+- **`source/toc.yml`** — Top-level navigation (Documentation, Articles, API)
 - **`source/filter.yml`** — API filtering rules
-- **`source/index.md`** — Homepage (includes `../submodules/linq2db/readme.md`)
 
 ## Submodules
 
