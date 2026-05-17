@@ -15,11 +15,7 @@ dotnet tool install docfx -g
 Write-Host Restore...
 # workaround for https://github.com/dotnet/docfx/pull/8375
 # also works as workaround for https://github.com/dotnet/docfx/issues/9775
-# -p: global properties override the Configuration==Release conditional reassignments in linq2db's
-# Directory.Build.props (env vars don't — they're loaded as global properties BEFORE evaluation but
-# get overwritten by conditional <PropertyGroup> assignments). Docs build only needs the API surface,
-# not pristine analyzer/codestyle output from the consumed source.
-dotnet build -c Release -p:RunAnalyzersDuringBuild=false -p:EnforceCodeStyleInBuild=false 'submodules/linq2db/Source/LinqToDB.FSharp/LinqToDB.FSharp.fsproj'
+dotnet build -c Release 'submodules/linq2db/Source/LinqToDB.FSharp/LinqToDB.FSharp.fsproj'
 
 Write-Host Build DocFX documentation...
 # docfx source/docfx.json
