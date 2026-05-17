@@ -23,6 +23,11 @@ Write-Host Restore...
 # trigger.
 dotnet build -c Release -p:RunAnalyzersDuringBuild=false -p:EnforceCodeStyleInBuild=false 'submodules/linq2db/Source/LinqToDB.FSharp/LinqToDB.FSharp.fsproj'
 
+if ($LASTEXITCODE -ne 0)
+{
+    throw "F# pre-build failed";
+}
+
 Write-Host Build DocFX documentation...
 # docfx source/docfx.json
 # use custom build
