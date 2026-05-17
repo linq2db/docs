@@ -4,6 +4,16 @@ Param(
 
 Write-Host Building documentation
 
+# Disable Roslyn analyzers + code-style enforcement for both the F# pre-build
+# and docfx's internal MSBuild invocations during metadata extraction.
+# linq2db source ships with rules (IDE0390/IDE0391 etc.) that are warnings-as-errors
+# under TreatWarningsAsErrors=true; the linq2db CI test-all path bypasses these via
+# `RunAnalyzersDuringBuild=false` too. Docs only needs the API surface, not the
+# style rules — disabling here matches that intent and unblocks docs builds for
+# releases whose source happens to trip rules new in the toolchain.
+$env:RunAnalyzersDuringBuild = 'false'
+$env:EnforceCodeStyleInBuild = 'false'
+
 Write-Host Cleanup previous build artifacts...
 if ([System.IO.Directory]::Exists('_site')) { Remove-Item _site -Recurse -Force }
 if ([System.IO.Directory]::Exists('source/api')) { Remove-Item source/api -Recurse -Force }
