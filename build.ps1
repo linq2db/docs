@@ -15,7 +15,13 @@ dotnet tool install docfx -g
 Write-Host Restore...
 # workaround for https://github.com/dotnet/docfx/pull/8375
 # also works as workaround for https://github.com/dotnet/docfx/issues/9775
-dotnet build -c Release 'submodules/linq2db/Source/LinqToDB.FSharp/LinqToDB.FSharp.fsproj'
+# -p: flags suppress IDE0390/IDE0391 enforcement in Release config. Newer Roslyn (SDK 10.0.x+
+# on the CI windows-2025 image) enforces these as errors via TreatWarningsAsErrors=true; the
+# F# pre-build builds the consumed LinqToDB.csproj transitively across all 5 TFMs and trips
+# on a few `Method can be made synchronous` sites. Docs only needs API surface, not pristine
+# style output. Older SDKs (some local dev boxes) don't enforce — the CI hit is the canonical
+# trigger.
+dotnet build -c Release -p:RunAnalyzersDuringBuild=false -p:EnforceCodeStyleInBuild=false 'submodules/linq2db/Source/LinqToDB.FSharp/LinqToDB.FSharp.fsproj'
 
 Write-Host Build DocFX documentation...
 # docfx source/docfx.json
