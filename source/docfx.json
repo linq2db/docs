@@ -14,6 +14,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db"
 		},
@@ -26,6 +27,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.extensions"
 		},
@@ -38,6 +40,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.compat"
 		},
@@ -50,6 +53,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.fsharp"
 		},
@@ -62,6 +66,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.remote.grpc"
 		},
@@ -74,6 +79,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.remote.wcf"
 		},
@@ -86,6 +92,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.tools"
 		},
@@ -98,6 +105,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.scaffold"
 		},
@@ -110,6 +118,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.3",
 			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF3"
@@ -123,6 +132,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.8",
 			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF8"
@@ -136,6 +146,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.9",
 			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF9"
@@ -149,6 +160,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.10",
 			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF10"
@@ -162,6 +174,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.identity"
 		},
@@ -174,6 +187,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.remote.httpclient.client"
 		},
@@ -186,6 +200,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.remote.httpclient.server"
 		},
@@ -198,6 +213,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.remote.signalr.client"
 		},
@@ -210,6 +226,7 @@
 					"src": "../submodules"
 				}
 			],
+			"properties": { "RunAnalyzersDuringBuild": "false", "EnforceCodeStyleInBuild": "false" },
 			"filter": "filter.yml",
 			"output": "api/linq2db.remote.signalr.server"
 		}
