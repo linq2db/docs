@@ -6,10 +6,11 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost/5.3.0-2.26078.5": {
+      "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost/5.6.0-2.26263.10": {
         "dependencies": {
           "Microsoft.Build.Locator": "1.10.2",
-          "System.Collections.Immutable": "9.0.0"
+          "Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts": "5.6.0-2.26263.10",
+          "System.Collections.Immutable": "10.0.1"
         },
         "runtime": {
           "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll": {}
@@ -64,18 +65,29 @@
           }
         }
       },
-      "System.Collections.Immutable/9.0.0": {
+      "System.Collections.Immutable/10.0.1": {
         "runtime": {
           "lib/net8.0/System.Collections.Immutable.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.52809"
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.125.57005"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts/5.6.0-2.26263.10": {
+        "dependencies": {
+          "System.Collections.Immutable": "10.0.1"
+        },
+        "runtime": {
+          "Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts.dll": {
+            "assemblyVersion": "5.6.0.0",
+            "fileVersion": "5.600.26.26310"
           }
         }
       }
     }
   },
   "libraries": {
-    "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost/5.3.0-2.26078.5": {
+    "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost/5.6.0-2.26263.10": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -87,12 +99,17 @@
       "path": "microsoft.build.locator/1.10.2",
       "hashPath": "microsoft.build.locator.1.10.2.nupkg.sha512"
     },
-    "System.Collections.Immutable/9.0.0": {
+    "System.Collections.Immutable/10.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QhkXUl2gNrQtvPmtBTQHb0YsUrDiDQ2QS09YbtTTiSjGcf7NBqtYbrG/BE06zcBPCKEwQGzIv13IVdXNOSub2w==",
-      "path": "system.collections.immutable/9.0.0",
-      "hashPath": "system.collections.immutable.9.0.0.nupkg.sha512"
+      "sha512": "sha512-kdTe61B8P7i2M1pODC3MLbZ/CfFGjpC6c6jzxjQoB5DHZNewayCRqgFUmx3JKB6vLQtozpMQEiw+R5fO32Jv4g==",
+      "path": "system.collections.immutable/10.0.1",
+      "hashPath": "system.collections.immutable.10.0.1.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts/5.6.0-2.26263.10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
