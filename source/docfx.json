@@ -6,10 +6,11 @@
 		// https://github.com/dotnet/docfx/issues/8966
 		// see docfx/README.md for how it is produced.
 		//
-		// `uidPrefix` as an object maps assembly name -> UID prefix and is combined across all entries,
-		// which is what makes references *between* entries resolve, so it is declared once here.
+		// `assemblyUidPrefixes` maps assembly name -> UID prefix. It is project wide: the maps of all
+		// entries are combined before any is processed, which is what makes references *between* entries
+		// resolve, so the whole map is declared once here.
 		//
-		// `uidPrefix` as a string prefixes the APIs of the assemblies documented by its own entry. The
+		// `uidPrefixOverride` prefixes the APIs of the assemblies documented by its own entry. The
 		// four EntityFrameworkCore entries all build an assembly named `linq2db.EntityFrameworkCore`, so
 		// they cannot be keyed by assembly name and this is the only thing that separates them.
 		{
@@ -23,7 +24,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db",
-			"uidPrefix": {
+			"assemblyUidPrefixes": {
 				"linq2db": "linq2db",
 				"linq2db.Extensions": "linq2db.Extensions",
 				"linq2db.Compat": "linq2db.Compat",
@@ -147,7 +148,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.3",
-			"uidPrefix": "linq2db.EntityFrameworkCore.EF3"
+			"uidPrefixOverride": "linq2db.EntityFrameworkCore.EF3"
 		},
 		{
 			"src": [
@@ -160,7 +161,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.8",
-			"uidPrefix": "linq2db.EntityFrameworkCore.EF8"
+			"uidPrefixOverride": "linq2db.EntityFrameworkCore.EF8"
 		},
 		{
 			"src": [
@@ -173,7 +174,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.9",
-			"uidPrefix": "linq2db.EntityFrameworkCore.EF9"
+			"uidPrefixOverride": "linq2db.EntityFrameworkCore.EF9"
 		},
 		{
 			"src": [
@@ -186,7 +187,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.10",
-			"uidPrefix": "linq2db.EntityFrameworkCore.EF10"
+			"uidPrefixOverride": "linq2db.EntityFrameworkCore.EF10"
 		},
 		{
 			"src": [
