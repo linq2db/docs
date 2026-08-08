@@ -2,9 +2,16 @@
 	//https://github.com/dotnet/docfx/tree/main/docs/docs
 	"metadata": [
 		// IMPORTANT:
-		// we use custom docfx build to handle namespace conflicts:
+		// we use a custom docfx build to handle namespace conflicts:
 		// https://github.com/dotnet/docfx/issues/8966
-		// globalPrefix property doesn't exists in vanilla docfx
+		// see docfx/README.md for how it is produced.
+		//
+		// `uidPrefix` prefixes the APIs of the assemblies documented by its own entry. The four
+		// EntityFrameworkCore entries all build an assembly named `linq2db.EntityFrameworkCore`, so
+		// they cannot be told apart by assembly name and this is the only thing that separates them.
+		//
+		// `uidPrefixes` is combined across all entries and is what makes references *between*
+		// entries resolve, so it is declared once here.
 		{
 			"src": [
 				{
@@ -15,7 +22,21 @@
 				}
 			],
 			"filter": "filter.yml",
-			"output": "api/linq2db"
+			"output": "api/linq2db",
+			"uidPrefixes": {
+				"linq2db": "linq2db",
+				"linq2db.Extensions": "linq2db.Extensions",
+				"linq2db.Compat": "linq2db.Compat",
+				"linq2db.FSharp": "linq2db.FSharp",
+				"linq2db.Remote.Grpc": "linq2db.Remote.Grpc",
+				"linq2db.Remote.Wcf": "linq2db.Remote.Wcf",
+				"linq2db.Tools": "linq2db.Tools",
+				"linq2db.Scaffold": "linq2db.Scaffold",
+				"linq2db.Remote.HttpClient.Client": "linq2db.Remote.HttpClient.Client",
+				"linq2db.Remote.HttpClient.Server": "linq2db.Remote.HttpClient.Server",
+				"linq2db.Remote.SignalR.Client": "linq2db.Remote.SignalR.Client",
+				"linq2db.Remote.SignalR.Server": "linq2db.Remote.SignalR.Server"
+			}
 		},
 		{
 			"src": [
@@ -44,8 +65,22 @@
 		{
 			"src": [
 				{
+					// single target framework on purpose: the glob used to match every TFM folder,
+					// which loaded the same assembly five times and reported every member of it as a
+					// duplicate. netstandard2.0 is the surface available to every consumer.
 					"files": [
-						"linq2db/.build/bin/LinqToDB.FSharp/Release/**/linq2db.FSharp.dll"
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/netstandard2.0/linq2db.FSharp.dll"
+					],
+					"src": "../submodules"
+				}
+			],
+			// only the net462 output carries its dependencies next to the assembly, so the F# types in
+			// the public signatures are resolved from there instead of being reported unresolved.
+			"references": [
+				{
+					"files": [
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/FSharp.Core.dll",
+						"linq2db/.build/bin/LinqToDB.FSharp/Release/net462/Microsoft.Bcl.AsyncInterfaces.dll"
 					],
 					"src": "../submodules"
 				}
@@ -112,7 +147,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.3",
-			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF3"
+			"uidPrefix": "linq2db.EntityFrameworkCore.EF3"
 		},
 		{
 			"src": [
@@ -125,7 +160,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.8",
-			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF8"
+			"uidPrefix": "linq2db.EntityFrameworkCore.EF8"
 		},
 		{
 			"src": [
@@ -138,7 +173,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.9",
-			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF9"
+			"uidPrefix": "linq2db.EntityFrameworkCore.EF9"
 		},
 		{
 			"src": [
@@ -151,7 +186,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db.efcore.10",
-			"globalPrefix": "linq2db.EntityFrameworkCore|linq2db.EntityFrameworkCore.EF10"
+			"uidPrefix": "linq2db.EntityFrameworkCore.EF10"
 		},
 		{
 			"src": [
