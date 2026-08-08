@@ -12,9 +12,9 @@ happened to win. See <https://github.com/dotnet/docfx/issues/8966>.
 
 `source/docfx.json` therefore uses:
 
-- **`assemblyUidPrefixes`** — maps assembly name to UID prefix. It is project wide: the maps of all
-  metadata entries are combined before any is processed, which is what makes references *between*
-  entries resolve, so the whole map is declared once on the first entry.
+- **`assemblyUidPrefixes`** — maps assembly name to UID prefix, at the top level of `docfx.json` next to
+  `metadata`. It is a project level setting because every metadata entry has to agree on the prefixes: an
+  entry mints UIDs for the APIs it references as well as the ones it documents.
 - **`uidPrefixOverride`** — a per entry prefix, for the assemblies that entry documents. The four
   Entity Framework Core entries all build an assembly named `linq2db.EntityFrameworkCore` (see
   `LinqToDB.EntityFrameworkCore.props`), so they cannot be keyed by assembly name and this is the only
@@ -26,7 +26,7 @@ namespace and type hrefs, and ~1200 dead in-page anchors.
 ## How this build is produced
 
 Branch: [`custom/linq2db-uidprefix`](https://github.com/MaceWindu/docfx/tree/custom/linq2db-uidprefix)
-in <https://github.com/MaceWindu/docfx>, currently `5534e75af`. It is
+in <https://github.com/MaceWindu/docfx>, currently `91955d98a`. It is
 [`fix/8966-uid-prefixes`](https://github.com/MaceWindu/docfx/pull/2) — the branch proposed for upstream
 — plus one commit bumping Roslyn to 5.6.0.
 
@@ -48,7 +48,7 @@ dotnet build src/docfx/docfx.csproj -c Release -f net10.0
 `docfx.exe --version` prints the source commit, so the vendored build can always be traced back:
 
 ```
-1.0.0+5534e75af19bc47ed4b4695520935b506fb52a9e
+1.0.0+91955d98af242864651de19b5f94f40d1ba47ad2
 ```
 
 ## When can this go away

@@ -1,18 +1,39 @@
 {
 	//https://github.com/dotnet/docfx/tree/main/docs/docs
+
+	// IMPORTANT:
+	// we use a custom docfx build to handle namespace conflicts:
+	// https://github.com/dotnet/docfx/issues/8966
+	// see docfx/README.md for how it is produced.
+	//
+	// `assemblyUidPrefixes` maps assembly name -> UID prefix and is a project level setting, because
+	// every metadata entry has to agree on the prefixes: an entry mints UIDs for the APIs it references
+	// as well as the ones it documents, and a reference that comes out unprefixed loses its link with no
+	// warning. So every assembly appearing in another assembly's public signatures is listed here, not
+	// only the ones whose namespaces collide.
+	//
+	// LinqToDB.Identity is deliberately absent: its namespace does not collide and nothing else here
+	// references it.
+	"assemblyUidPrefixes": {
+		"linq2db": "linq2db",
+		"linq2db.Extensions": "linq2db.Extensions",
+		"linq2db.Compat": "linq2db.Compat",
+		"linq2db.FSharp": "linq2db.FSharp",
+		"linq2db.Remote.Grpc": "linq2db.Remote.Grpc",
+		"linq2db.Remote.Wcf": "linq2db.Remote.Wcf",
+		"linq2db.Tools": "linq2db.Tools",
+		"linq2db.Scaffold": "linq2db.Scaffold",
+		"linq2db.Remote.HttpClient.Client": "linq2db.Remote.HttpClient.Client",
+		"linq2db.Remote.HttpClient.Server": "linq2db.Remote.HttpClient.Server",
+		"linq2db.Remote.SignalR.Client": "linq2db.Remote.SignalR.Client",
+		"linq2db.Remote.SignalR.Server": "linq2db.Remote.SignalR.Server"
+	},
 	"metadata": [
-		// IMPORTANT:
-		// we use a custom docfx build to handle namespace conflicts:
-		// https://github.com/dotnet/docfx/issues/8966
-		// see docfx/README.md for how it is produced.
-		//
-		// `assemblyUidPrefixes` maps assembly name -> UID prefix. It is project wide: the maps of all
-		// entries are combined before any is processed, which is what makes references *between* entries
-		// resolve, so the whole map is declared once here.
-		//
-		// `uidPrefixOverride` prefixes the APIs of the assemblies documented by its own entry. The
-		// four EntityFrameworkCore entries all build an assembly named `linq2db.EntityFrameworkCore`, so
-		// they cannot be keyed by assembly name and this is the only thing that separates them.
+		// The four EntityFrameworkCore entries all build an assembly named `linq2db.EntityFrameworkCore`,
+		// so they cannot be keyed by assembly name. Each uses `uidPrefixOverride` instead, which names the
+		// entry rather than the assembly. That works here only because nothing else in this project
+		// references the EF Core packages: a reference into them from another entry could not say which
+		// of the four versions it meant.
 		{
 			"src": [
 				{
@@ -23,21 +44,7 @@
 				}
 			],
 			"filter": "filter.yml",
-			"output": "api/linq2db",
-			"assemblyUidPrefixes": {
-				"linq2db": "linq2db",
-				"linq2db.Extensions": "linq2db.Extensions",
-				"linq2db.Compat": "linq2db.Compat",
-				"linq2db.FSharp": "linq2db.FSharp",
-				"linq2db.Remote.Grpc": "linq2db.Remote.Grpc",
-				"linq2db.Remote.Wcf": "linq2db.Remote.Wcf",
-				"linq2db.Tools": "linq2db.Tools",
-				"linq2db.Scaffold": "linq2db.Scaffold",
-				"linq2db.Remote.HttpClient.Client": "linq2db.Remote.HttpClient.Client",
-				"linq2db.Remote.HttpClient.Server": "linq2db.Remote.HttpClient.Server",
-				"linq2db.Remote.SignalR.Client": "linq2db.Remote.SignalR.Client",
-				"linq2db.Remote.SignalR.Server": "linq2db.Remote.SignalR.Server"
-			}
+			"output": "api/linq2db"
 		},
 		{
 			"src": [
