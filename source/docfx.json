@@ -6,11 +6,11 @@
 		// https://github.com/dotnet/docfx/issues/8966
 		// see docfx/README.md for how it is produced.
 		//
-		// `assemblyUidPrefixes` maps assembly name -> UID prefix. It is combined across all entries,
+		// `uidPrefix` as an object maps assembly name -> UID prefix and is combined across all entries,
 		// which is what makes references *between* entries resolve, so it is declared once here.
 		//
-		// `uidPrefix` prefixes the APIs of the assemblies documented by its own entry. The four
-		// EntityFrameworkCore entries all build an assembly named `linq2db.EntityFrameworkCore`, so
+		// `uidPrefix` as a string prefixes the APIs of the assemblies documented by its own entry. The
+		// four EntityFrameworkCore entries all build an assembly named `linq2db.EntityFrameworkCore`, so
 		// they cannot be keyed by assembly name and this is the only thing that separates them.
 		{
 			"src": [
@@ -23,7 +23,7 @@
 			],
 			"filter": "filter.yml",
 			"output": "api/linq2db",
-			"assemblyUidPrefixes": {
+			"uidPrefix": {
 				"linq2db": "linq2db",
 				"linq2db.Extensions": "linq2db.Extensions",
 				"linq2db.Compat": "linq2db.Compat",

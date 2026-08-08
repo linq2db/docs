@@ -12,11 +12,11 @@ happened to win. See <https://github.com/dotnet/docfx/issues/8966>.
 
 `source/docfx.json` therefore uses:
 
-- **`assemblyUidPrefixes`** — maps assembly name to UID prefix. It is combined across all metadata
+- **`uidPrefix` as an object** — maps assembly name to UID prefix. It is combined across all metadata
   entries, which is what makes references *between* entries resolve, so it is declared once on the
   first entry.
-- **`uidPrefix`** — a per entry prefix, for the assemblies that entry documents. The four Entity
-  Framework Core entries all build an assembly named `linq2db.EntityFrameworkCore` (see
+- **`uidPrefix` as a string** — a per entry prefix, for the assemblies that entry documents. The four
+  Entity Framework Core entries all build an assembly named `linq2db.EntityFrameworkCore` (see
   `LinqToDB.EntityFrameworkCore.props`), so they cannot be keyed by assembly name and this is the only
   thing that separates them.
 
@@ -26,7 +26,7 @@ namespace and type hrefs, and ~1200 dead in-page anchors.
 ## How this build is produced
 
 Branch: [`custom/linq2db-uidprefix`](https://github.com/MaceWindu/docfx/tree/custom/linq2db-uidprefix)
-in <https://github.com/MaceWindu/docfx>, currently `28070313a`. It is
+in <https://github.com/MaceWindu/docfx>, currently `1d0b2de99`. It is
 [`fix/8966-uid-prefixes`](https://github.com/MaceWindu/docfx/pull/2) — the branch proposed for upstream
 — plus one commit bumping Roslyn to 5.6.0.
 
@@ -48,10 +48,10 @@ dotnet build src/docfx/docfx.csproj -c Release -f net10.0
 `docfx.exe --version` prints the source commit, so the vendored build can always be traced back:
 
 ```
-1.0.0+28070313ac0eb9d7543cf38f7dfebd5e69515da4
+1.0.0+1d0b2de998af2a13fb83d1dbe3e3c1a5b93f2b72
 ```
 
 ## When can this go away
 
-Once `assemblyUidPrefixes`/`uidPrefix` ship in a released docfx, drop this folder and switch `build.ps1`
-back to the `docfx` global tool. The `source/docfx.json` options themselves do not need to change.
+Once `uidPrefix` ships in a released docfx, drop this folder and switch `build.ps1` back to the `docfx`
+global tool. The `source/docfx.json` options themselves do not need to change.
