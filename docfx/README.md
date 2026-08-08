@@ -12,13 +12,13 @@ happened to win. See <https://github.com/dotnet/docfx/issues/8966>.
 
 `source/docfx.json` therefore uses:
 
-- **`uidPrefix`** — a per metadata entry prefix, applied to the assemblies that entry documents. The four
-  Entity Framework Core entries all build an assembly named `linq2db.EntityFrameworkCore` (see
-  `LinqToDB.EntityFrameworkCore.props`), so they cannot be told apart by assembly name and this is the
-  only thing that separates them.
-- **`uidPrefixes`** — an assembly name → prefix map, combined across all entries. An entry cannot see
-  another entry's `uidPrefix`, so this map is what makes references *between* entries resolve. It is
-  declared once, on the first entry.
+- **`assemblyUidPrefixes`** — maps assembly name to UID prefix. It is combined across all metadata
+  entries, which is what makes references *between* entries resolve, so it is declared once on the
+  first entry.
+- **`uidPrefix`** — a per entry prefix, for the assemblies that entry documents. The four Entity
+  Framework Core entries all build an assembly named `linq2db.EntityFrameworkCore` (see
+  `LinqToDB.EntityFrameworkCore.props`), so they cannot be keyed by assembly name and this is the only
+  thing that separates them.
 
 This replaces the older `globalPrefix` hack, which produced a malformed `commentId`, unprefixed
 namespace and type hrefs, and ~1200 dead in-page anchors.
@@ -26,7 +26,7 @@ namespace and type hrefs, and ~1200 dead in-page anchors.
 ## How this build is produced
 
 Branch: [`custom/linq2db-uidprefix`](https://github.com/MaceWindu/docfx/tree/custom/linq2db-uidprefix)
-in <https://github.com/MaceWindu/docfx>, currently `d89a8f030`. It is
+in <https://github.com/MaceWindu/docfx>, currently `28070313a`. It is
 [`fix/8966-uid-prefixes`](https://github.com/MaceWindu/docfx/pull/2) — the branch proposed for upstream
 — plus one commit bumping Roslyn to 5.6.0.
 
@@ -48,10 +48,10 @@ dotnet build src/docfx/docfx.csproj -c Release -f net10.0
 `docfx.exe --version` prints the source commit, so the vendored build can always be traced back:
 
 ```
-1.0.0+d89a8f030c1be612b2be1d01d2523ba7c02d839f
+1.0.0+28070313ac0eb9d7543cf38f7dfebd5e69515da4
 ```
 
 ## When can this go away
 
-Once `uidPrefix`/`uidPrefixes` ship in a released docfx, drop this folder and switch `build.ps1` back to
-the `docfx` global tool. The `source/docfx.json` options themselves do not need to change.
+Once `assemblyUidPrefixes`/`uidPrefix` ship in a released docfx, drop this folder and switch `build.ps1`
+back to the `docfx` global tool. The `source/docfx.json` options themselves do not need to change.
