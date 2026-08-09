@@ -82,7 +82,7 @@ If you have issues with other types, feel free to create an issue.
 
 ## Options
 
-See [BulkCopyOptions](xref:LinqToDB.Data.BulkCopyOptions) properties and support per-provider. Some options explained below.
+See [BulkCopyOptions](xref:linq2db.LinqToDB.Data.BulkCopyOptions) properties and support per-provider. Some options explained below.
 
 ### `KeepIdentity` option (default : `false`)
 
