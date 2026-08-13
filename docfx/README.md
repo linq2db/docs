@@ -33,7 +33,7 @@ surfaced in page titles and the table of contents as a namespace that does not e
 ## How this build is produced
 
 Branch: [`fix/8966-uid-prefixes`](https://github.com/MaceWindu/docfx/pull/2) in
-<https://github.com/MaceWindu/docfx>, currently `dd95c86d9` — the branch proposed for upstream, with
+<https://github.com/MaceWindu/docfx>, currently `9907932d6` — the branch proposed for upstream, with
 nothing added on top.
 
 The previous build needed one extra commit bumping Roslyn to 5.6.0, because with Roslyn 5.0.0 and the
@@ -55,7 +55,7 @@ dotnet build src/docfx/docfx.csproj -c Release -f net10.0
 `docfx.exe --version` prints the source commit, so the vendored build can always be traced back:
 
 ```
-1.0.0+dd95c86d963ad33da06d7026899f7b8879a2970a
+1.0.0+9907932d6be6ad503885fc5c3c166ae4ce952be9
 ```
 
 ## When can this go away
