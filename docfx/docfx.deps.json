@@ -10,7 +10,7 @@
         "dependencies": {
           "Docfx.App": "1.0.0",
           "Docfx.Dotnet": "1.0.0",
-          "Spectre.Console.Cli": "0.53.1"
+          "Spectre.Console.Cli": "0.55.0"
         },
         "runtime": {
           "docfx.dll": {}
@@ -106,26 +106,28 @@
           }
         }
       },
-      "Microsoft.Build/18.0.2": {
+      "Microsoft.Build/18.8.2": {
         "dependencies": {
-          "Microsoft.Build.Framework": "18.0.2",
-          "Microsoft.NET.StringTools": "18.0.2",
-          "System.Configuration.ConfigurationManager": "9.0.0",
-          "System.Reflection.MetadataLoadContext": "9.0.0",
-          "System.Security.Cryptography.ProtectedData": "9.0.6"
+          "Microsoft.Build.Framework": "18.8.2",
+          "System.Configuration.ConfigurationManager": "10.0.4",
+          "System.Reflection.MetadataLoadContext": "10.0.4",
+          "System.Security.Cryptography.ProtectedData": "10.0.4"
         },
         "runtime": {
           "lib/net10.0/Microsoft.Build.dll": {
             "assemblyVersion": "15.1.0.0",
-            "fileVersion": "18.0.2.52102"
+            "fileVersion": "18.8.2.30814"
           }
         }
       },
-      "Microsoft.Build.Framework/18.0.2": {
+      "Microsoft.Build.Framework/18.8.2": {
+        "dependencies": {
+          "Microsoft.NET.StringTools": "18.8.2"
+        },
         "runtime": {
           "lib/net10.0/Microsoft.Build.Framework.dll": {
             "assemblyVersion": "15.1.0.0",
-            "fileVersion": "18.0.2.52102"
+            "fileVersion": "18.8.2.30814"
           }
         }
       },
@@ -205,7 +207,7 @@
       "Microsoft.CodeAnalysis.Workspaces.MSBuild/5.6.0": {
         "dependencies": {
           "Humanizer.Core": "2.14.1",
-          "Microsoft.Build.Framework": "18.0.2",
+          "Microsoft.Build.Framework": "18.8.2",
           "Microsoft.CodeAnalysis.Workspaces.Common": "5.6.0",
           "Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts": "5.6.0",
           "Microsoft.VisualStudio.SolutionPersistence": "1.0.52",
@@ -230,22 +232,22 @@
           }
         }
       },
-      "Microsoft.NET.StringTools/18.0.2": {
+      "Microsoft.NET.StringTools/18.8.2": {
         "runtime": {
           "lib/net10.0/Microsoft.NET.StringTools.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "18.0.2.52102"
+            "fileVersion": "18.8.2.30814"
           }
         }
       },
-      "Microsoft.Playwright/1.58.0": {
+      "Microsoft.Playwright/1.60.0": {
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "10.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Playwright.dll": {
-            "assemblyVersion": "1.58.0.0",
-            "fileVersion": "1.58.0.0"
+            "assemblyVersion": "1.60.0.0",
+            "fileVersion": "1.60.0.0"
           }
         }
       },
@@ -313,22 +315,33 @@
           }
         }
       },
-      "Spectre.Console/0.54.0": {
+      "Spectre.Console/0.57.2": {
+        "dependencies": {
+          "Spectre.Console.Ansi": "0.57.2"
+        },
         "runtime": {
           "lib/net10.0/Spectre.Console.dll": {
             "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.54.0.0"
+            "fileVersion": "0.57.2.0"
           }
         }
       },
-      "Spectre.Console.Cli/0.53.1": {
+      "Spectre.Console.Ansi/0.57.2": {
+        "runtime": {
+          "lib/net10.0/Spectre.Console.Ansi.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.57.2.0"
+          }
+        }
+      },
+      "Spectre.Console.Cli/0.55.0": {
         "dependencies": {
-          "Spectre.Console": "0.54.0"
+          "Spectre.Console": "0.57.2"
         },
         "runtime": {
-          "lib/net9.0/Spectre.Console.Cli.dll": {
+          "lib/net10.0/Spectre.Console.Cli.dll": {
             "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.53.1.0"
+            "fileVersion": "0.55.0.0"
           }
         }
       },
@@ -400,30 +413,30 @@
           }
         }
       },
-      "System.Configuration.ConfigurationManager/9.0.0": {
+      "System.Configuration.ConfigurationManager/10.0.4": {
         "dependencies": {
-          "System.Security.Cryptography.ProtectedData": "9.0.6"
+          "System.Security.Cryptography.ProtectedData": "10.0.4"
         },
         "runtime": {
-          "lib/net9.0/System.Configuration.ConfigurationManager.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.52809"
+          "lib/net10.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.426.12010"
           }
         }
       },
-      "System.Reflection.MetadataLoadContext/9.0.0": {
+      "System.Reflection.MetadataLoadContext/10.0.4": {
         "runtime": {
-          "lib/net9.0/System.Reflection.MetadataLoadContext.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.52809"
+          "lib/net10.0/System.Reflection.MetadataLoadContext.dll": {
+            "assemblyVersion": "10.0.0.4",
+            "fileVersion": "10.0.426.12010"
           }
         }
       },
-      "System.Security.Cryptography.ProtectedData/9.0.6": {
+      "System.Security.Cryptography.ProtectedData/10.0.4": {
         "runtime": {
-          "lib/net9.0/System.Security.Cryptography.ProtectedData.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.625.26613"
+          "lib/net10.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.426.12010"
           }
         }
       },
@@ -447,7 +460,7 @@
           "Docfx.Glob": "1.0.0",
           "Docfx.MarkdigEngine": "1.0.0",
           "Docfx.Plugins": "1.0.0",
-          "Microsoft.Playwright": "1.58.0",
+          "Microsoft.Playwright": "1.60.0",
           "PdfPig": "0.1.13"
         },
         "runtime": {
@@ -573,7 +586,7 @@
         "dependencies": {
           "Docfx.Plugins": "1.0.0",
           "Docfx.YamlSerialization": "1.0.0",
-          "Spectre.Console": "0.54.0"
+          "Spectre.Console": "0.57.2"
         },
         "runtime": {
           "Docfx.Common.dll": {
@@ -585,7 +598,7 @@
       "Docfx.DataContracts.Common/1.0.0": {
         "dependencies": {
           "Docfx.Common": "1.0.0",
-          "Spectre.Console": "0.54.0"
+          "Spectre.Console": "0.57.2"
         },
         "runtime": {
           "Docfx.DataContracts.Common.dll": {
@@ -599,7 +612,7 @@
           "Docfx.Common": "1.0.0",
           "Docfx.DataContracts.Common": "1.0.0",
           "Docfx.YamlSerialization": "1.0.0",
-          "Spectre.Console": "0.54.0"
+          "Spectre.Console": "0.57.2"
         },
         "runtime": {
           "Docfx.DataContracts.RestApi.dll": {
@@ -613,7 +626,7 @@
           "Docfx.Common": "1.0.0",
           "Docfx.DataContracts.Common": "1.0.0",
           "Docfx.YamlSerialization": "1.0.0",
-          "Spectre.Console": "0.54.0"
+          "Spectre.Console": "0.57.2"
         },
         "runtime": {
           "Docfx.DataContracts.UniversalReference.dll": {
@@ -632,7 +645,7 @@
           "HtmlAgilityPack": "1.12.4",
           "ICSharpCode.Decompiler": "9.1.0.7988",
           "Markdig": "1.1.0",
-          "Microsoft.Build": "18.0.2",
+          "Microsoft.Build": "18.8.2",
           "Microsoft.CodeAnalysis.CSharp": "5.6.0",
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "5.6.0",
           "Microsoft.CodeAnalysis.Common": "5.6.0",
@@ -652,7 +665,7 @@
       "Docfx.Glob/1.0.0": {
         "dependencies": {
           "Docfx.Common": "1.0.0",
-          "Spectre.Console": "0.54.0"
+          "Spectre.Console": "0.57.2"
         },
         "runtime": {
           "Docfx.Glob.dll": {
@@ -668,7 +681,7 @@
           "Docfx.YamlSerialization": "1.0.0",
           "Markdig": "1.1.0",
           "Newtonsoft.Json": "13.0.4",
-          "Spectre.Console": "0.54.0"
+          "Spectre.Console": "0.57.2"
         },
         "runtime": {
           "Docfx.MarkdigEngine.dll": {
@@ -790,19 +803,19 @@
       "path": "microsoft.bcl.asyncinterfaces/10.0.1",
       "hashPath": "microsoft.bcl.asyncinterfaces.10.0.1.nupkg.sha512"
     },
-    "Microsoft.Build/18.0.2": {
+    "Microsoft.Build/18.8.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MlcYsFVJbA7S1ByOf9DbuPMQ08nlF88VkqkIjmBkIiasA/M0Zo87H6Vk44e/SuLffomGGYSr2Hh5El6UEDDgKw==",
-      "path": "microsoft.build/18.0.2",
-      "hashPath": "microsoft.build.18.0.2.nupkg.sha512"
+      "sha512": "sha512-o30Qy4z+5KbJgHo+nmOt4sqrnIvb3BQlpEtE+Izlfk9eQKvppwHZGfQ1JUmFfkdcVpqZkgbqCPnqIkI/98dcIA==",
+      "path": "microsoft.build/18.8.2",
+      "hashPath": "microsoft.build.18.8.2.nupkg.sha512"
     },
-    "Microsoft.Build.Framework/18.0.2": {
+    "Microsoft.Build.Framework/18.8.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sOSb+0J4G/jCBW/YqmRuL0eOMXgfw1KQLdC9TkbvfA5xs7uNm+PBQXJCOzSJGXtZcZrtXozcwxPmUiRUbmd7FA==",
-      "path": "microsoft.build.framework/18.0.2",
-      "hashPath": "microsoft.build.framework.18.0.2.nupkg.sha512"
+      "sha512": "sha512-0rH2AaR+TyRhISTU3DEW1pskvOCrBa3QlHnItRqtBTExfCi14CxYNL3/COXxCfd+H40h2WB3XOYSYUlF5IFIwA==",
+      "path": "microsoft.build.framework/18.8.2",
+      "hashPath": "microsoft.build.framework.18.8.2.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Common/5.6.0": {
       "type": "package",
@@ -860,19 +873,19 @@
       "path": "microsoft.codeanalysis.workspaces.msbuild.contracts/5.6.0",
       "hashPath": "microsoft.codeanalysis.workspaces.msbuild.contracts.5.6.0.nupkg.sha512"
     },
-    "Microsoft.NET.StringTools/18.0.2": {
+    "Microsoft.NET.StringTools/18.8.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cTZw3GHkAlqZACYGeQT3niS3UfVQ8CH0O5+zUdhxstrg1Z8Q2ViXYFKjSxHmEXTX85mrOT/QnHZOeQhhSsIrkQ==",
-      "path": "microsoft.net.stringtools/18.0.2",
-      "hashPath": "microsoft.net.stringtools.18.0.2.nupkg.sha512"
+      "sha512": "sha512-TWyg687GoiC9dhj85CagUfYFKYtxRX2jv5raO+zolLVmvKIS1k5WXYh8IMvyiPP5f9r9/snpmTZioyCO5zh+ww==",
+      "path": "microsoft.net.stringtools/18.8.2",
+      "hashPath": "microsoft.net.stringtools.18.8.2.nupkg.sha512"
     },
-    "Microsoft.Playwright/1.58.0": {
+    "Microsoft.Playwright/1.60.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LYLB00NUTzdY3NEN+fOQcxNuVALoGJMMWZYQINGBs4MfsKcTvr6WKoAmSsT5D4pPOOnN8uAyushEzoQ8qUEb0w==",
-      "path": "microsoft.playwright/1.58.0",
-      "hashPath": "microsoft.playwright.1.58.0.nupkg.sha512"
+      "sha512": "sha512-RTwlxpmCsCMD8yCu8a9+/B+ce1axSVuRu3Ew4GI493g84bWxC323u69Tw8najJ/5uZ+cQVU3eDhB4GvubM9yHg==",
+      "path": "microsoft.playwright/1.60.0",
+      "hashPath": "microsoft.playwright.1.60.0.nupkg.sha512"
     },
     "Microsoft.VisualStudio.SolutionPersistence/1.0.52": {
       "type": "package",
@@ -909,19 +922,26 @@
       "path": "plantuml.net/1.4.80",
       "hashPath": "plantuml.net.1.4.80.nupkg.sha512"
     },
-    "Spectre.Console/0.54.0": {
+    "Spectre.Console/0.57.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-StDXCFayfy0yB1xzUHT2tgEpV1/HFTiS4JgsAQS49EYTfMixSwwucaQs/bIOCwXjWwIQTMuxjUIxcB5XsJkFJA==",
-      "path": "spectre.console/0.54.0",
-      "hashPath": "spectre.console.0.54.0.nupkg.sha512"
+      "sha512": "sha512-wzsB+P9i6F9G+cFOJxRotCiQWNSzZVAMxi8YMiHlGXXU1JLMXGp7zSSqBMmROZS2bzpK5jk+Saa7Evp8HwqhKg==",
+      "path": "spectre.console/0.57.2",
+      "hashPath": "spectre.console.0.57.2.nupkg.sha512"
     },
-    "Spectre.Console.Cli/0.53.1": {
+    "Spectre.Console.Ansi/0.57.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-y//7ZZ0shhvgXzoJXJzMaLGA4dPem8qCbkyv9khfE8NQDlH4hPVsHOHYoz6uzAwiTX9Yd7OnX3wNOX/wRfPUOg==",
-      "path": "spectre.console.cli/0.53.1",
-      "hashPath": "spectre.console.cli.0.53.1.nupkg.sha512"
+      "sha512": "sha512-Y1+u73shwP+JYHmrkdN6bSt2kaGBEAafhi2nrecczbXdFRey+k7J/WF9YPfcB0rqivv2S8fmif6FSBq9m/AFvw==",
+      "path": "spectre.console.ansi/0.57.2",
+      "hashPath": "spectre.console.ansi.0.57.2.nupkg.sha512"
+    },
+    "Spectre.Console.Cli/0.55.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cFJTB1te4eaAICd4Zp+8T/kiRn1ikQxgGqmoNarb1qoQ/7LzHAvVQ62x5U9GW3E0QI7sZLcXIIoq4CpqgTx42Q==",
+      "path": "spectre.console.cli/0.55.0",
+      "hashPath": "spectre.console.cli.0.55.0.nupkg.sha512"
     },
     "Stubble.Core/1.10.8": {
       "type": "package",
@@ -972,26 +992,26 @@
       "path": "system.composition.typedparts/10.0.3",
       "hashPath": "system.composition.typedparts.10.0.3.nupkg.sha512"
     },
-    "System.Configuration.ConfigurationManager/9.0.0": {
+    "System.Configuration.ConfigurationManager/10.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PdkuMrwDhXoKFo/JxISIi9E8L+QGn9Iquj2OKDWHB6Y/HnUOuBouF7uS3R4Hw3FoNmwwMo6hWgazQdyHIIs27A==",
-      "path": "system.configuration.configurationmanager/9.0.0",
-      "hashPath": "system.configuration.configurationmanager.9.0.0.nupkg.sha512"
+      "sha512": "sha512-4u3HLMYQqnTIF26VUiKhSuXtjFIvEfnwK9ZBUa4bXEc1koQCCkZx6ss5urKjqqimJMtuPHDKPHDchxkgoDNhjQ==",
+      "path": "system.configuration.configurationmanager/10.0.4",
+      "hashPath": "system.configuration.configurationmanager.10.0.4.nupkg.sha512"
     },
-    "System.Reflection.MetadataLoadContext/9.0.0": {
+    "System.Reflection.MetadataLoadContext/10.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nGdCUVhEQ9/CWYqgaibYEDwIJjokgIinQhCnpmtZfSXdMS6ysLZ8p9xvcJ8VPx6Xpv5OsLIUrho4B9FN+VV/tw==",
-      "path": "system.reflection.metadataloadcontext/9.0.0",
-      "hashPath": "system.reflection.metadataloadcontext.9.0.0.nupkg.sha512"
+      "sha512": "sha512-kVaDOAIi02+yd7AZFNpZ88UZcBESiDI1Ib9l592QvZCYUA/xJloAucRAbyEnuOB+ubrpITGb8cMa3g8NhwLUIA==",
+      "path": "system.reflection.metadataloadcontext/10.0.4",
+      "hashPath": "system.reflection.metadataloadcontext.10.0.4.nupkg.sha512"
     },
-    "System.Security.Cryptography.ProtectedData/9.0.6": {
+    "System.Security.Cryptography.ProtectedData/10.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yErfw/3pZkJE/VKza/Cm5idTpIKOy/vsmVi59Ta5SruPVtubzxb8CtnE8tyUpzs5pr0Y28GUFfSVzAhCLN3F/Q==",
-      "path": "system.security.cryptography.protecteddata/9.0.6",
-      "hashPath": "system.security.cryptography.protecteddata.9.0.6.nupkg.sha512"
+      "sha512": "sha512-LmDnaYkcWkZSlZ07L7YcB6bH8sCiBZ7j28kPbYiXdF6f0iUiN7rxsRORlZGdj5saN/wZIqvF7lDBn/cpjU+e2g==",
+      "path": "system.security.cryptography.protecteddata/10.0.4",
+      "hashPath": "system.security.cryptography.protecteddata.10.0.4.nupkg.sha512"
     },
     "YamlDotNet/16.3.0": {
       "type": "package",
