@@ -25,6 +25,14 @@ The assembly is a component of the identity, not a namespace segment: `LinqToDB`
 in titles, breadcrumbs and links, and only the UID and the file name carry the assembly (`::` becomes `--`
 in file names, as `:` is not legal there).
 
+Nothing displayed names the assembly, because `assemblyLabel` is left at its default of `none`. The
+previous vendored build appended it to every namespace, so the table of contents read
+`LinqToDB (linq2db.Tools)` and so did the page titles, on the 34 namespaces only one assembly declares as
+well as the 6 more than one does. Setting `assemblyLabel` to `shared` would not change this site either:
+it compares the namespaces of a single `metadata` entry, and every entry here documents one assembly, so
+the collisions it would label are all across entries where they cannot be seen. `suffix` on the colliding
+entries is the option if the assembly should ever be named.
+
 This replaces the older `globalPrefix` hack, which produced a malformed `commentId`, unprefixed
 namespace and type hrefs, and ~1200 dead in-page anchors, and the `assemblyUidPrefixes` /
 `uidPrefixOverride` pair before it, which spelled the assembly as a leading namespace segment and so
@@ -33,7 +41,7 @@ surfaced in page titles and the table of contents as a namespace that does not e
 ## How this build is produced
 
 Branch: [`fix/8966-uid-prefixes`](https://github.com/MaceWindu/docfx/pull/2) in
-<https://github.com/MaceWindu/docfx>, currently `9907932d6` — the branch proposed for upstream, with
+<https://github.com/MaceWindu/docfx>, currently `beda63b23` — the branch proposed for upstream, with
 nothing added on top.
 
 The previous build needed one extra commit bumping Roslyn to 5.6.0, because with Roslyn 5.0.0 and the
@@ -55,7 +63,7 @@ dotnet build src/docfx/docfx.csproj -c Release -f net10.0
 `docfx.exe --version` prints the source commit, so the vendored build can always be traced back:
 
 ```
-1.0.0+9907932d6be6ad503885fc5c3c166ae4ce952be9
+1.0.0+beda63b230d24f8a4b9a0e09fc4e690e36510fd2
 ```
 
 ## When can this go away

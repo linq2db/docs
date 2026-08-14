@@ -14,8 +14,9 @@
 	// here, not only the ones whose namespaces collide.
 	//
 	// The assembly is not part of the namespace, so pages, titles and links keep naming the namespaces as
-	// they are declared. `LinqToDB` reads as `LinqToDB` everywhere, and the assembly is what the table of
-	// contents groups by.
+	// they are declared: `LinqToDB` reads as `LinqToDB` everywhere, and only the UID and the file name
+	// carry the assembly. `assemblyLabel` is left unset, which is what keeps it that way; setting it to
+	// `suffix` would append the assembly to every namespace label and page title.
 	//
 	// LinqToDB.Identity is deliberately absent: its namespace does not collide and nothing else here
 	// references it.
