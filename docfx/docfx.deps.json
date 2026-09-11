@@ -131,104 +131,99 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.Common/5.6.0": {
+      "Microsoft.CodeAnalysis.Common/5.9.0": {
         "runtime": {
           "lib/net10.0/Microsoft.CodeAnalysis.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
           }
         }
       },
-      "Microsoft.CodeAnalysis.CSharp/5.6.0": {
+      "Microsoft.CodeAnalysis.CSharp/5.9.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "5.6.0"
+          "Microsoft.CodeAnalysis.Common": "5.9.0"
         },
         "runtime": {
           "lib/net10.0/Microsoft.CodeAnalysis.CSharp.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
           }
         }
       },
-      "Microsoft.CodeAnalysis.CSharp.Workspaces/5.6.0": {
+      "Microsoft.CodeAnalysis.CSharp.Workspaces/5.9.0": {
         "dependencies": {
           "Humanizer.Core": "2.14.1",
-          "Microsoft.CodeAnalysis.CSharp": "5.6.0",
-          "Microsoft.CodeAnalysis.Common": "5.6.0",
-          "Microsoft.CodeAnalysis.Workspaces.Common": "5.6.0",
+          "Microsoft.CodeAnalysis.CSharp": "5.9.0",
+          "Microsoft.CodeAnalysis.Common": "5.9.0",
+          "Microsoft.CodeAnalysis.Workspaces.Common": "5.9.0",
           "System.Composition": "10.0.3"
         },
         "runtime": {
           "lib/net10.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
           }
         }
       },
-      "Microsoft.CodeAnalysis.VisualBasic/5.6.0": {
+      "Microsoft.CodeAnalysis.VisualBasic/5.9.0": {
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "5.6.0"
+          "Microsoft.CodeAnalysis.Common": "5.9.0"
         },
         "runtime": {
           "lib/net10.0/Microsoft.CodeAnalysis.VisualBasic.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
           }
         }
       },
-      "Microsoft.CodeAnalysis.VisualBasic.Workspaces/5.6.0": {
+      "Microsoft.CodeAnalysis.VisualBasic.Workspaces/5.9.0": {
         "dependencies": {
           "Humanizer.Core": "2.14.1",
-          "Microsoft.CodeAnalysis.Common": "5.6.0",
-          "Microsoft.CodeAnalysis.VisualBasic": "5.6.0",
-          "Microsoft.CodeAnalysis.Workspaces.Common": "5.6.0",
+          "Microsoft.CodeAnalysis.Common": "5.9.0",
+          "Microsoft.CodeAnalysis.VisualBasic": "5.9.0",
+          "Microsoft.CodeAnalysis.Workspaces.Common": "5.9.0",
           "System.Composition": "10.0.3"
         },
         "runtime": {
           "lib/net10.0/Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
           }
         }
       },
-      "Microsoft.CodeAnalysis.Workspaces.Common/5.6.0": {
+      "Microsoft.CodeAnalysis.Workspaces.Common/5.9.0": {
         "dependencies": {
           "Humanizer.Core": "2.14.1",
-          "Microsoft.CodeAnalysis.Common": "5.6.0",
+          "Microsoft.CodeAnalysis.Common": "5.9.0",
           "System.Composition": "10.0.3"
         },
         "runtime": {
           "lib/net10.0/Microsoft.CodeAnalysis.Workspaces.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
           }
         }
       },
-      "Microsoft.CodeAnalysis.Workspaces.MSBuild/5.6.0": {
+      "Microsoft.CodeAnalysis.Workspaces.MSBuild/5.9.0": {
         "dependencies": {
           "Humanizer.Core": "2.14.1",
           "Microsoft.Build.Framework": "18.8.2",
-          "Microsoft.CodeAnalysis.Workspaces.Common": "5.6.0",
-          "Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts": "5.6.0",
+          "Microsoft.CodeAnalysis.Workspaces.Common": "5.9.0",
           "Microsoft.VisualStudio.SolutionPersistence": "1.0.52",
           "System.Composition": "10.0.3"
         },
         "runtime": {
           "lib/net10.0/Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
+          },
+          "lib/net10.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts.dll": {
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
           },
           "lib/net10.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
-          }
-        }
-      },
-      "Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts/5.6.0": {
-        "runtime": {
-          "lib/net8.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts.dll": {
-            "assemblyVersion": "5.6.0.0",
-            "fileVersion": "5.600.26.26310"
+            "assemblyVersion": "5.9.0.0",
+            "fileVersion": "5.900.26.35703"
           }
         }
       },
@@ -646,13 +641,13 @@
           "ICSharpCode.Decompiler": "9.1.0.7988",
           "Markdig": "1.1.0",
           "Microsoft.Build": "18.8.2",
-          "Microsoft.CodeAnalysis.CSharp": "5.6.0",
-          "Microsoft.CodeAnalysis.CSharp.Workspaces": "5.6.0",
-          "Microsoft.CodeAnalysis.Common": "5.6.0",
-          "Microsoft.CodeAnalysis.VisualBasic": "5.6.0",
-          "Microsoft.CodeAnalysis.VisualBasic.Workspaces": "5.6.0",
-          "Microsoft.CodeAnalysis.Workspaces.Common": "5.6.0",
-          "Microsoft.CodeAnalysis.Workspaces.MSBuild": "5.6.0",
+          "Microsoft.CodeAnalysis.CSharp": "5.9.0",
+          "Microsoft.CodeAnalysis.CSharp.Workspaces": "5.9.0",
+          "Microsoft.CodeAnalysis.Common": "5.9.0",
+          "Microsoft.CodeAnalysis.VisualBasic": "5.9.0",
+          "Microsoft.CodeAnalysis.VisualBasic.Workspaces": "5.9.0",
+          "Microsoft.CodeAnalysis.Workspaces.Common": "5.9.0",
+          "Microsoft.CodeAnalysis.Workspaces.MSBuild": "5.9.0",
           "OneOf": "3.0.271"
         },
         "runtime": {
@@ -817,61 +812,54 @@
       "path": "microsoft.build.framework/18.8.2",
       "hashPath": "microsoft.build.framework.18.8.2.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Common/5.6.0": {
+    "Microsoft.CodeAnalysis.Common/5.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-eWYNB5e92PSdkQ0xcmy2aLtrvBXNydnVi0Hj/VjaAely6XBqA3By+ClGAJaj4d16pzQmrXPLLK9RDVuS1Ec9xQ==",
-      "path": "microsoft.codeanalysis.common/5.6.0",
-      "hashPath": "microsoft.codeanalysis.common.5.6.0.nupkg.sha512"
+      "sha512": "sha512-IYaIaUWdIx539AReKZOBEqTskFusZfCh/wFSPilDvCn5Say8MegLw2LONcSIcVy+v3Gzv53qYBspgvBGSErfbQ==",
+      "path": "microsoft.codeanalysis.common/5.9.0",
+      "hashPath": "microsoft.codeanalysis.common.5.9.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.CSharp/5.6.0": {
+    "Microsoft.CodeAnalysis.CSharp/5.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-r1DrKQ/L0xTw03wJrLr36AMQNslyaeEKBFyFmQcOKa8HX3YvmhY//JEUafb6IR/m0gmaUVCfBTWitKJRNb7YAA==",
-      "path": "microsoft.codeanalysis.csharp/5.6.0",
-      "hashPath": "microsoft.codeanalysis.csharp.5.6.0.nupkg.sha512"
+      "sha512": "sha512-7JGDA0UT1+h7k9ZcA3rF4eFC8+QPq1xyYaXxag4p8r/zzPurEJxvdi7aM+MRL/SfP7XADXpWF/pl/eUYXOq/ww==",
+      "path": "microsoft.codeanalysis.csharp/5.9.0",
+      "hashPath": "microsoft.codeanalysis.csharp.5.9.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.CSharp.Workspaces/5.6.0": {
+    "Microsoft.CodeAnalysis.CSharp.Workspaces/5.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ojTMowxK2X0QPNSixGLI5RBgBQLgo1Blwyct4+HWCVYLXT4iKCyVKKmGjxw4h0AvPzGgd0XfWzSGKJk/jS2LkA==",
-      "path": "microsoft.codeanalysis.csharp.workspaces/5.6.0",
-      "hashPath": "microsoft.codeanalysis.csharp.workspaces.5.6.0.nupkg.sha512"
+      "sha512": "sha512-D2zqK/k16fto0yMz0hcXMTkzOxEwMDJyA1mu/KXF9Befwz4zub3MpHQD8FeRxJtVSSsC3dQFYBw7zu7r/pfO7g==",
+      "path": "microsoft.codeanalysis.csharp.workspaces/5.9.0",
+      "hashPath": "microsoft.codeanalysis.csharp.workspaces.5.9.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.VisualBasic/5.6.0": {
+    "Microsoft.CodeAnalysis.VisualBasic/5.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-biaSTpVc2aVkqg1fQsVmKGqxLnckzdJEOV0aUVPqpV9GczuwtxONyVrlQ2AzZNE6741FkO75tyj0VS6qlxJ/PA==",
-      "path": "microsoft.codeanalysis.visualbasic/5.6.0",
-      "hashPath": "microsoft.codeanalysis.visualbasic.5.6.0.nupkg.sha512"
+      "sha512": "sha512-Z+MbJE5QLzgU1gt7q7HSQQ2LN6n3gewv/Evfp/Ya8VXd5pGeyFVEQpXbDsM6tuJJZ5eOQ/6q2wBV3rqMzpKG7g==",
+      "path": "microsoft.codeanalysis.visualbasic/5.9.0",
+      "hashPath": "microsoft.codeanalysis.visualbasic.5.9.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.VisualBasic.Workspaces/5.6.0": {
+    "Microsoft.CodeAnalysis.VisualBasic.Workspaces/5.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-p+t/PdrtID/HXlIZDRkW17+sGK7hEZoAVvG+UPchH0XT9tWR+po1SQT+mP+TSaP9pxSlR7ViPnxKt/EKJ9Rn9Q==",
-      "path": "microsoft.codeanalysis.visualbasic.workspaces/5.6.0",
-      "hashPath": "microsoft.codeanalysis.visualbasic.workspaces.5.6.0.nupkg.sha512"
+      "sha512": "sha512-WPhh809s5+wewiwuxsA5Ly3JBIk7IUEIvKMnGQ5oDkSHCE+wKGo1sEf7YKSBnUde59rT82glra6vt6t/5j77ag==",
+      "path": "microsoft.codeanalysis.visualbasic.workspaces/5.9.0",
+      "hashPath": "microsoft.codeanalysis.visualbasic.workspaces.5.9.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Workspaces.Common/5.6.0": {
+    "Microsoft.CodeAnalysis.Workspaces.Common/5.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ILscYALZ5u7MRl2paiiSqn23/5qiy3vvcqBEP/C7RnGJtQQKKtPz5vEBtvDeDTaLzB9/w9d/bxfRYnaq5Pz00g==",
-      "path": "microsoft.codeanalysis.workspaces.common/5.6.0",
-      "hashPath": "microsoft.codeanalysis.workspaces.common.5.6.0.nupkg.sha512"
+      "sha512": "sha512-1A6jz50NG4nOEW8tX5+h+MyHqjWL0mPGwrUdwu+OlTfyknLo0GfxSqj4zEks8uVUdHdo9v8Ir9dHxACf8iYNEA==",
+      "path": "microsoft.codeanalysis.workspaces.common/5.9.0",
+      "hashPath": "microsoft.codeanalysis.workspaces.common.5.9.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Workspaces.MSBuild/5.6.0": {
+    "Microsoft.CodeAnalysis.Workspaces.MSBuild/5.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-EGyZR26z+LxIQrqEb54SUWgVc3E9V3Exg7ZzSLa1sE6BOKyaKOwRe8jrTzJJpSVZvoM/TTSqFM0vECT7GjTEvA==",
-      "path": "microsoft.codeanalysis.workspaces.msbuild/5.6.0",
-      "hashPath": "microsoft.codeanalysis.workspaces.msbuild.5.6.0.nupkg.sha512"
-    },
-    "Microsoft.CodeAnalysis.Workspaces.MSBuild.Contracts/5.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lkcHH4n4BFZa+vQy4/M6Tb9QNpxdd5LxXBpRhKFrNx2xKs68I8yE9p9TpB2srCPlb+8eoNERblL6FcH/DOrr2A==",
-      "path": "microsoft.codeanalysis.workspaces.msbuild.contracts/5.6.0",
-      "hashPath": "microsoft.codeanalysis.workspaces.msbuild.contracts.5.6.0.nupkg.sha512"
+      "sha512": "sha512-BBux6hhD4wXt4lYN2oaY+jV4PnIj5plyqohijgSZtxJQqsvsldPEdii2q9lGrJbNjKEALnldDHz1rmGKG0PeeA==",
+      "path": "microsoft.codeanalysis.workspaces.msbuild/5.9.0",
+      "hashPath": "microsoft.codeanalysis.workspaces.msbuild.5.9.0.nupkg.sha512"
     },
     "Microsoft.NET.StringTools/18.8.2": {
       "type": "package",
