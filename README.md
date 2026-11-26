@@ -1,11 +1,5 @@
-[![Build Status](https://dev.azure.com/linq2db/linq2db/_apis/build/status/linq2db.docs?branchName=master)](https://dev.azure.com/linq2db/linq2db/_build/latest?definitionId=2&branchName=master)
+# Archived
 
-This repository hosts documentation sources and build scripts for all Linq To DB projects: [linq2db.github.io](https://linq2db.github.io).
+The documentation sources moved into the main repository: [linq2db/linq2db `docs/`](https://github.com/linq2db/linq2db/tree/master/docs) ([linq2db/linq2db#6265](https://github.com/linq2db/linq2db/pull/6265)). The site, [linq2db.github.io](https://linq2db.github.io), is built and published from there on every release.
 
-Documentation generated using  [DocFX](https://dotnet.github.io/docfx/) generator.
-
-## Local Build
-
-1. Run `submodules.cmd` to update submodules to recent release. Submodules link other Linq To DB repositories and used as source for  API documentation.
-1. Run `local.cmd` build script to generate static documentation site in `_site` folder (you will need `nuget.exe` in repository root or in path)
-1. Open the `_site\index.html` (or you can configure web-server, e.g. IIS to this folder)
+Open a documentation issue or pull request in [linq2db/linq2db](https://github.com/linq2db/linq2db). The open issues and pull requests here were closed, or moved there, before this repository was archived.
